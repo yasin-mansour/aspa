@@ -1,5 +1,7 @@
-import {HttpCommunicationService} from 'app/core/services/http-communication.service';
+import {HttpCommunicationService} from './services/http-communication.service';
+import {AppGuard} from './guards/app-guard';
 
 export {
-  HttpCommunicationService
+  HttpCommunicationService,
+  AppGuard
 };

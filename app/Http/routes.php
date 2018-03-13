@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/api/token', function () {
-    return  array('token' => csrf_token());
+    return  array('token' => csrf_token(), 'guest'=>Auth::guest());
 });
 
 Route::auth();

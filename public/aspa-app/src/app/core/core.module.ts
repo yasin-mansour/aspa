@@ -1,18 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {
-  HttpCommunicationService
+  HttpCommunicationService,
+  AppGuard
 } from './';
-import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
   ],
   imports: [
-    HttpModule,
-    BrowserModule
+    BrowserModule,
   ],
-  providers: [HttpCommunicationService],
+  providers: [HttpCommunicationService, AppGuard],
   bootstrap: []
 })
 export class CoreModule { }
