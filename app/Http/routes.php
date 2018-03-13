@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/api/token', function () {
+    return  array('token' => csrf_token());
+});
+
+Route::auth();
+
+Route::get('/test', function(){
+
+});
+
+Route::get('/home', 'HomeController@index');
