@@ -1,9 +1,6 @@
 import {QuestionBase} from './question-base';
 
 export class ButtonQuestion extends QuestionBase<string> {
-  controlType = 'button';
-  uri: string;
-  isAbsoluteUri: boolean;
   actions: Array<any>;
   /**
    * action =
@@ -22,9 +19,6 @@ export class ButtonQuestion extends QuestionBase<string> {
 
   constructor(options: {} = {}) {
     super(options);
-    this.uri = options['uri'] || '';
-    this.requestType = options['requestType'] || '';
-    this.isAbsoluteUri = !!options['absoluteUri'];
     this.actions = options['actions'] || [];
   }
 }

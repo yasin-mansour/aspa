@@ -10,7 +10,7 @@ export class HttpCommunicationService {
   token: string;
 
   constructor(public http: Http) {
-    //this.getToken();
+
   }
 
   post(url: string, body: any, headers?: Headers) {
@@ -24,7 +24,7 @@ export class HttpCommunicationService {
     let options: RequestOptions = new RequestOptions({headers: headers, withCredentials: true});
     return this.http.post(this.buildUrl(url), this.objToFormUrlencoded(body), options)
       .map((data: Response) => this.handleResponse(data))
-      .catch(this.handleErrors());;
+      .catch(this.handleErrors());
   }
 
   get(url: string) {
@@ -52,12 +52,8 @@ export class HttpCommunicationService {
     return res.json();
   }
 
-  public getToken() {
-    return this.get(ApiConstants.TOKEN_PATH).toPromise().then(data => {
-      this.token = data.token;
-      console.log(this.token);
-      return true;
-    });
+  public setToken(token) {
+    this.token = token;
   }
 
   objToFormUrlencoded(object) {

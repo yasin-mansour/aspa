@@ -8,6 +8,7 @@ import {Component, OnInit} from '@angular/core';
 export class LoginComponent implements OnInit {
 
   loginConfig = [];
+
   ngOnInit() {
     this.loginConfig = this.getLoginJson();
   }
@@ -38,7 +39,7 @@ export class LoginComponent implements OnInit {
         type: 'password',
       },
       {
-        value: '',
+        value: false,
         key: 'remember',
         label: 'Remember Me',
         containerClass: 'checkbox',
@@ -53,6 +54,15 @@ export class LoginComponent implements OnInit {
         inputClass: 'btn btn-lg btn-success btn-block',
         order: 1,
         controlType: 'button',
+        outForm: true,
+        actions: [
+          {
+            name: 'request',
+            type: 'post',
+            uri: '/login',
+            isAbsoluteUri: false
+          }
+        ]
       }
     ];
 
