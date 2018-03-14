@@ -9,6 +9,7 @@ export class QuestionBase<T> {
   placeholder: string;
   inputClass: string;
   containerClass: string;
+  outForm: boolean;
 
   constructor(options: {
     value?: T,
@@ -21,6 +22,7 @@ export class QuestionBase<T> {
     placeholder?: string;
     inputClass?: string;
     containerClass?: string;
+    outForm?: boolean;
   } = {}) {
     this.value = options.value;
     this.key = options.key || '';
@@ -32,6 +34,7 @@ export class QuestionBase<T> {
     this.placeholder = options.placeholder || '';
     this.inputClass = options.inputClass || '';
     this.containerClass = options.containerClass || '';
+    this.outForm = !!options.outForm;
   }
 }
 

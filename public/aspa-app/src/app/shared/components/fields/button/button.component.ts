@@ -38,10 +38,11 @@ export class FormButtonComponent {
     }
   }
 
-  request({type}) {
-    if (this.question['uri']) {
+  request(action) {
+    const {type} = action;
+    if (action['uri']) {
       if (this.requestMethod[type]) {
-        this.requestMethod[type]();
+        this.requestMethod[type](action);
       }
     }
   }
@@ -51,8 +52,8 @@ export class FormButtonComponent {
     console.log(this.elementMapService.getElement(elementName));
   }
 
-  post() {
-    const uri = this.getUri();
+  post(action) {
+    const uri = this.getUri(action);
     this.http.post(uri, this.form.getRawValue()).subscribe(data => {
 
     }, err => {
@@ -60,8 +61,8 @@ export class FormButtonComponent {
     });
   }
 
-  get() {
-    const uri = this.getUri();
+  get(action) {
+    const uri = this.getUri(action);
     this.http.get(uri).subscribe(data => {
 
     }, err => {
@@ -69,7 +70,7 @@ export class FormButtonComponent {
     });
   }
 
-  getUri() {
-    return this.question['isAbsoluteUri'] ? this.question['uri'] : environment.API_PATH + this.question['uri'];
+  getUri(action) {
+    return action['isAbsoluteUri'] ? action['uri'] : environment.API_PATH + action['uri'];
   }
 }
