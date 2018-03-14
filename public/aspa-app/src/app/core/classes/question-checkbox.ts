@@ -1,12 +1,13 @@
 import { QuestionBase } from './question-base';
+import {Constants} from "../../utils/constants";
 
-export class TextboxQuestion extends QuestionBase<string> {
-  controlType = 'textbox';
+export class CheckboxQuestion extends QuestionBase<string> {
+  controlType = Constants.DYNAMIC_FORMS_CHECKBOX;
   type: string;
 
   constructor(options: {} = {}) {
     super(options);
-    this.type = options['type'] || 'text';
+    this.type = Constants.DYNAMIC_FORMS_CHECKBOX;
   }
 }
 

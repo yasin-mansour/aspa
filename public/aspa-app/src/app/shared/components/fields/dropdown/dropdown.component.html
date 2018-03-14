@@ -2,7 +2,7 @@
   class="dynamic-field form-select"
   [formGroup]="group">
   <label>{{ question.label }}</label>
-  <select [formControlName]="question.name">
+  <select [formControlName]="question.key">
     <option value="">{{ question.placeholder }}</option>
     <option *ngFor="let option of question.options">
       {{ option }}

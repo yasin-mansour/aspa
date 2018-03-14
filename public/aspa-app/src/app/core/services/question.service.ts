@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {DropdownQuestion} from '../classes/question-dropdown';
 import {TextboxQuestion} from '../classes/question-textbox';
+import {CheckboxQuestion} from '../classes/question-checkbox';
 import {QuestionBase} from '../classes/question-base';
 import {Constants} from '../../utils/constants';
 
@@ -17,7 +18,7 @@ export class BuildQuestions {
       let question;
       const config = configData[i];
 
-      switch (config.control) {
+      switch (config.controlType) {
         case Constants.DYNAMIC_FORMS_DROPDOWN : {
           question = new DropdownQuestion({
             value: config.value,
@@ -28,7 +29,25 @@ export class BuildQuestions {
             controlType: config.controlType,
             options: config.options,
             name: config.name,
-            placeholder: config.placeholder
+            placeholder: config.placeholder,
+            inputClass:  config.inputClass,
+            containerClass: config.containerClass
+          });
+          break;
+        }
+        case Constants.DYNAMIC_FORMS_CHECKBOX : {
+          question = new CheckboxQuestion({
+            value: config.value,
+            key: config.key,
+            label: config.label,
+            required: config.required,
+            order: config.order,
+            controlType: config.controlType,
+            name: config.name,
+            placeholder: config.placeholder,
+            type: config.type,
+            inputClass:  config.inputClass,
+            containerClass: config.containerClass
           });
           break;
         }
@@ -39,9 +58,12 @@ export class BuildQuestions {
             label: config.label,
             required: config.required,
             order: config.order,
-            controlType: config.controlType,
+            controlType: config.controlType || Constants.DYNAMIC_FORMS_TEXTBOX,
             name: config.name,
-            placeholder: config.placeholder
+            placeholder: config.placeholder,
+            type: config.type,
+            inputClass:  config.inputClass,
+            containerClass: config.containerClass
           });
           break;
         }

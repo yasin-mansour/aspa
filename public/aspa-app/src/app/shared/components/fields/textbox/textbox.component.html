@@ -1,9 +1,10 @@
 <div
-  class="dynamic-field form-input"
+  [class]="question.containerClass"
   [formGroup]="form">
-  <label>{{ question.label }}</label>
+  <!--<label>{{ question.label }}</label>-->
   <input
-    type="text"
+    [class]="question.inputClass"
+    [type]="question.type"
     [attr.placeholder]="question.placeholder"
-    [formControlName]="question.name">
+    [formControlName]="question.key">
 </div>

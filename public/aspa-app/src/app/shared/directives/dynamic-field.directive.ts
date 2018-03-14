@@ -3,12 +3,14 @@ import { FormGroup } from '@angular/forms';
 
 import { FormDropdownComponent } from '../components/fields/dropdown/dropdown.component';
 import { FormTextBoxComponent } from '../components/fields/textbox/textbox.component';
+import { FormCheckboxComponent } from '../components/fields/checkbox/checkbox.component';
 import { Field } from '../interfaces/field.interface';
 import { QuestionBase } from '../../core/classes/question-base';
 
 const components: {[type: string]: Type<any>} = {
   textbox: FormTextBoxComponent,
-  dropdown: FormDropdownComponent
+  dropdown: FormDropdownComponent,
+  checkbox: FormCheckboxComponent
 };
 
 @Directive({

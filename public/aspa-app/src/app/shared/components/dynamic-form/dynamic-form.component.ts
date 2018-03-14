@@ -11,6 +11,7 @@ import {BuildQuestions} from '../../../core/services/question.service';
 })
 export class DynamicFormComponent implements OnInit {
 
+  @Input() submitClass = '';
   @Input() config: Array<any>;
   questions: QuestionBase<any>[] = [];
   form: FormGroup;

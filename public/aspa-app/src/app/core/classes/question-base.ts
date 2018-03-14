@@ -7,6 +7,8 @@ export class QuestionBase<T> {
   controlType: string;
   name: string;
   placeholder: string;
+  inputClass: string;
+  containerClass: string;
 
   constructor(options: {
     value?: T,
@@ -17,6 +19,8 @@ export class QuestionBase<T> {
     controlType?: string,
     name?: string;
     placeholder?: string;
+    inputClass?: string;
+    containerClass?: string;
   } = {}) {
     this.value = options.value;
     this.key = options.key || '';
@@ -26,6 +30,8 @@ export class QuestionBase<T> {
     this.controlType = options.controlType || '';
     this.name = options.name || '';
     this.placeholder = options.placeholder || '';
+    this.inputClass = options.inputClass || '';
+    this.containerClass = options.containerClass || '';
   }
 }
 

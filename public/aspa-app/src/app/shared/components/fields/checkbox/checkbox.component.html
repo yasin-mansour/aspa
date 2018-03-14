@@ -1,0 +1,11 @@
+<div
+  [class]="question.containerClass"
+  [formGroup]="form">
+  <label>
+    <input
+      [class]="question.inputClass"
+      [formControlName]="question.key"
+      type="checkbox">
+    {{ question.label }}
+  </label>
+</div>

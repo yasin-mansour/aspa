@@ -9,7 +9,7 @@ export class LoginComponent implements OnInit {
 
   loginConfig = [];
   ngOnInit() {
-    // this.loginConfig = this.getLoginJson();
+    this.loginConfig = this.getLoginJson();
   }
 
   getLoginJson() {
@@ -17,21 +17,34 @@ export class LoginComponent implements OnInit {
     const json = [
       {
         value: '',
-        key: 'userName',
+        key: 'email',
         label: 'user name',
+        placeholder: 'E-mail',
+        inputClass: 'form-control',
+        containerClass: 'form-group',
         required: true,
         order: 1,
         controlType: 'textbox',
-        name: 'userName'
       },
       {
         value: '',
         key: 'password',
-        label: 'password',
+        label: 'user name',
+        placeholder: 'Password',
+        inputClass: 'form-control',
+        containerClass: 'form-group',
         required: true,
-        order: 2,
-        controlType: 'textbox',
-        name: 'password'
+        order: 1,
+        type: 'password',
+      },
+      {
+        value: '',
+        key: 'remember',
+        label: 'Remember Me',
+        containerClass: 'checkbox',
+        order: 1,
+        type: 'checkbox',
+        controlType: 'checkbox'
       }
     ];
 
