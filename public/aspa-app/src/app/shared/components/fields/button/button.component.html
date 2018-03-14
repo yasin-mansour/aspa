@@ -1,0 +1,9 @@
+<div
+  [class]="question.containerClass">
+  <button
+    [class]="question.inputClass"
+    type="submit" (click)="onSubmit()"
+    [disabled]="!form.valid">
+    {{ question.label }}
+  </button>
+</div>

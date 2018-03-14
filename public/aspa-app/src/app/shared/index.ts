@@ -4,7 +4,9 @@ import {DynamicFormComponent} from './components/dynamic-form/dynamic-form.compo
 import {FormDropdownComponent} from './components/fields/dropdown/dropdown.component';
 import {FormTextBoxComponent} from './components/fields/textbox/textbox.component';
 import {FormCheckboxComponent} from './components/fields/checkbox/checkbox.component';
+import {FormButtonComponent} from './components/fields/button/button.component';
 import {DynamicFieldDirective} from './directives/dynamic-field.directive';
+import {ElementIndexerDirective} from './directives/element-indexer.directive';
 
 
 export {
@@ -14,5 +16,7 @@ export {
   FormDropdownComponent,
   FormTextBoxComponent,
   FormCheckboxComponent,
-  DynamicFieldDirective
+  FormButtonComponent,
+  DynamicFieldDirective,
+  ElementIndexerDirective
 };

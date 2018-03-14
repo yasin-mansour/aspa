@@ -9,7 +9,9 @@ import {
   FormDropdownComponent,
   FormTextBoxComponent,
   FormCheckboxComponent,
-  DynamicFieldDirective
+  DynamicFieldDirective,
+  FormButtonComponent,
+  ElementIndexerDirective
 } from './';
 import {HttpModule} from '@angular/http';
 
@@ -21,7 +23,9 @@ import {HttpModule} from '@angular/http';
     FormDropdownComponent,
     FormTextBoxComponent,
     FormCheckboxComponent,
-    DynamicFieldDirective
+    DynamicFieldDirective,
+    FormButtonComponent,
+    ElementIndexerDirective
   ],
   imports: [
     HttpModule,
@@ -37,7 +41,9 @@ import {HttpModule} from '@angular/http';
     FormDropdownComponent,
     FormTextBoxComponent,
     FormCheckboxComponent,
-    DynamicFieldDirective
+    DynamicFieldDirective,
+    FormButtonComponent,
+    ElementIndexerDirective
   ],
   providers: [],
   bootstrap: [],
@@ -45,7 +51,8 @@ import {HttpModule} from '@angular/http';
     DynamicFormComponent,
     FormDropdownComponent,
     FormTextBoxComponent,
-    FormCheckboxComponent
+    FormCheckboxComponent,
+    FormButtonComponent
   ]
 })
 export class SharedModule {

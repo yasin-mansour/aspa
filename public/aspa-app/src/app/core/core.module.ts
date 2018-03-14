@@ -5,7 +5,8 @@ import {
   QuestionControlService,
   BuildQuestions,
   AuthService,
-  AppGuard
+  AppGuard,
+  ElementMapService
 } from './';
 
 @NgModule({
@@ -18,7 +19,8 @@ import {
     QuestionControlService,
     BuildQuestions,
     AuthService,
-    AppGuard
+    AppGuard,
+    ElementMapService
   ],
   bootstrap: []
 })

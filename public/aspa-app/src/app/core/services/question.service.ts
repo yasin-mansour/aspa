@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {DropdownQuestion} from '../classes/question-dropdown';
 import {TextboxQuestion} from '../classes/question-textbox';
 import {CheckboxQuestion} from '../classes/question-checkbox';
+import {ButtonQuestion} from '../classes/question-button';
 import {QuestionBase} from '../classes/question-base';
 import {Constants} from '../../utils/constants';
 
@@ -30,7 +31,7 @@ export class BuildQuestions {
             options: config.options,
             name: config.name,
             placeholder: config.placeholder,
-            inputClass:  config.inputClass,
+            inputClass: config.inputClass,
             containerClass: config.containerClass
           });
           break;
@@ -46,8 +47,24 @@ export class BuildQuestions {
             name: config.name,
             placeholder: config.placeholder,
             type: config.type,
-            inputClass:  config.inputClass,
+            inputClass: config.inputClass,
             containerClass: config.containerClass
+          });
+          break;
+        }
+        case Constants.DYNAMIC_FORMS_BUTTON : {
+          question = new ButtonQuestion({
+            key: config.key,
+            label: config.label,
+            order: config.order,
+            controlType: config.controlType,
+            name: config.name,
+            inputClass: config.inputClass,
+            containerClass: config.containerClass,
+            uri: config.uri,
+            isAbsoluteUri: config.isAbsoluteUri,
+            actions: config.actions,
+            requestType: config.requestType,
           });
           break;
         }
@@ -62,7 +79,7 @@ export class BuildQuestions {
             name: config.name,
             placeholder: config.placeholder,
             type: config.type,
-            inputClass:  config.inputClass,
+            inputClass: config.inputClass,
             containerClass: config.containerClass
           });
           break;

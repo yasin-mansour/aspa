@@ -46,6 +46,14 @@ export class LoginComponent implements OnInit {
         type: 'checkbox',
         controlType: 'checkbox'
       }
+      ,
+      {
+        key: 'login',
+        label: 'login',
+        inputClass: 'btn btn-lg btn-success btn-block',
+        order: 1,
+        controlType: 'button',
+      }
     ];
 
     return json;
