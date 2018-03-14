@@ -1,0 +1,9 @@
+<div
+  class="dynamic-field form-input"
+  [formGroup]="form">
+  <label>{{ question.label }}</label>
+  <input
+    type="text"
+    [attr.placeholder]="question.placeholder"
+    [formControlName]="question.name">
+</div>

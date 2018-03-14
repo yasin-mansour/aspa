@@ -2,6 +2,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {
   HttpCommunicationService,
+  QuestionControlService,
+  BuildQuestions,
   AuthService,
   AppGuard
 } from './';
@@ -11,7 +13,13 @@ import {
   imports: [
     BrowserModule,
   ],
-  providers: [HttpCommunicationService, AppGuard, AuthService],
+  providers: [
+    HttpCommunicationService,
+    QuestionControlService,
+    BuildQuestions,
+    AuthService,
+    AppGuard
+  ],
   bootstrap: []
 })
 export class CoreModule {

@@ -1,7 +1,16 @@
 import {LoginComponent} from './components/login/login.component';
 import {AuthComponent} from './components/auth/auth.component';
+import {DynamicFormComponent} from './components/dynamic-form/dynamic-form.component';
+import {FormDropdownComponent} from './components/fields/dropdown/dropdown.component';
+import {FormTextBoxComponent} from './components/fields/textbox/textbox.component';
+import {DynamicFieldDirective} from './directives/dynamic-field.directive';
+
 
 export {
   LoginComponent,
-  AuthComponent
+  AuthComponent,
+  DynamicFormComponent,
+  FormDropdownComponent,
+  FormTextBoxComponent,
+  DynamicFieldDirective
 };
