@@ -3,17 +3,19 @@ import {RouterModule, Routes} from '@angular/router';
 import {AppComponent} from './app.component';
 import {RouteConstants} from './utils/route-constants';
 import {AppGuard} from './core/guards/app-guard';
-import {LoginComponent} from './shared';
+import {LoginComponent, AuthComponent} from './shared';
 
 const appRoutes: Routes = [
   {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
     path: '',
+    component: AuthComponent,
     canActivate: [AppGuard],
-    component: AppComponent,
+    children: [
+      {
+        path: RouteConstants.LOGIN,
+        component: LoginComponent
+      }
+    ]
   }
 ]
 

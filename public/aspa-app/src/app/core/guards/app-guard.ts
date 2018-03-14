@@ -1,17 +1,13 @@
-/**
- * Created by exalt on 8/7/2017.
- */
-
 import {Injectable} from '@angular/core';
-import {CanActivate, Router} from '@angular/router';
-import {HttpCommunicationService} from '../services/http-communication.service';
+import {CanActivate} from '@angular/router';
+import {AuthService} from '../services/auth.service';
 
 @Injectable()
 export class AppGuard implements CanActivate {
-  constructor( private httpCommunicationService: HttpCommunicationService) {
+  constructor( private authService: AuthService) {
   }
 
   canActivate() {
-      return false //this.httpCommunicationService.getToken();
+      return this.authService.getToken();
   }
 }

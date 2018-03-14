@@ -24,11 +24,20 @@ export class HttpCommunicationService {
     let options: RequestOptions = new RequestOptions({headers: headers, withCredentials: true});
     return this.http.post(this.buildUrl(url), this.objToFormUrlencoded(body), options)
       .map((data: Response) => this.handleResponse(data))
-      ;
+      .catch(this.handleErrors());;
   }
 
   get(url: string) {
-    return this.http.get(this.buildUrl(url)).map(response => response.json());
+    return this.http.get(this.buildUrl(url))
+      .map(response => response.json())
+  }
+
+  public handleErrors() {
+    return (res: Response) => {
+
+
+      return Observable.throw(res);
+    };
   }
 
   buildUrl(url) {
@@ -47,7 +56,7 @@ export class HttpCommunicationService {
     return this.get(ApiConstants.TOKEN_PATH).toPromise().then(data => {
       this.token = data.token;
       console.log(this.token);
-      return false;
+      return true;
     });
   }
 

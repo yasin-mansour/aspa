@@ -1,17 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 import {
   HttpCommunicationService,
+  AuthService,
   AppGuard
 } from './';
 
 @NgModule({
-  declarations: [
-  ],
+  declarations: [],
   imports: [
     BrowserModule,
   ],
-  providers: [HttpCommunicationService, AppGuard],
+  providers: [HttpCommunicationService, AppGuard, AuthService],
   bootstrap: []
 })
-export class CoreModule { }
+export class CoreModule {
+}
