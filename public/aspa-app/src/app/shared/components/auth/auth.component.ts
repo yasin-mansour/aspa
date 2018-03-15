@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiConstants} from '../../../utils/api-constants';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -8,12 +9,12 @@ import {ApiConstants} from '../../../utils/api-constants';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() {
+  constructor(private router: Router) {
 
   }
 
   ngOnInit() {
-
+    console.log(this.router.config);
   }
 
 }

@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
         required: true,
         order: 1,
         type: 'password',
-      },
+      }/*,
       {
         value: false,
         key: 'remember',
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         order: 1,
         type: 'checkbox',
         controlType: 'checkbox'
-      }
+      }*/
       ,
       {
         key: 'login',
@@ -55,12 +55,18 @@ export class LoginComponent implements OnInit {
         order: 1,
         controlType: 'button',
         outForm: true,
-        actions: [
+        submitActions: [
           {
-            name: 'request',
-            type: 'post',
+            type: 'request',
+            requestType: 'post',
             uri: '/login',
             isAbsoluteUri: false
+          }
+        ],
+        responseActions: [
+          {
+            type: 'redirect',
+            uri: 'admin',
           }
         ]
       }

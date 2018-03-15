@@ -1,7 +1,9 @@
 import {QuestionBase} from './question-base';
 
 export class ButtonQuestion extends QuestionBase<string> {
-  actions: Array<any>;
+  submitActions: Array<any>;
+  responseActions: Array<any>;
+  errorActions: Array<any>;
   /**
    * action =
    * [
@@ -15,11 +17,12 @@ export class ButtonQuestion extends QuestionBase<string> {
    * ]
    */
 
-  requestType: string;
 
   constructor(options: {} = {}) {
     super(options);
-    this.actions = options['actions'] || [];
+    this.submitActions = options['submitActions'] || [];
+    this.responseActions = options['responseActions'] || [];
+    this.errorActions = options['errorActions'] || [];
   }
 }
 

@@ -2,7 +2,7 @@
   [class]="question.containerClass">
   <button
     [class]="question.inputClass"
-    type="submit" (click)="onSubmit()"
+    type="submit" (click)="onSubmit(submitActions, form.getRawValue())"
     [disabled]="!form.valid">
     {{ question.label }}
   </button>

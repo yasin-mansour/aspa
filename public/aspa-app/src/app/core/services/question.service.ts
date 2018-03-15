@@ -61,7 +61,9 @@ export class BuildQuestions {
             name: config.name,
             inputClass: config.inputClass,
             containerClass: config.containerClass,
-            actions: config.actions,
+            submitActions: config.submitActions,
+            responseActions: config.responseActions,
+            errorActions: config.errorActions,
             outForm: config.outForm
           });
           break;
