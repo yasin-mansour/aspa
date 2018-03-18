@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {AppComponent} from './app.component';
 import {RouteConstants} from './utils/route-constants';
 import {AppGuard} from './core/guards/app-guard';
-import {LoginComponent, AuthComponent} from './shared';
+import {LoginComponent, AuthComponent, S404Component} from './shared';
 
 const appRoutes: Routes = [
   {
@@ -14,7 +14,8 @@ const appRoutes: Routes = [
       {
         path: RouteConstants.LOGIN,
         component: LoginComponent
-      }
+      },
+      { path: '**', component: S404Component }
     ]
   }
 ]

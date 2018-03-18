@@ -9,6 +9,8 @@ import {DynamicFieldDirective} from './directives/dynamic-field.directive';
 import {ElementIndexerDirective} from './directives/element-indexer.directive';
 import {PageComponent} from './components/page/page.component';
 import {DynamicPageDirective} from './directives/dynamic-page.directive';
+import {S404Component} from './components/404/404.component';
+
 export {
   LoginComponent,
   AuthComponent,
@@ -20,5 +22,6 @@ export {
   DynamicFieldDirective,
   ElementIndexerDirective,
   PageComponent,
-  DynamicPageDirective
+  DynamicPageDirective,
+  S404Component
 };

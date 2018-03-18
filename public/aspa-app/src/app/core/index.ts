@@ -6,6 +6,7 @@ import {AuthService} from './services/auth.service';
 import {AuthInterceptor} from './interceptors/auth.interceptor';
 import {RoutingRegisterService} from './services/routing-register.service';
 import {AppGuard} from './guards/app-guard';
+import {AuthGuard} from './guards/auth-guard';
 
 export {
   HttpCommunicationService,
@@ -15,5 +16,6 @@ export {
   AppGuard,
   ElementMapService,
   AuthInterceptor,
-  RoutingRegisterService
+  RoutingRegisterService,
+  AuthGuard
 };

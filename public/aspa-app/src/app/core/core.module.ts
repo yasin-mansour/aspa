@@ -9,7 +9,8 @@ import {
   AppGuard,
   ElementMapService,
   AuthInterceptor,
-  RoutingRegisterService
+  RoutingRegisterService,
+  AuthGuard
 } from './';
 
 @NgModule({
@@ -24,6 +25,7 @@ import {
     BuildQuestions,
     AuthService,
     AppGuard,
+    AuthGuard,
     ElementMapService,
     {
       provide: HTTP_INTERCEPTORS,

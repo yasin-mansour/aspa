@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import {PageComponent} from '../../shared/components/page/page.component';
 import {Router} from '@angular/router';
+import {AuthGuard} from '../guards/auth-guard';
 
 @Injectable()
 export class RoutingRegisterService {
@@ -13,6 +14,7 @@ export class RoutingRegisterService {
   routerConfig = [{
     name: 'page',
     urlName: 'admin',
+    role: 'admin'
   }];
 
   constructor(private router: Router) {
@@ -21,7 +23,7 @@ export class RoutingRegisterService {
 
   updateRouter() {
     const config = this.router.config;
-    config[0].children = [...config[0].children, ...this.setRouteObject(this.routerConfig)];
+    config[0].children = [...this.setRouteObject(this.routerConfig), ...config[0].children];
     this.router.resetConfig(config);
   }
 
@@ -35,6 +37,8 @@ export class RoutingRegisterService {
         const mainRouter = {
           path: object.urlName,
           component: this.component[object.name],
+          data: { userRole: object.role},
+          canActivate: [AuthGuard]
         };
 
         if (object.children) {

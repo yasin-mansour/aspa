@@ -9,6 +9,6 @@ export class PageComponent {
 
   components;
   constructor(route: ActivatedRoute) {
-    this.components = route.snapshot.data || [];
+    this.components = route.snapshot.data.components || [];
   }
 }

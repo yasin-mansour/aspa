@@ -7,7 +7,6 @@ import {RoutingRegisterService} from './routing-register.service';
 @Injectable()
 export class AuthService {
 
-
   constructor(private http: HttpCommunicationService,
               private register: RoutingRegisterService) {
 
@@ -15,7 +14,7 @@ export class AuthService {
 
   public getToken() {
     return this.http.get(ApiConstants.TOKEN_PATH).toPromise().then(data => {
-      this.http.setToken(data.token);
+      this.http.setUser(data);
       this.register.updateRouter();
     });
   }
