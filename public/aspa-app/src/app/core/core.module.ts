@@ -1,18 +1,23 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import {
   HttpCommunicationService,
   QuestionControlService,
   BuildQuestions,
   AuthService,
   AppGuard,
-  ElementMapService
+  ElementMapService,
+  AuthInterceptor,
+  RoutingRegisterService,
+  AuthGuard
 } from './';
 
 @NgModule({
   declarations: [],
   imports: [
     BrowserModule,
+    HttpClientModule
   ],
   providers: [
     HttpCommunicationService,
@@ -20,7 +25,14 @@ import {
     BuildQuestions,
     AuthService,
     AppGuard,
-    ElementMapService
+    AuthGuard,
+    ElementMapService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    RoutingRegisterService
   ],
   bootstrap: []
 })

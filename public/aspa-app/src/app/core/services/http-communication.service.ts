@@ -7,14 +7,14 @@ import {ApiConstants} from "../../utils/api-constants";
 
 @Injectable()
 export class HttpCommunicationService {
-  token: string;
+  user;
 
   constructor(public http: Http) {
-    //this.getToken();
+
   }
 
   post(url: string, body: any, headers?: Headers) {
-    body._token = this.token;
+    body._token = this.user.token;
     console.log(body);
     if (!headers) {
       headers = new Headers();
@@ -24,7 +24,7 @@ export class HttpCommunicationService {
     let options: RequestOptions = new RequestOptions({headers: headers, withCredentials: true});
     return this.http.post(this.buildUrl(url), this.objToFormUrlencoded(body), options)
       .map((data: Response) => this.handleResponse(data))
-      .catch(this.handleErrors());;
+      .catch(this.handleErrors());
   }
 
   get(url: string) {
@@ -52,12 +52,8 @@ export class HttpCommunicationService {
     return res.json();
   }
 
-  public getToken() {
-    return this.get(ApiConstants.TOKEN_PATH).toPromise().then(data => {
-      this.token = data.token;
-      console.log(this.token);
-      return true;
-    });
+  public setUser(user) {
+    this.user = user;
   }
 
   objToFormUrlencoded(object) {

@@ -1,10 +1,9 @@
 import {QuestionBase} from './question-base';
 
 export class ButtonQuestion extends QuestionBase<string> {
-  controlType = 'button';
-  uri: string;
-  isAbsoluteUri: boolean;
-  actions: Array<any>;
+  submitActions: Array<any>;
+  responseActions: Array<any>;
+  errorActions: Array<any>;
   /**
    * action =
    * [
@@ -18,14 +17,12 @@ export class ButtonQuestion extends QuestionBase<string> {
    * ]
    */
 
-  requestType: string;
 
   constructor(options: {} = {}) {
     super(options);
-    this.uri = options['uri'] || '';
-    this.requestType = options['requestType'] || '';
-    this.isAbsoluteUri = !!options['absoluteUri'];
-    this.actions = options['actions'] || [];
+    this.submitActions = options['submitActions'] || [];
+    this.responseActions = options['responseActions'] || [];
+    this.errorActions = options['errorActions'] || [];
   }
 }
 

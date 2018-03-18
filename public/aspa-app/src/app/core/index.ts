@@ -3,7 +3,10 @@ import {QuestionControlService} from './services/question-control.service';
 import {BuildQuestions} from './services/question.service';
 import {ElementMapService} from './services/element-map.service';
 import {AuthService} from './services/auth.service';
+import {AuthInterceptor} from './interceptors/auth.interceptor';
+import {RoutingRegisterService} from './services/routing-register.service';
 import {AppGuard} from './guards/app-guard';
+import {AuthGuard} from './guards/auth-guard';
 
 export {
   HttpCommunicationService,
@@ -11,5 +14,8 @@ export {
   BuildQuestions,
   AuthService,
   AppGuard,
-  ElementMapService
+  ElementMapService,
+  AuthInterceptor,
+  RoutingRegisterService,
+  AuthGuard
 };

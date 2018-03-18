@@ -61,10 +61,10 @@ export class BuildQuestions {
             name: config.name,
             inputClass: config.inputClass,
             containerClass: config.containerClass,
-            uri: config.uri,
-            isAbsoluteUri: config.isAbsoluteUri,
-            actions: config.actions,
-            requestType: config.requestType,
+            submitActions: config.submitActions,
+            responseActions: config.responseActions,
+            errorActions: config.errorActions,
+            outForm: config.outForm
           });
           break;
         }

@@ -4,6 +4,7 @@ import {QuestionBase} from '../../../../core/classes/question-base';
 import {HttpCommunicationService} from '../../../../core';
 import {environment} from '../../../../../environments/environment';
 import {ElementMapService} from '../../../../core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-button',
@@ -13,10 +14,13 @@ import {ElementMapService} from '../../../../core';
 export class FormButtonComponent {
   question: QuestionBase<any>;
   form: FormGroup;
-
+  submitActions = 'submitActions';
+  responseActions = 'responseActions';
+  errorActions = 'errorActions';
   actionList = {
     request: this.request.bind(this),
-    updateElement: this.updateElement.bind(this)
+    setElement: this.setElement.bind(this),
+    redirect: this.redirect.bind(this)
   };
 
   requestMethod = {
@@ -25,51 +29,63 @@ export class FormButtonComponent {
   }
 
   constructor(private http: HttpCommunicationService,
-              private elementMapService: ElementMapService) {
+              private elementMapService: ElementMapService,
+              private router: Router) {
   }
 
-  onSubmit() {
-    if (this.question['actions']) {
-      this.question['actions'].map((action) => {
-        if (this.actionList[action.name]) {
-          this.actionList[action.name](action);
+  onSubmit(actionListType, data?) {
+    if (this.question[actionListType]) {
+      this.question[actionListType].map((action) => {
+        if (this.actionList[action.type]) {
+          this.actionList[action.type](action, data);
         }
       });
     }
   }
 
-  request({type}) {
-    if (this.question['uri']) {
-      if (this.requestMethod[type]) {
-        this.requestMethod[type]();
+  request(action, data) {
+    const {requestType} = action;
+    if (action['uri']) {
+      if (this.requestMethod[requestType]) {
+        this.requestMethod[requestType](action, data);
       }
     }
   }
 
-  updateElement({elementName}) {
+  setElement({elementName}, data) {
     console.log(elementName);
     console.log(this.elementMapService.getElement(elementName));
   }
 
-  post() {
-    const uri = this.getUri();
-    this.http.post(uri, this.form.getRawValue()).subscribe(data => {
+  redirect({uri}) {
+    if (uri) {
+      this.router.navigate([uri]);
+    }
+  }
 
+  post(action, data) {
+    const uri = this.getUri(action);
+    this.http.post(uri, data).subscribe(response => {
+      this.onSubmit(this.checkResponseData(response) ? this.errorActions : this.responseActions, response);
     }, err => {
-
+      this.onSubmit(this.errorActions, err);
     });
   }
 
-  get() {
-    const uri = this.getUri();
+  get(action) {
+    const uri = this.getUri(action);
     this.http.get(uri).subscribe(data => {
-
+      this.onSubmit(this.checkResponseData(data) ? this.errorActions : this.responseActions, data);
     }, err => {
-
+      this.onSubmit(this.errorActions, err);
     });
   }
 
-  getUri() {
-    return this.question['isAbsoluteUri'] ? this.question['uri'] : environment.API_PATH + this.question['uri'];
+  getUri(action) {
+    return action['isAbsoluteUri'] ? action['uri'] : environment.API_PATH + action['uri'];
+  }
+
+  checkResponseData(data) {
+    return data.error && Object.keys(data.error);
   }
 }
