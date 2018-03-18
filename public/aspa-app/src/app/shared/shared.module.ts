@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import { AngularSplitModule } from 'angular-split';
+import { CommonModule } from '@angular/common';
 
 import {
   LoginComponent,
@@ -37,13 +38,16 @@ import {HttpModule} from '@angular/http';
   ],
   imports: [
     HttpModule,
-    BrowserModule,
+    CommonModule,
+    //BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
     AngularSplitModule
   ],
   exports: [
+    CommonModule,
+    AngularSplitModule,
     LoginComponent,
     AuthComponent,
     DynamicFormComponent,
@@ -56,7 +60,6 @@ import {HttpModule} from '@angular/http';
     PageComponent,
     DynamicPageDirective,
     S404Component,
-    AngularSplitModule
   ],
   providers: [],
   bootstrap: [],

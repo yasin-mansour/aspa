@@ -1,15 +1,19 @@
-<split [gutterSize]="15" direction="horizontal">
-  <split-area *ngIf="splitAreas[LEFT_SPLIT_KEY].visible" [order]="0">
-    <split [gutterSize]="15" direction="vertical">
-      <split-area *ngIf="splitAreas[DASHBOARD_KEY].visible" [order]="0">
-        <app-dashboard></app-dashboard>
+<div class="container">
+  <div class="split-example">
+    <split [gutterSize]="15" direction="horizontal">
+      <split-area *ngIf="splitAreas[LEFT_SPLIT_KEY].visible" [order]="0">
+        <split [gutterSize]="15" direction="vertical">
+          <split-area *ngIf="splitAreas[DASHBOARD_KEY].visible" [order]="0">
+            <app-dashboard></app-dashboard>
+          </split-area>
+          <split-area *ngIf="splitAreas[LOCALIZATION_KEY].visible" [order]="1">
+            <app-localization></app-localization>
+          </split-area>
+        </split>
       </split-area>
-      <split-area *ngIf="splitAreas[LOCALIZATION_KEY].visible" [order]="1">
-        <app-localization></app-localization>
+      <split-area *ngIf="splitAreas[TASKS_KEY].visible" [order]="1">
+        <app-tasks></app-tasks>
       </split-area>
     </split>
-  </split-area>
-  <split-area *ngIf="splitAreas[TASKS_KEY].visible" [order]="1">
-    <app-tasks></app-tasks>
-  </split-area>
-</split>
+  </div>
+</div>`

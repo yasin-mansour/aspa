@@ -16,7 +16,6 @@ import {
 @NgModule({
   declarations: [],
   imports: [
-    BrowserModule,
     HttpClientModule
   ],
   providers: [

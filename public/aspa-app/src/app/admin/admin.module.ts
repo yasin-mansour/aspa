@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import {CoreModule} from '../core/core.module';
 import {SharedModule} from '../shared/shared.module';
 import {AdminRoutingModule} from './admin-routing.module';
+import { AngularSplitModule } from 'angular-split';
+import { CommonModule } from '@angular/common';
 import {
   AdminContainerComponent,
   DashboardComponent,
@@ -20,7 +22,7 @@ import {
   imports: [
     CoreModule,
     SharedModule,
-    AdminRoutingModule
+    AdminRoutingModule,
   ],
   providers: [],
   bootstrap: [],
