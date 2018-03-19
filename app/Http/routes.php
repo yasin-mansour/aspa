@@ -36,3 +36,6 @@ Route::post('api/password/email', 'Auth\PasswordController@sendResetLinkEmail');
 Route::post('api/password/reset', 'Auth\PasswordController@reset');
 
 Route::get('/home', 'HomeController@index');
+
+Route::resource('api/language', 'LanguageController');
+Route::resource('api/word', 'WordController');
