@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Word;
 
 class WordController extends Controller
 {
@@ -15,7 +16,9 @@ class WordController extends Controller
      */
     public function index()
     {
-        //
+        $words = Word::all();
+
+        return $words->toArray();
     }
 
     /**

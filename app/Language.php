@@ -8,7 +8,7 @@ class Language extends Model
 {
     protected $fillable = ['name', 'direction'];
 
-    public function worlds(){
+    public function words(){
         return $this->belongsToMany('App\Word');
     }
 }
