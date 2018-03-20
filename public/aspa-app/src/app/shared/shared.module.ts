@@ -4,6 +4,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import { AngularSplitModule } from 'angular-split';
 import { CommonModule } from '@angular/common';
+import {MenubarModule} from 'primeng/menubar';
+import {TableModule} from 'primeng/table';
 
 import {
   LoginComponent,
@@ -43,7 +45,9 @@ import {HttpModule} from '@angular/http';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    AngularSplitModule
+    AngularSplitModule,
+    MenubarModule,
+    TableModule
   ],
   exports: [
     CommonModule,
@@ -60,6 +64,8 @@ import {HttpModule} from '@angular/http';
     PageComponent,
     DynamicPageDirective,
     S404Component,
+    MenubarModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [],

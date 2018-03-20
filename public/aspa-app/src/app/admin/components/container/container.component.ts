@@ -21,22 +21,23 @@ export class AdminContainerComponent implements OnInit {
   }
 
   getSplitObject() {
-    const split = {};
-    split[this.DASHBOARD_KEY] = {
-      size: 70,
-      visible: true
-    };
-    split[this.TASKS_KEY] = {
-      size: 30,
-      visible: true
-    };
-    split[this.LOCALIZATION_KEY] = {
-      size: 40,
-      visible: true
-    };
-    split[this.LEFT_SPLIT_KEY] = {
-      size: 60,
-      visible: true
+    const split = {
+      [this.DASHBOARD_KEY]: {
+        size: 70,
+        visible: true
+      },
+      [this.TASKS_KEY]: {
+        size: 20,
+        visible: true
+      },
+      [this.LOCALIZATION_KEY]: {
+        size: 30,
+        visible: true
+      },
+      [this.LEFT_SPLIT_KEY]: {
+        size: 80,
+        visible: true
+      }
     };
     return split;
   }

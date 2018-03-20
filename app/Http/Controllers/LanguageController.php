@@ -37,6 +37,7 @@ class LanguageController extends Controller
     public function store(Request $request)
     {
         //
+        $a = App\Language::insert();
     }
 
     /**
