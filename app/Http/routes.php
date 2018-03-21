@@ -42,6 +42,4 @@ Route::get('/home', 'HomeController@index');
 Route::resource('api/language', 'LanguageController');
 Route::resource('api/word', 'WordController');
 
-/*Route::resource('api/word-langauge', function(){
-
-});*/
+Route::post('api/language-word', 'WordController@saveWords');

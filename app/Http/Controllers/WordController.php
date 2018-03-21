@@ -21,6 +21,10 @@ class WordController extends Controller
         return $words->toArray();
     }
 
+    public function saveWords(Request $request){
+        return $request->all();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
