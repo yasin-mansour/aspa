@@ -39,7 +39,8 @@ Route::post('api/password/reset', 'Auth\PasswordController@reset');
 
 Route::get('/home', 'HomeController@index');
 
+Route::post('api/words/update', 'WordController@updateWords');
+Route::post('api/words/delete', 'WordController@DeleteWords');
+
 Route::resource('api/language', 'LanguageController');
 Route::resource('api/word', 'WordController');
-
-Route::post('api/language-word', 'WordController@saveWords');

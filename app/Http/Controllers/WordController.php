@@ -21,8 +21,29 @@ class WordController extends Controller
         return $words->toArray();
     }
 
-    public function saveWords(Request $request){
-        return $request->all();
+    public function updateWords(Request $request){
+        $words = $request->input('data');
+        if(!empty($words)){
+            foreach ($words as $word) {
+                if(!array_key_exists('id', $word) || $word['id'] == 0){
+                    $newWord = Word::create($word);
+                    $newWord->languages()->sync($word['languages']);
+                }else{
+                    $oldWord = Word::find($word['id']);
+                    $oldWord->key = $word['key'];
+                    $oldWord->save();
+                    $oldWord->languages()->sync($word['languages']);
+                }
+
+            }
+        }
+        return array();
+    }
+
+    public function deleteWords(Request $request){
+        $words = $request->input('data');
+        Word::destroy($words);
+        return array();
     }
 
     /**

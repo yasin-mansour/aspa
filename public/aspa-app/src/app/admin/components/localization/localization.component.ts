@@ -2,6 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import ApiManager from '../../../core/classes/api-manager';
 import * as _ from 'lodash';
+import {AdminService} from '../../services/admin.service';
+import {HttpCommunicationService} from '../../../core';
+import {ApiConstants} from "../../../utils/api-constants";
 
 @Component({
   selector: 'app-localization',
@@ -13,35 +16,44 @@ export class LocalizationComponent implements OnInit {
   _ = _;
   cols = [
     {field: 'key', header: 'key'},
-    {field: 'en.name', header: 'en'},
-    {field: 'ar.name', header: 'ar'}
+    {field: 'languages.1.translation', header: 'en'},
+    {field: 'languages.2.translation', header: 'ar'}
   ];
 
-  words = [{
-    key: 'test',
-    en: {id: 1, name: 'test'},
-    ar: {id: 1, name: 'test'},
-  }];
-  newWord = [
+  words;
+  newRecord = [
     {
-      key: '',
-      en: '',
-      ar: '',
+      key: 'new',
+      languages: {
+        1: {
+          translation: ''
+        },
+        2: {
+          translation: ''
+        }
+      }
     }
   ];
+  api;
+  newWord;
 
-  constructor() {
-    let api = new ApiManager('/word');
+  constructor(private adminService: AdminService, private httpCommunicationService: HttpCommunicationService) {
+    this.api = new ApiManager(ApiConstants.WORDS_API, httpCommunicationService);
+    this.newWord = _.cloneDeep(this.newRecord);
   }
 
   ngOnInit() {
+    this.getWords();
     this.items = this.getMenuItems();
   }
 
   getMenuItems() {
     const items = [
       {
-        icon: 'fa-refresh'
+        icon: 'fa-refresh',
+        command: (event) => {
+          this.api.sync();
+        }
       },
       {
         icon: 'fa-plus'
@@ -56,4 +68,21 @@ export class LocalizationComponent implements OnInit {
 
     return items;
   }
+
+  getWords() {
+    this.adminService.words().subscribe((data) => {
+      this.words = data;
+    });
+  }
+
+  update(event) {
+    console.log(event);
+  }
+
+  apiInsert(object){
+    this.newWord = _.cloneDeep(this.newRecord);
+   this.words.unshift(object);
+   this.api.insert(object);
+  }
+
 }

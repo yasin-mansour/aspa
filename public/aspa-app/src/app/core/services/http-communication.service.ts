@@ -13,7 +13,7 @@ export class HttpCommunicationService {
 
   }
 
-  post(url: string, body: any, headers?: Headers) {
+  post(url: string, body: any, headers?: Headers, isFormUrl = true) {
     body._token = this.user.token;
     console.log(body);
     if (!headers) {
@@ -22,7 +22,8 @@ export class HttpCommunicationService {
     this.setHeaders(headers);
 
     let options: RequestOptions = new RequestOptions({headers: headers, withCredentials: true});
-    return this.http.post(this.buildUrl(url), this.objToFormUrlencoded(body), options)
+    body = isFormUrl ? this.objToFormUrlencoded(body) : body;
+    return this.http.post(this.buildUrl(url), body, options)
       .map((data: Response) => this.handleResponse(data))
       .catch(this.handleErrors());
   }
@@ -45,7 +46,7 @@ export class HttpCommunicationService {
   }
 
   public setHeaders(objectToSetHeadersTo: Headers) {
-    objectToSetHeadersTo.append('Content-Type', 'application/x-www-form-urlencoded');
+    objectToSetHeadersTo.append('Content-Type', 'application/json');
   }
 
   public handleResponse(res: Response) {
@@ -57,16 +58,16 @@ export class HttpCommunicationService {
   }
 
   objToFormUrlencoded(object) {
-    let keys = Object.keys(object);
+    const keys = Object.keys(object);
 
-    let urlEncoded = [];
+    const urlEncoded = [];
 
     keys.map(key => {
-      let parameter = key + "=" + object[key];
+      const parameter = key + '=' + object[key];
       urlEncoded.push(parameter);
     });
 
-    return urlEncoded.join("&");
+    return urlEncoded.join('&');
   }
 }
 

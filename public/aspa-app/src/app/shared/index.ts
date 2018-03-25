@@ -10,6 +10,7 @@ import {ElementIndexerDirective} from './directives/element-indexer.directive';
 import {PageComponent} from './components/page/page.component';
 import {DynamicPageDirective} from './directives/dynamic-page.directive';
 import {S404Component} from './components/404/404.component';
+import {DynamicBindingDirective} from './directives/dynamic-binding.directive';
 
 export {
   LoginComponent,
@@ -23,5 +24,6 @@ export {
   ElementIndexerDirective,
   PageComponent,
   DynamicPageDirective,
-  S404Component
+  S404Component,
+  DynamicBindingDirective
 };

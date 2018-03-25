@@ -20,7 +20,7 @@ class Word extends Model
         $languages = $this->languages()->select('name')->get();
        $a = Array();
         foreach ($languages as $language) {
-            $a[$language->name] = $language->pivot->translation;
+            $a[$language->pivot->language_id] = $language->pivot;
         }
         return $a;
     }

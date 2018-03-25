@@ -20,6 +20,7 @@ import {
   PageComponent,
   DynamicPageDirective,
   S404Component,
+  DynamicBindingDirective,
 } from './';
 import {HttpModule} from '@angular/http';
 
@@ -36,7 +37,8 @@ import {HttpModule} from '@angular/http';
     ElementIndexerDirective,
     PageComponent,
     DynamicPageDirective,
-    S404Component
+    S404Component,
+    DynamicBindingDirective
   ],
   imports: [
     HttpModule,
@@ -65,7 +67,8 @@ import {HttpModule} from '@angular/http';
     DynamicPageDirective,
     S404Component,
     MenubarModule,
-    TableModule
+    TableModule,
+    DynamicBindingDirective
   ],
   providers: [],
   bootstrap: [],
