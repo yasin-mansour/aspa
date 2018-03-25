@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Language;
+use Illuminate\Support\Facades\Storage;
 
 class LanguageController extends Controller
 {
@@ -18,6 +20,17 @@ class LanguageController extends Controller
         //
     }
 
+    public function generateJson()
+    {
+        $languages = Language::all();
+        foreach ($languages as $language) {
+            $jsonLanguage = array();
+            foreach ($language->words as $word) {
+                $jsonLanguage[$word->key] = $word->pivot->translation;
+            }
+            Storage::put('i18n/' . $language->name . '.json', json_encode($jsonLanguage));
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
