@@ -43,8 +43,12 @@ export default class ApiManager {
     const deletePromise = this.http.post(this.uri + '/delete', this.setData(oldDelete), null, false).toPromise();
 
     return Promise.all([updatePromise, deletePromise]).then(data => {
-      clearTimeout(this.syncTimeout);
-      this.syncTimeout = null;
+
+      if (this.syncTimeout) {
+        clearTimeout(this.syncTimeout);
+        this.syncTimeout = null;
+      }
+
     }, err => {
       this.objectToInsert.concat(oldInsert);
       this.objectToDelete.concat(oldDelete);
