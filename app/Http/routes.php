@@ -12,13 +12,13 @@
 */
 
 use App\Word;
-
+use App\Language;
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/api/token', function () {
-    return  array('token' => csrf_token(), 'guest'=>Auth::guest(), 'role'=> 'admin');
+    return  array('token' => csrf_token(), 'user'=>Auth::user(), 'role'=> 'admin', 'languages'=>Language::all());
 });
 
 Route::auth();
@@ -41,7 +41,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::post('api/words/update', 'WordController@updateWords');
 Route::post('api/words/delete', 'WordController@DeleteWords');
-Route::get('api/generateJson', 'LanguageController@generateJson');
+Route::post('api/generateJson', 'LanguageController@generateJson');
 
 Route::resource('api/language', 'LanguageController');
 Route::resource('api/word', 'WordController');

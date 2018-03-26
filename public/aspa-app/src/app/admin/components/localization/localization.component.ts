@@ -59,7 +59,10 @@ export class LocalizationComponent implements OnInit {
         icon: 'fa-plus'
       },
       {
-        icon: 'fa-cog'
+        icon: 'fa-cog',
+        command: (event) => {
+          this.adminService.generateLocalization().subscribe();
+        }
       },
       {
         icon: 'fa-times'

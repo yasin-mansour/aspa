@@ -7,6 +7,7 @@ import {AuthInterceptor} from './interceptors/auth.interceptor';
 import {RoutingRegisterService} from './services/routing-register.service';
 import {AppGuard} from './guards/app-guard';
 import {AuthGuard} from './guards/auth-guard';
+import {LocalizationService} from './services/localization.service';
 
 export {
   HttpCommunicationService,
@@ -17,5 +18,6 @@ export {
   ElementMapService,
   AuthInterceptor,
   RoutingRegisterService,
-  AuthGuard
+  AuthGuard,
+  LocalizationService
 };

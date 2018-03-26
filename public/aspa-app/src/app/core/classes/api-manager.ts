@@ -82,6 +82,6 @@ export default class ApiManager {
     if (this.syncTimeout) {
       return;
     }
-    this.syncTimeout = setTimeout(this.sync.bind(this), 5000);
+   // this.syncTimeout = setTimeout(this.sync.bind(this), 5000);
   }
 }

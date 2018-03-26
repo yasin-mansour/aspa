@@ -13,5 +13,9 @@ export class AdminService {
     return this.http.get(ApiConstants.WORDS);
   }
 
+  public generateLocalization() {
+    return this.http.post(ApiConstants.GENERATE_LOCALIZATION, {}, null, false);
+  }
+
 }
 
