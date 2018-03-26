@@ -4,6 +4,6 @@
     [class]="question.inputClass"
     type="submit" (click)="onSubmit(submitActions, form.getRawValue())"
     [disabled]="!form.valid">
-    {{ question.label }}
+    {{ question.label | translate}}
   </button>
 </div>

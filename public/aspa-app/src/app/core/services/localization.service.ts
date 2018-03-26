@@ -6,7 +6,9 @@ import {TranslateService} from '@ngx-translate/core';
 
 @Injectable()
 export class LocalizationService {
-  selectedLanguage;
+  setDirectionCallback;
+  splitOrder = 1;
+  direction = 'ltr';
 
   constructor(private http: HttpCommunicationService, private translate: TranslateService) {
 
@@ -17,14 +19,14 @@ export class LocalizationService {
     const languages = user.languages.map(language => {
       return language.name;
     });
-    this.selectedLanguage = user.languages[0];
+    let selectedLanguage = user.languages[0];
     if (user.user) {
       const language = user.languages.filter((language) => {
         return user.user.language_id === language.id;
       });
 
       if (language) {
-        this.selectedLanguage = language[0];
+       selectedLanguage = language[0];
       }
     }
 
@@ -32,15 +34,26 @@ export class LocalizationService {
     // this.translate.setDefaultLang(languages[0]);
 
     // const browserLang = this.translate.getBrowserLang();
-    this.translate.use(this.selectedLanguage.name);
+    this.translate.use(selectedLanguage.name);
+    const direction = this.getLanguageDirection(selectedLanguage);
+    this.setAppDirection(direction);
+    this.getLanguageOrder(selectedLanguage);
   }
 
-  getLanguageDirection() {
-    return this.selectedLanguage && this.selectedLanguage.direction === 0 ? 'rtl' : 'ltr';
+  getLanguageDirection(language) {
+    this.direction = language && language.direction === 0 ? 'rtl' : 'ltr';
+    return this.direction;
   }
 
-  getLanguageOrder() {
-    return this.selectedLanguage && this.selectedLanguage.direction === 0 ? -1 : 1;
+  setAppDirection(direction) {
+    if (this.setDirectionCallback) {
+      this.setDirectionCallback(direction);
+    }
+  }
+
+  getLanguageOrder(language) {
+    this.splitOrder = language && language.direction === 0 ? -1 : 1;
+    return this.splitOrder;
   }
 }
 

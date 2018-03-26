@@ -6,6 +6,7 @@ import { AngularSplitModule } from 'angular-split';
 import { CommonModule } from '@angular/common';
 import {MenubarModule} from 'primeng/menubar';
 import {TableModule} from 'primeng/table';
+import {TranslateModule} from '@ngx-translate/core';
 
 import {
   LoginComponent,
@@ -49,7 +50,8 @@ import {HttpModule} from '@angular/http';
     RouterModule,
     AngularSplitModule,
     MenubarModule,
-    TableModule
+    TableModule,
+    TranslateModule
   ],
   exports: [
     CommonModule,
@@ -68,7 +70,8 @@ import {HttpModule} from '@angular/http';
     S404Component,
     MenubarModule,
     TableModule,
-    DynamicBindingDirective
+    DynamicBindingDirective,
+    TranslateModule
   ],
   providers: [],
   bootstrap: [],

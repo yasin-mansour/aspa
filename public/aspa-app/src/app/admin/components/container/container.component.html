@@ -1,20 +1,20 @@
-<div class="admin-container">
+<div class="admin-container" style="direction: ltr">
   <split [gutterSize]="5" direction="horizontal">
     <split-area *ngIf="splitAreas[LEFT_SPLIT_KEY].visible"
-                [size]="splitAreas[LEFT_SPLIT_KEY].size" [order]="0">
+                [size]="splitAreas[LEFT_SPLIT_KEY].size" [order]="1 * localization.splitOrder">
       <split [gutterSize]="5" direction="vertical">
         <split-area *ngIf="splitAreas[DASHBOARD_KEY].visible"
-                    [size]="splitAreas[DASHBOARD_KEY].size" [order]="0">
+                    [size]="splitAreas[DASHBOARD_KEY].size" [order]="1 * localization.splitOrder">
           <app-dashboard></app-dashboard>
         </split-area>
         <split-area *ngIf="splitAreas[LOCALIZATION_KEY].visible"
-                    [size]="splitAreas[LOCALIZATION_KEY].size" [order]="1">
+                    [size]="splitAreas[LOCALIZATION_KEY].size" [order]="2 ">
           <app-localization></app-localization>
         </split-area>
       </split>
     </split-area>
     <split-area *ngIf="splitAreas[TASKS_KEY].visible"
-                [size]="splitAreas[TASKS_KEY].size" [order]="1">
+                [size]="splitAreas[TASKS_KEY].size" [order]="2 * localization.splitOrder">
       <app-tasks></app-tasks>
     </split-area>
   </split>

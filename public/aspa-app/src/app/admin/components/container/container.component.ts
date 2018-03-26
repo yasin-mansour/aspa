@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-
+import {LocalizationService} from '../../../core/services/localization.service';
 @Component({
   selector: 'app-admin-container',
   templateUrl: './container.component.html',
@@ -13,7 +13,7 @@ export class AdminContainerComponent implements OnInit {
   readonly LEFT_SPLIT_KEY: string = 'left';
   splitAreas = {};
 
-  constructor() {
+  constructor(public localization: LocalizationService) {
     this.splitAreas = this.getSplitObject();
   }
 

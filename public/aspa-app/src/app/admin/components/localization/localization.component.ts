@@ -4,7 +4,8 @@ import ApiManager from '../../../core/classes/api-manager';
 import * as _ from 'lodash';
 import {AdminService} from '../../services/admin.service';
 import {HttpCommunicationService} from '../../../core';
-import {ApiConstants} from "../../../utils/api-constants";
+import {ApiConstants} from '../../../utils/api-constants';
+import {LocalizationService} from '../../../core/services/localization.service';
 
 @Component({
   selector: 'app-localization',
@@ -37,7 +38,9 @@ export class LocalizationComponent implements OnInit {
   api;
   newWord;
 
-  constructor(private adminService: AdminService, private httpCommunicationService: HttpCommunicationService) {
+  constructor(private adminService: AdminService,
+              public localization: LocalizationService,
+              private httpCommunicationService: HttpCommunicationService) {
     this.api = new ApiManager(ApiConstants.WORDS_API, httpCommunicationService);
     this.newWord = _.cloneDeep(this.newRecord);
   }
@@ -82,10 +85,10 @@ export class LocalizationComponent implements OnInit {
     console.log(event);
   }
 
-  apiInsert(object){
+  apiInsert(object) {
     this.newWord = _.cloneDeep(this.newRecord);
-   this.words.unshift(object);
-   this.api.insert(object);
+    this.words.unshift(object);
+    this.api.insert(object);
   }
 
 }
