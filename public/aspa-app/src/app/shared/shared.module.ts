@@ -2,6 +2,12 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import { AngularSplitModule } from 'angular-split';
+import { CommonModule } from '@angular/common';
+import {MenubarModule} from 'primeng/menubar';
+import {TableModule} from 'primeng/table';
+import {TranslateModule} from '@ngx-translate/core';
+
 import {
   LoginComponent,
   AuthComponent,
@@ -14,7 +20,8 @@ import {
   ElementIndexerDirective,
   PageComponent,
   DynamicPageDirective,
-  S404Component
+  S404Component,
+  DynamicBindingDirective,
 } from './';
 import {HttpModule} from '@angular/http';
 
@@ -31,16 +38,24 @@ import {HttpModule} from '@angular/http';
     ElementIndexerDirective,
     PageComponent,
     DynamicPageDirective,
-    S404Component
+    S404Component,
+    DynamicBindingDirective
   ],
   imports: [
     HttpModule,
-    BrowserModule,
+    CommonModule,
+    //BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    AngularSplitModule,
+    MenubarModule,
+    TableModule,
+    TranslateModule
   ],
   exports: [
+    CommonModule,
+    AngularSplitModule,
     LoginComponent,
     AuthComponent,
     DynamicFormComponent,
@@ -52,7 +67,11 @@ import {HttpModule} from '@angular/http';
     ElementIndexerDirective,
     PageComponent,
     DynamicPageDirective,
-    S404Component
+    S404Component,
+    MenubarModule,
+    TableModule,
+    DynamicBindingDirective,
+    TranslateModule
   ],
   providers: [],
   bootstrap: [],

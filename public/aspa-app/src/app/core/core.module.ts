@@ -10,13 +10,13 @@ import {
   ElementMapService,
   AuthInterceptor,
   RoutingRegisterService,
-  AuthGuard
+  AuthGuard,
+  LocalizationService
 } from './';
 
 @NgModule({
   declarations: [],
   imports: [
-    BrowserModule,
     HttpClientModule
   ],
   providers: [
@@ -32,7 +32,8 @@ import {
       useClass: AuthInterceptor,
       multi: true
     },
-    RoutingRegisterService
+    RoutingRegisterService,
+    LocalizationService
   ],
   bootstrap: []
 })

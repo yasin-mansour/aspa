@@ -11,12 +11,14 @@
 |
 */
 
+use App\Word;
+use App\Language;
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/api/token', function () {
-    return  array('token' => csrf_token(), 'guest'=>Auth::guest(), 'role'=> 'admin');
+    return  array('token' => csrf_token(), 'user'=>Auth::user(), 'role'=> 'admin', 'languages'=>Language::all());
 });
 
 Route::auth();
@@ -36,3 +38,10 @@ Route::post('api/password/email', 'Auth\PasswordController@sendResetLinkEmail');
 Route::post('api/password/reset', 'Auth\PasswordController@reset');
 
 Route::get('/home', 'HomeController@index');
+
+Route::post('api/words/update', 'WordController@updateWords');
+Route::post('api/words/delete', 'WordController@DeleteWords');
+Route::post('api/generateJson', 'LanguageController@generateJson');
+
+Route::resource('api/language', 'LanguageController');
+Route::resource('api/word', 'WordController');

@@ -15,6 +15,11 @@ const appRoutes: Routes = [
         path: RouteConstants.LOGIN,
         component: LoginComponent
       },
+      {
+        path: RouteConstants.ADMIN,
+        loadChildren: 'app/admin/admin.module#AdminModule'
+      },
+
       { path: '**', component: S404Component }
     ]
   }

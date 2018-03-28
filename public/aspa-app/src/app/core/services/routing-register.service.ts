@@ -11,11 +11,11 @@ export class RoutingRegisterService {
     page: PageComponent
   }
 
-  routerConfig = [{
+  routerConfig = [/*{
     name: 'page',
     urlName: 'admin',
     role: 'admin'
-  }];
+  }*/];
 
   constructor(private router: Router) {
 

@@ -3,12 +3,14 @@ import 'rxjs/add/operator/map';
 import {ApiConstants} from '../../utils/api-constants';
 import {HttpCommunicationService} from './http-communication.service';
 import {RoutingRegisterService} from './routing-register.service';
+import {LocalizationService} from './localization.service';
 
 @Injectable()
 export class AuthService {
 
   constructor(private http: HttpCommunicationService,
-              private register: RoutingRegisterService) {
+              private register: RoutingRegisterService,
+              private localization: LocalizationService) {
 
   }
 
@@ -16,6 +18,7 @@ export class AuthService {
     return this.http.get(ApiConstants.TOKEN_PATH).toPromise().then(data => {
       this.http.setUser(data);
       this.register.updateRouter();
+      this.localization.setLocalization();
     });
   }
 

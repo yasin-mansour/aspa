@@ -5,6 +5,6 @@
   <input
     [class]="question.inputClass"
     [type]="question.type"
-    [attr.placeholder]="question.placeholder"
+    [attr.placeholder]="question.placeholder | translate"
     [formControlName]="question.key">
 </div>

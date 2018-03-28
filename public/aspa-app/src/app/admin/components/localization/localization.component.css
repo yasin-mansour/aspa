@@ -1,0 +1,7 @@
+:host /deep/ .ui-menubar .ui-menubar-root-list>.ui-menuitem>.ui-menuitem-link {
+  padding: 0;
+}
+
+:host /deep/ .ui-corner-all{
+  border-radius: 0;
+}
