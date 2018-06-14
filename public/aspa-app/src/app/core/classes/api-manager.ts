@@ -4,6 +4,7 @@ export default class ApiManager {
   objectToDelete = [];
   objectToUpdate = [];
   syncTimeout;
+  syncPromise;
 
   constructor(uri, private http) {
     this.uri = uri;
@@ -34,26 +35,36 @@ export default class ApiManager {
 
 
   sync() {
+
+    // one sync process at a time.
+    if (this.syncPromise) {
+      return new Promise((resolve, reject) => {
+        resolve([]);
+      });
+    }
+
     const oldInsert = this.objectToInsert.concat([]);
     const oldDelete = this.objectToDelete.concat([]);
     const oldUpdate = this.objectToUpdate.concat([]);
-    this.reset();
 
     const updatePromise = this.http.post(this.uri + '/update', this.setData(oldUpdate.concat(oldInsert)), null, false).toPromise();
     const deletePromise = this.http.post(this.uri + '/delete', this.setData(oldDelete), null, false).toPromise();
 
-    return Promise.all([updatePromise, deletePromise]).then(data => {
+    this.syncPromise = Promise.all([updatePromise, deletePromise]).then(data => {
 
+      this.setNewWordsId(data[0]); // 0 => data return from the update api
+      this.reset();
+      this.resetSyncPromise();
       if (this.syncTimeout) {
         clearTimeout(this.syncTimeout);
         this.syncTimeout = null;
       }
 
     }, err => {
-      this.objectToInsert.concat(oldInsert);
-      this.objectToDelete.concat(oldDelete);
-      this.objectToUpdate.concat(oldUpdate);
+      this.resetSyncPromise();
     });
+
+    return this.syncPromise;
   }
 
   trimObject(array, object) {
@@ -78,10 +89,20 @@ export default class ApiManager {
     this.objectToUpdate = [];
   }
 
+  resetSyncPromise() {
+    this.syncPromise = null;
+  }
+
   registerChange() {
-    if (this.syncTimeout) {
+    if (this.syncTimeout || this.syncPromise) {
       return;
     }
-   // this.syncTimeout = setTimeout(this.sync.bind(this), 5000);
+    this.syncTimeout = setTimeout(this.sync.bind(this), 5000);
+  }
+
+  setNewWordsId(ids) {
+    ids.map((id, index) => {
+      this.objectToInsert[index].id = id;
+    });
   }
 }
