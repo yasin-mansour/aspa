@@ -23,11 +23,13 @@ class WordController extends Controller
 
     public function updateWords(Request $request){
         $words = $request->input('data');
+        $newWordsId = array();
         if(!empty($words)){
             foreach ($words as $word) {
                 if(!array_key_exists('id', $word) || $word['id'] == 0){
                     $newWord = Word::create($word);
                     $newWord->languages()->sync($word['languages']);
+                    $newWordsId[] = $newWord->id;
                 }else{
                     $oldWord = Word::find($word['id']);
                     $oldWord->key = $word['key'];
@@ -37,7 +39,7 @@ class WordController extends Controller
 
             }
         }
-        return array();
+        return $newWordsId;
     }
 
     public function deleteWords(Request $request){
