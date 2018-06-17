@@ -114,7 +114,11 @@ export class BuildQuestions {
             type: config.type,
             inputClass: config.inputClass,
             class: config.class,
-            containerClass: config.containerClass
+            containerClass: config.containerClass,
+            minLength: config.minLength,
+            maxLength: config.maxLength,
+            minValue: config.minValue,
+            maxValue: config.maxValue,
           });
           break;
         }

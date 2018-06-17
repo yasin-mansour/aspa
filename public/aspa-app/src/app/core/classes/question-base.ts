@@ -11,6 +11,10 @@ export class QuestionBase<T> {
   class: string;
   containerClass: string;
   outForm: boolean;
+  minLength: number;
+  maxLength: number;
+  minValue: number;
+  maxValue: number;
 
   constructor(options: {
                 value?: T,
@@ -19,12 +23,16 @@ export class QuestionBase<T> {
                 required?: boolean,
                 order?: number,
                 controlType?: string,
-                name?: string;
-                placeholder?: string;
-                inputClass?: string;
-                class?: string;
-                containerClass?: string;
-                outForm?: boolean;
+                name?: string,
+                placeholder?: string,
+                inputClass?: string,
+                class?: string,
+                containerClass?: string,
+                outForm?: boolean,
+                minLength?: number,
+                maxLength?: number,
+                minValue?: number,
+                maxValue?: number,
               } = {}) {
     this.value = options.value;
     this.key = options.key || '';
@@ -38,6 +46,10 @@ export class QuestionBase<T> {
     this.class = options.class || '';
     this.containerClass = options.containerClass || '';
     this.outForm = !!options.outForm;
+    this.minLength = options.minLength || null;
+    this.maxLength = options.maxLength || null;
+    this.minValue = options.minValue || null;
+    this.maxValue = options.maxValue || null;
   }
 }
 

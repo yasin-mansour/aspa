@@ -1,7 +1,8 @@
 <div
   [class]="question.class"
+  [ngClass]="{'invalid-field': isTouched && !isValid}"
   [formGroup]="form">
-  <label>{{ question.label }}</label>
+  <label>{{ question.label }}{{question.required? '*' : ''}}</label>
   <select [formControlName]="question.key"
           [class]="question.inputClass">
     <option *ngFor="let option of question.options" value="{{option.value}}">
@@ -9,3 +10,4 @@
     </option>
   </select>
 </div>
+<app-error-message [error]="error" [touched]="isTouched"></app-error-message>

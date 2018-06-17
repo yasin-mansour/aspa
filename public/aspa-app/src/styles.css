@@ -8,6 +8,10 @@ body{
   height: 100%;
 }
 
+.invalid-field input,.invalid-field select {
+  border-color: #d9534f;
+}
+
 body{
 
 }

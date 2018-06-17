@@ -1,10 +1,12 @@
 <div
   [class]="question.class"
+  [ngClass]="{'invalid-field': isTouched && !isValid}"
   [formGroup]="form">
-  <label *ngIf="question.label">{{ question.label | translate}}</label>
+  <label *ngIf="question.label">{{ question.label | translate}}{{question.required? '*' : ''}}</label>
   <input
     [class]="question.inputClass"
     [type]="question.type"
     [attr.placeholder]="question.placeholder | translate"
     [formControlName]="question.key">
 </div>
+<app-error-message [error]="error" [touched]="isTouched"></app-error-message>

@@ -13,6 +13,9 @@ import {S404Component} from './components/404/404.component';
 import {DynamicBindingDirective} from './directives/dynamic-binding.directive';
 import {FormContainerComponent} from './components/fields/container/container.component';
 import {FormHtmlComponent} from './components/fields/html/html.component';
+import {ErrorMessageComponent} from './components/error-message/error-message.compoent';
+import {MaxValueValidatorDirective} from './validation/max-value/max-value.directive';
+import {MinValueValidatorDirective} from './validation/min-value/min-value.directive';
 
 export {
   LoginComponent,
@@ -29,5 +32,8 @@ export {
   S404Component,
   DynamicBindingDirective,
   FormContainerComponent,
-  FormHtmlComponent
+  FormHtmlComponent,
+  ErrorMessageComponent,
+  MaxValueValidatorDirective,
+  MinValueValidatorDirective
 };

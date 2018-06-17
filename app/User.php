@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'gender', 'country', 'city', 'nationality', 'phone', 'english_level', 'experience', 'email', 'password',
     ];
 
     /**
@@ -24,11 +24,23 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function role(){
+    public function role()
+    {
         return $this->belongsTo('App\Role');
     }
 
-    public function language(){
+    public function language()
+    {
         return $this->belongsTo('App\Language');
+    }
+
+    public function qualifications()
+    {
+        return $this->hasMany('App\qualification');
+    }
+
+    public function organizations()
+    {
+        return $this->hasMany('App\organization');
     }
 }

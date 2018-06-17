@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {issueDateList} from "../../../utils/utils";
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,7 @@ export class RegisterComponent implements OnInit {
   }
 
   getLoginJson() {
-
+    const issueDateOptions = issueDateList();
     const json = [
       {
         class: 'row col-md-12',
@@ -36,16 +37,19 @@ export class RegisterComponent implements OnInit {
             required: true,
             order: 1,
             controlType: 'textbox',
+            minLength: 3
           },
           {
             value: '',
             key: 'last-name',
             label: 'reg-last-name',
             inputClass: 'form-control',
+            class: 'form-group',
             containerClass: ['col-md-5'],
             required: true,
             order: 1,
             type: 'textbox',
+            minLength: 3
           }
           ,
           {
@@ -72,7 +76,7 @@ export class RegisterComponent implements OnInit {
             inputClass: 'form-control',
             class: 'form-group',
             containerClass: ['col-md-4'],
-            required: true,
+            /*required: true,*/
             order: 1,
             controlType: 'dropdown',
             options: []
@@ -84,7 +88,7 @@ export class RegisterComponent implements OnInit {
             inputClass: 'form-control',
             class: 'form-group',
             containerClass: ['col-md-4'],
-            required: true,
+            /*required: true,*/
             order: 1,
             controlType: 'dropdown',
             options: []
@@ -96,7 +100,7 @@ export class RegisterComponent implements OnInit {
             inputClass: 'form-control',
             class: 'form-group',
             containerClass: ['col-md-4'],
-            required: true,
+            /*required: true,*/
             order: 1,
             controlType: 'textbox',
           }
@@ -108,26 +112,31 @@ export class RegisterComponent implements OnInit {
         questions: [
           {
             value: '',
+            key: 'english_level',
+            label: 'reg-english_level',
+            inputClass: 'form-control',
+            class: 'form-group',
+            containerClass: ['col-md-3'],
+            /*required: true,*/
+            order: 1,
+            controlType: 'dropdown',
+            options: [{label: 'en-native', value: 'en-native'},
+              {label: 'en-fluent', value: 'en-fluent'},
+              {label: 'en-proficient', value: 'en-proficient'},
+              {label: 'en-conversant', value: 'en-conversant'},
+              {label: 'en-basic-knowledge', value: 'en-basic-knowledge'},
+            ]
+          },
+          {
+            value: '',
             key: 'phone',
             label: 'reg-phone',
             inputClass: 'form-control',
             class: 'form-group',
             containerClass: ['col-md-6'],
-            required: true,
+            /*required: true,*/
             order: 1,
             controlType: 'textbox',
-          },
-          {
-            value: '',
-            key: 'english',
-            label: 'reg-english',
-            inputClass: 'form-control',
-            class: 'form-group',
-            containerClass: ['col-md-3'],
-            required: true,
-            order: 1,
-            controlType: 'dropdown',
-            options: []
           },
           {
             value: '',
@@ -136,7 +145,7 @@ export class RegisterComponent implements OnInit {
             inputClass: 'form-control',
             class: 'form-group',
             containerClass: ['col-md-3'],
-            required: true,
+            minValue: 0,
             order: 1,
             controlType: 'textbox',
             type: 'number'
@@ -149,39 +158,44 @@ export class RegisterComponent implements OnInit {
         questions: [
           {
             value: '',
-            key: 'qualification',
-            label: 'reg-qualification',
+            key: 'q_name',
+            label: 'reg-q-name',
             inputClass: 'form-control',
             class: 'form-group',
             containerClass: ['col-md-4'],
             required: true,
             order: 1,
             controlType: 'dropdown',
-            options: []
+            options: [{label: 'q-undergraduate', value: 'q-undergraduate'},
+              {label: 'q-associate', value: 'q-associate'},
+              {label: 'q-bachelor', value: 'q-bachelor'},
+              {label: 'q-master', value: 'q-master'},
+              {label: 'q-doctoral', value: 'q-doctoral'},
+              {label: 'q-professional', value: 'q-professional'}]
           },
           {
             value: '',
-            key: 'major',
-            label: 'reg-major',
+            key: 'q_major',
+            label: 'reg-q-major',
             inputClass: 'form-control',
             class: 'form-group',
             containerClass: ['col-md-4'],
             required: true,
             order: 1,
             controlType: 'dropdown',
-            options: []
+            options: [{label: 'test', value: 'test'}]
           },
           {
             value: '',
-            key: 'issue-date',
-            label: 'reg-issue-date',
+            key: 'q_issue_date',
+            label: 'reg-q-issue-date',
             inputClass: 'form-control',
             class: 'form-group',
             containerClass: ['col-md-4'],
             required: true,
             order: 1,
             controlType: 'dropdown',
-            options: []
+            options: issueDateOptions
           }
 
         ],
@@ -192,26 +206,34 @@ export class RegisterComponent implements OnInit {
         questions: [
           {
             value: '',
-            key: 'org-name',
+            key: 'org_name',
             label: 'reg-org-name',
             inputClass: 'form-control',
             class: 'form-group',
             containerClass: ['col-md-3'],
-            required: true,
+            /*required: true,*/
             order: 1,
-            controlType: 'textbox',
+            controlType: 'textbox'
           },
           {
             value: '',
-            key: 'org-type',
+            key: 'org_type',
             label: 'reg-org-type',
             inputClass: 'form-control',
             class: 'form-group',
             containerClass: ['col-md-3'],
-            required: true,
+            /*required: true,*/
             order: 1,
             controlType: 'dropdown',
-            options: []
+            options: [{label: 'org-corporations', value: 'org-corporations'},
+              {label: 'org-governments', value: 'org-governments'},
+              {label: 'org-non-governmental', value: 'org-non-governmental'},
+              {label: 'org-political', value: 'org-political'},
+              {label: 'org-international', value: 'org-international'},
+              {label: 'org-not-for-profit', value: 'org-not-for-profit'},
+              {label: 'org-partnerships', value: 'org-partnerships'},
+              {label: 'org-cooperatives', value: 'org-cooperatives'},
+              {label: 'org-educational-institutions', value: 'org-educational-institutions'}]
           }, {
             value: '',
             key: 'position',
@@ -219,18 +241,18 @@ export class RegisterComponent implements OnInit {
             inputClass: 'form-control',
             class: 'form-group',
             containerClass: ['col-md-3'],
-            required: true,
+            /*required: true,*/
             order: 1,
             controlType: 'textbox',
           },
           {
             value: '',
-            key: 'org-address',
+            key: 'org_address',
             label: 'reg-org-address',
             inputClass: 'form-control',
             class: 'form-group',
             containerClass: ['col-md-3'],
-            required: true,
+            /*required: true,*/
             order: 1,
             controlType: 'textbox'
           }
@@ -243,23 +265,23 @@ export class RegisterComponent implements OnInit {
         questions: [
           {
             value: '',
-            key: 'org-phone',
+            key: 'org_phone',
             label: 'reg-org-phone',
             inputClass: 'form-control',
             class: 'form-group',
             containerClass: ['col-md-6'],
-            required: true,
+            /*required: true,*/
             order: 1,
             controlType: 'textbox',
           },
           {
             value: '',
-            key: 'org-fax',
+            key: 'org_fax',
             label: 'reg-org-fax',
             inputClass: 'form-control',
             class: 'form-group',
             containerClass: ['col-md-6'],
-            required: true,
+            /*required: true,*/
             order: 1,
             controlType: 'textbox'
           }
@@ -269,24 +291,24 @@ export class RegisterComponent implements OnInit {
         class: 'row'
       },
       {
-       questions:[
-         {
-           value: '',
-           key: 'email',
-           label: 'reg-email',
-           inputClass: 'form-control',
-           class: 'form-group',
-           containerClass: ['col-md-12'],
-           required: true,
-           order: 1,
-           controlType: 'textbox'
-         }
-       ],
+        questions: [
+          {
+            value: '',
+            key: 'email',
+            label: 'reg-email',
+            inputClass: 'form-control',
+            class: 'form-group',
+            containerClass: ['col-md-12'],
+            required: true,
+            order: 1,
+            controlType: 'textbox'
+          }
+        ],
         controlType: 'container',
         class: 'row'
       },
       {
-        questions:[
+        questions: [
           {
             value: '',
             key: 'password',
@@ -294,7 +316,7 @@ export class RegisterComponent implements OnInit {
             inputClass: 'form-control',
             class: 'form-group',
             containerClass: ['col-md-12'],
-            required: true,
+            /*required: true,*/
             order: 1,
             controlType: 'textbox'
           }
@@ -303,7 +325,7 @@ export class RegisterComponent implements OnInit {
         class: 'row'
       },
       {
-        questions:[
+        questions: [
           {
             value: '',
             key: 're-password',
@@ -311,13 +333,35 @@ export class RegisterComponent implements OnInit {
             inputClass: 'form-control',
             class: 'form-group',
             containerClass: ['col-md-12'],
-            required: true,
+            /*required: true,*/
             order: 1,
             controlType: 'textbox'
           }
         ],
         controlType: 'container',
         class: 'row'
+      },
+      {
+        key: 'login',
+        label: 'LOGIN.SIGN_IN_BUTTON',
+        inputClass: 'btn btn-lg btn-success btn-block',
+        order: 1,
+        controlType: 'button',
+        outForm: true,
+        submitActions: [
+          {
+            type: 'request',
+            requestType: 'post',
+            uri: '/register',
+            isAbsoluteUri: false
+          }
+        ],
+        responseActions: [
+          {
+            type: 'redirect',
+            uri: 'admin',
+          }
+        ]
       }
     ];
 

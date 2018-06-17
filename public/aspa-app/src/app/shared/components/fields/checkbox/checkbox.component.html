@@ -1,5 +1,6 @@
 <div
   [class]="question.containerClass"
+  [ngClass]="{'invalid-field': isTouched && !isValid}"
   [formGroup]="form">
   <label>
     <input
@@ -9,3 +10,4 @@
     {{ question.label }}
   </label>
 </div>
+<app-error-message [error]="error" [touched]="isTouched"></app-error-message>

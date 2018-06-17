@@ -24,7 +24,10 @@ import {
   S404Component,
   DynamicBindingDirective,
   FormContainerComponent,
-  FormHtmlComponent
+  FormHtmlComponent,
+  ErrorMessageComponent,
+  MaxValueValidatorDirective,
+  MinValueValidatorDirective
 } from './';
 import {HttpModule} from '@angular/http';
 
@@ -44,7 +47,10 @@ import {HttpModule} from '@angular/http';
     S404Component,
     DynamicBindingDirective,
     FormContainerComponent,
-    FormHtmlComponent
+    FormHtmlComponent,
+    ErrorMessageComponent,
+    MaxValueValidatorDirective,
+    MinValueValidatorDirective
   ],
   imports: [
     HttpModule,
@@ -80,7 +86,8 @@ import {HttpModule} from '@angular/http';
     TranslateModule,
     FormContainerComponent,
     DropdownModule,
-    FormHtmlComponent
+    FormHtmlComponent,
+    ErrorMessageComponent
   ],
   providers: [],
   bootstrap: [],

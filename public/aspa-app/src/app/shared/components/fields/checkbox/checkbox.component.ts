@@ -15,6 +15,22 @@ export class FormCheckboxComponent implements OnInit{
   constructor(private renderer: Renderer2, private hostElement: ElementRef) {
   }
 
+  get isValid() {
+    return this.form.controls[this.question.key].valid;
+  }
+
+  get isTouched() {
+    return this.form.controls[this.question.key].touched;
+  }
+
+  get error() {
+    return this.form.controls[this.question.key].errors;
+  }
+
+  get controlValue() {
+    return this.form.controls[this.question.key].value;
+  }
+
   ngOnInit() {
     componentAddClass(this.renderer, this.hostElement, this.question.containerClass);
   }
