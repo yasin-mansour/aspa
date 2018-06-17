@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import {MenubarModule} from 'primeng/menubar';
 import {TableModule} from 'primeng/table';
 import {TranslateModule} from '@ngx-translate/core';
+import {DropdownModule} from 'primeng/dropdown';
 
 import {
   LoginComponent,
@@ -22,6 +23,8 @@ import {
   DynamicPageDirective,
   S404Component,
   DynamicBindingDirective,
+  FormContainerComponent,
+  FormHtmlComponent
 } from './';
 import {HttpModule} from '@angular/http';
 
@@ -39,7 +42,9 @@ import {HttpModule} from '@angular/http';
     PageComponent,
     DynamicPageDirective,
     S404Component,
-    DynamicBindingDirective
+    DynamicBindingDirective,
+    FormContainerComponent,
+    FormHtmlComponent
   ],
   imports: [
     HttpModule,
@@ -51,7 +56,8 @@ import {HttpModule} from '@angular/http';
     AngularSplitModule,
     MenubarModule,
     TableModule,
-    TranslateModule
+    TranslateModule,
+    DropdownModule
   ],
   exports: [
     CommonModule,
@@ -71,7 +77,10 @@ import {HttpModule} from '@angular/http';
     MenubarModule,
     TableModule,
     DynamicBindingDirective,
-    TranslateModule
+    TranslateModule,
+    FormContainerComponent,
+    DropdownModule,
+    FormHtmlComponent
   ],
   providers: [],
   bootstrap: [],
@@ -81,7 +90,9 @@ import {HttpModule} from '@angular/http';
     FormTextBoxComponent,
     FormCheckboxComponent,
     FormButtonComponent,
-    PageComponent
+    FormContainerComponent,
+    PageComponent,
+    FormHtmlComponent
   ]
 })
 export class SharedModule {

@@ -19,8 +19,14 @@ const appRoutes: Routes = [
         path: RouteConstants.ADMIN,
         loadChildren: 'app/admin/admin.module#AdminModule'
       },
-
-      { path: '**', component: S404Component }
+      {
+        path: RouteConstants.CLIENT,
+        loadChildren: 'app/client/client.module#ClientModule'
+      },
+      {
+        path: RouteConstants.HOME,
+        loadChildren: 'app/home/home.module#HomeModule'
+      }
     ]
   }
 ]

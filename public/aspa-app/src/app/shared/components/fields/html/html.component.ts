@@ -4,11 +4,11 @@ import {QuestionBase} from '../../../../core/classes/question-base';
 import {componentAddClass} from "../../../../utils/utils";
 
 @Component({
-  selector: 'app-dropdown',
-  templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.css']
+  selector: 'app-form-html',
+  templateUrl: './html.component.html',
+  styleUrls: ['./html.component.css']
 })
-export class FormDropdownComponent implements OnInit {
+export class FormHtmlComponent implements OnInit {
   question: QuestionBase<any>;
   form: FormGroup;
 

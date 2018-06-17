@@ -11,6 +11,8 @@ import {PageComponent} from './components/page/page.component';
 import {DynamicPageDirective} from './directives/dynamic-page.directive';
 import {S404Component} from './components/404/404.component';
 import {DynamicBindingDirective} from './directives/dynamic-binding.directive';
+import {FormContainerComponent} from './components/fields/container/container.component';
+import {FormHtmlComponent} from './components/fields/html/html.component';
 
 export {
   LoginComponent,
@@ -25,5 +27,7 @@ export {
   PageComponent,
   DynamicPageDirective,
   S404Component,
-  DynamicBindingDirective
+  DynamicBindingDirective,
+  FormContainerComponent,
+  FormHtmlComponent
 };

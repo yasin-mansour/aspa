@@ -14,6 +14,8 @@ import { FormDropdownComponent } from '../components/fields/dropdown/dropdown.co
 import { FormTextBoxComponent } from '../components/fields/textbox/textbox.component';
 import { FormCheckboxComponent } from '../components/fields/checkbox/checkbox.component';
 import { FormButtonComponent } from '../components/fields/button/button.component';
+import { FormContainerComponent } from '../components/fields/container/container.component';
+import { FormHtmlComponent } from '../components/fields/html/html.component';
 import { Field } from '../interfaces/field.interface';
 import { QuestionBase } from '../../core/classes/question-base';
 
@@ -21,7 +23,9 @@ const components: { [type: string]: Type<any> } = {
   textbox: FormTextBoxComponent,
   dropdown: FormDropdownComponent,
   checkbox: FormCheckboxComponent,
-  button: FormButtonComponent
+  button: FormButtonComponent,
+  container: FormContainerComponent,
+  html: FormHtmlComponent
 };
 
 @Directive({
@@ -57,6 +61,7 @@ export class DynamicFieldDirective implements Field, OnChanges, OnInit {
     }
     const component = this.resolver.resolveComponentFactory<Field>(components[this.question.controlType]);
     this.component = this.container.createComponent(component);
+    console.log(this.component);
     this.component.instance.question = this.question;
     this.component.instance.form = this.form;
   }

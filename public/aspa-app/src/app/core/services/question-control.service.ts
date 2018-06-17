@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 import {QuestionBase} from '../classes/question-base';
+import {Constants} from "../../utils/constants";
 
 @Injectable()
 export class QuestionControlService {
@@ -11,13 +12,22 @@ export class QuestionControlService {
   toFormGroup(questions: QuestionBase<any>[]) {
     let group: any = {};
 
+    this.formQuestion(questions, group);
+
+    return new FormGroup(group);
+  }
+
+  formQuestion(questions, group) {
     questions.forEach(question => {
-      if (!question.outForm) {
+      if (!question.outForm && question.controlType !== Constants.DYNAMIC_FORMS_CONTAINER && question.controlType !== Constants.DYNAMIC_FORMS_HTML) {
         group[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
           : new FormControl(question.value || '');
       }
+
+      if (question.controlType === Constants.DYNAMIC_FORMS_CONTAINER) {
+        this.formQuestion(question.questions, group);
+      }
     });
-    return new FormGroup(group);
   }
 }
 

@@ -4,15 +4,17 @@ import {TextboxQuestion} from '../classes/question-textbox';
 import {CheckboxQuestion} from '../classes/question-checkbox';
 import {ButtonQuestion} from '../classes/question-button';
 import {QuestionBase} from '../classes/question-base';
+import {QuestionsQuestion} from '../classes/question-questions';
+import {QuestionsHtml} from '../classes/question-html';
 import {Constants} from '../../utils/constants';
 
 
 @Injectable()
 export class BuildQuestions {
 
-  build(configData: Array<any>) {
+  build(configData: Array<any>, AllQuestions?) {
 
-    const questions: QuestionBase<any>[] = [];
+    const questions: QuestionBase<any>[] = [] || AllQuestions;
 
     for (let i = 0; i < configData.length; i++) {
 
@@ -32,6 +34,7 @@ export class BuildQuestions {
             name: config.name,
             placeholder: config.placeholder,
             inputClass: config.inputClass,
+            class: config.class,
             containerClass: config.containerClass
           });
           break;
@@ -48,7 +51,36 @@ export class BuildQuestions {
             placeholder: config.placeholder,
             type: config.type,
             inputClass: config.inputClass,
+            class: config.class,
             containerClass: config.containerClass
+          });
+          break;
+        }
+        case Constants.DYNAMIC_FORMS_CONTAINER : {
+          question = new QuestionsQuestion({
+            key: config.key,
+            label: config.label,
+            order: config.order,
+            controlType: config.controlType,
+            name: config.name,
+            inputClass: config.inputClass,
+            class: config.class,
+            containerClass: config.containerClass,
+            questions: config.questions
+          });
+          break;
+        }
+        case Constants.DYNAMIC_FORMS_HTML : {
+          question = new QuestionsHtml({
+            key: config.key,
+            label: config.label,
+            order: config.order,
+            controlType: config.controlType,
+            name: config.name,
+            inputClass: config.inputClass,
+            class: config.class,
+            containerClass: config.containerClass,
+            html: config.html
           });
           break;
         }
@@ -60,6 +92,7 @@ export class BuildQuestions {
             controlType: config.controlType,
             name: config.name,
             inputClass: config.inputClass,
+            class: config.class,
             containerClass: config.containerClass,
             submitActions: config.submitActions,
             responseActions: config.responseActions,
@@ -80,6 +113,7 @@ export class BuildQuestions {
             placeholder: config.placeholder,
             type: config.type,
             inputClass: config.inputClass,
+            class: config.class,
             containerClass: config.containerClass
           });
           break;

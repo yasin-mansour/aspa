@@ -23,6 +23,8 @@ export class DynamicFormComponent implements OnInit {
   ngOnInit() {
     this.questions = this.buildQuestions.build(this.config);
     this.form = this.qcs.toFormGroup(this.questions);
+    console.log(this.questions);
+    console.log(this.form);
   }
 
   onSubmit() {

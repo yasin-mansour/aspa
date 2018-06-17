@@ -1,0 +1,8 @@
+<div [class]="question.class">
+  <ng-container
+    *ngFor="let question of subQuestions;"
+    appDynamicField
+    [question]="question"
+    [form]="form">
+  </ng-container>
+</div>

@@ -1,7 +1,7 @@
 <div
-  [class]="question.containerClass"
+  [class]="question.class"
   [formGroup]="form">
-  <!--<label>{{ question.label }}</label>-->
+  <label *ngIf="question.label">{{ question.label | translate}}</label>
   <input
     [class]="question.inputClass"
     [type]="question.type"
