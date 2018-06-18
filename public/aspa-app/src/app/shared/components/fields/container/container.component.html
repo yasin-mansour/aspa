@@ -1,6 +1,6 @@
 <div [class]="question.class">
   <ng-container
-    *ngFor="let question of subQuestions;"
+    *ngFor="let question of question.questions;"
     appDynamicField
     [question]="question"
     [form]="form">

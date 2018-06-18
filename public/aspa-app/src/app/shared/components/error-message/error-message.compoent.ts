@@ -16,10 +16,11 @@ export class ErrorMessageComponent {
   message;
   messageList = {
     'required': 'field-required',
-    'minLength': 'field-minLength',
-    'maxLength': 'field-maxLength',
+    'minlength': 'field-minLength',
+    'maxlength': 'field-maxLength',
     'minValue': 'field-minValue',
     'maxValue': 'field-maxValue',
+    'pattern': 'field-pattern',
   }
 
 
@@ -50,10 +51,12 @@ export class ErrorMessageComponent {
     }
     if (this.error['required']) {
       this.message = this.messageList['required'];
-    } else if (this.error['maxLength']) {
-      this.message = this.messageList['maxLength'];
-    } else if (this.error['minLength']) {
-      this.message = this.messageList['minLength'];
+    } else if (this.error['pattern']) {
+      this.message = this.messageList['pattern'];
+    } else if (this.error['maxlength']) {
+      this.message = this.messageList['maxlength'];
+    } else if (this.error['minlength']) {
+      this.message = this.messageList['minlength'];
     } else if (this.error['maxValue']) {
       this.message = this.messageList['maxValue'];
     } else if (this.error['minValue']) {

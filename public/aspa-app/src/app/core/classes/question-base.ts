@@ -15,6 +15,15 @@ export class QuestionBase<T> {
   maxLength: number;
   minValue: number;
   maxValue: number;
+  pattern: string;
+  maxLengthMessage: string;
+  minLengthMessage: string;
+  maxValueMessage: string;
+  minValueMessage: string;
+  requiredMessage: string;
+  patternMessage: string;
+  confirm: string;
+  change: () => void;
 
   constructor(options: {
                 value?: T,
@@ -33,6 +42,15 @@ export class QuestionBase<T> {
                 maxLength?: number,
                 minValue?: number,
                 maxValue?: number,
+                pattern?: string,
+                maxLengthMessage?: string,
+                minLengthMessage?: string,
+                maxValueMessage?: string,
+                minValueMessage?: string,
+                requiredMessage?: string,
+                patternMessage?: string,
+                confirm?: string,
+                change?: () => void,
               } = {}) {
     this.value = options.value;
     this.key = options.key || '';
@@ -50,6 +68,15 @@ export class QuestionBase<T> {
     this.maxLength = options.maxLength || null;
     this.minValue = options.minValue || null;
     this.maxValue = options.maxValue || null;
+    this.pattern = options.pattern || null;
+    this.maxLengthMessage = options.maxLengthMessage || null;
+    this.minLengthMessage = options.minLengthMessage || null;
+    this.maxValueMessage = options.maxValueMessage || null;
+    this.minValueMessage = options.minValueMessage || null;
+    this.requiredMessage = options.requiredMessage || null;
+    this.patternMessage = options.patternMessage || null;
+    this.confirm = options.confirm || null;
+    this.change = !!options.change ? options.change : null;
   }
 }
 

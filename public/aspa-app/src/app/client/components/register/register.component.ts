@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {issueDateList} from "../../../utils/utils";
+import {Constants} from "../../../utils/constants";
 
 @Component({
   selector: 'app-register',
@@ -300,6 +301,7 @@ export class RegisterComponent implements OnInit {
             class: 'form-group',
             containerClass: ['col-md-12'],
             required: true,
+            pattern: Constants.EMAIL_REGEX,
             order: 1,
             controlType: 'textbox'
           }
@@ -316,9 +318,14 @@ export class RegisterComponent implements OnInit {
             inputClass: 'form-control',
             class: 'form-group',
             containerClass: ['col-md-12'],
-            /*required: true,*/
+            required: true,
+            minLength: 6,
+            pattern: /^[a-zA-Z0-9!@#\$%\^&\*]+$/i,
             order: 1,
-            controlType: 'textbox'
+            controlType: 'textbox',
+            change: (form, question) => {
+              form.controls['re-password'].updateValueAndValidity({emitEvent: false});
+            }
           }
         ],
         controlType: 'container',
@@ -333,7 +340,8 @@ export class RegisterComponent implements OnInit {
             inputClass: 'form-control',
             class: 'form-group',
             containerClass: ['col-md-12'],
-            /*required: true,*/
+            required: true,
+            confirm: 'password',
             order: 1,
             controlType: 'textbox'
           }

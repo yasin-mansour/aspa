@@ -28,7 +28,7 @@ export class FormContainerComponent implements OnInit {
 
   ngOnInit() {
     componentAddClass(this.renderer, this.hostElement, this.question.containerClass);
-    this.subQuestions = this.buildQuestions.build(this.question.questions);
+    //this.subQuestions = this.buildQuestions.build(this.question.questions);
 
   }
 

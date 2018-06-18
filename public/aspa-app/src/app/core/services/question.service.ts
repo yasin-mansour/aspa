@@ -12,9 +12,13 @@ import {Constants} from '../../utils/constants';
 @Injectable()
 export class BuildQuestions {
 
-  build(configData: Array<any>, AllQuestions?) {
+  build(configData: Array<any>) {
 
-    const questions: QuestionBase<any>[] = [] || AllQuestions;
+    return this.buildAll(configData);
+  }
+
+  buildAll(configData: Array<any>) {
+    const questions: QuestionBase<any>[] = [];
 
     for (let i = 0; i < configData.length; i++) {
 
@@ -66,7 +70,7 @@ export class BuildQuestions {
             inputClass: config.inputClass,
             class: config.class,
             containerClass: config.containerClass,
-            questions: config.questions
+            questions: this.buildAll(config.questions)
           });
           break;
         }
@@ -119,6 +123,15 @@ export class BuildQuestions {
             maxLength: config.maxLength,
             minValue: config.minValue,
             maxValue: config.maxValue,
+            pattern: config.pattern,
+            maxLengthMessage: config.maxLengthMessage,
+            minLengthMessage: config.minLengthMessage,
+            maxValueMessage: config.maxValueMessage,
+            minValueMessage: config.minValueMessage,
+            requiredMessage: config.requiredMessage,
+            patternMessage: config.patternMessage,
+            confirm: config.confirm,
+            change: config.change,
           });
           break;
         }
@@ -129,4 +142,5 @@ export class BuildQuestions {
 
     return questions;
   }
+
 }

@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 
 import {QuestionBase} from '../classes/question-base';
 import {Constants} from '../../utils/constants';
-import {maxValueValidator} from '../../shared/validation/max-value/max-value.directive';
-import {minValueValidator} from '../../shared/validation/min-value/min-value.directive';
+import {setValidation} from "../../utils/utils";
+
 
 @Injectable()
 export class QuestionControlService {
@@ -23,33 +23,7 @@ export class QuestionControlService {
     questions.forEach(question => {
       if (!question.outForm && question.controlType !== Constants.DYNAMIC_FORMS_CONTAINER && question.controlType !== Constants.DYNAMIC_FORMS_HTML) {
 
-        let validation = [];
-        if (question.required) {
-          validation.push(Validators.required);
-        }
-
-        if (question.pattern) {
-          validation.push(Validators.pattern(question.pattern));
-        }
-
-        if (question.maxValue !== null) {
-          validation.push(maxValueValidator(question.maxValue, question.maxValueMessage));
-        }
-
-        if (question.minValue !== null) {
-          validation.push(minValueValidator(question.minValue, question.minValueMessage));
-        }
-
-        if (question.minLength !== null) {
-          validation.push(Validators.minLength(question.minLength));
-        }
-
-        if (question.maxLength !== null) {
-          validation.push(Validators.maxLength(question.maxLength));
-        } else {
-          //set default max length for all input without max length
-          validation.push(Validators.maxLength(Constants.DYNAMIC_FORMS_DEFAULT_MAX_LENGTH));
-        }
+        const validation = setValidation(question);
 
         let value = question.value || '';
 
