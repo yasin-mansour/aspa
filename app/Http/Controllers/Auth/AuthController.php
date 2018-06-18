@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Organization;
+use App\Qualification;
 
 class AuthController extends Controller
 {
@@ -73,11 +75,59 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        if (Auth::user()) {
+           /* $user = User::find(Auth::user()->id);
+            $user->first_name = $data['first_name'];
+            $user->last_name = $data['last_name'];
+            $user->gender = $data['gender'];
+            $user->country = $data['country'];
+            $user->city = $data['city'];
+            $user->nationality = $data['nationality'];
+            $user->phone = $data['phone'];
+            $user->english_level = $data['english_level'];
+            $user->experience_year = $data['experience_year'];
+            $user->email = $data['email'];
+            $user->save();
+
+            $user->qualifications()->whereId($data['q_id'])->update([
+                'name' => $data['q_name'],
+                'major' => $data['q_major'],
+                'issue_date' => $data['q_issue_date']]);*/
+        } else {
+            $user = User::create([
+                'first_name' => $data['first_name'],
+                'last_name' => $data['last_name'],
+                'gender' => $data['gender'],
+                'country' => $data['country'],
+                'city' => $data['city'],
+                'nationality' => $data['nationality'],
+                'phone' => $data['phone'],
+                'english_level' => $data['english_level'],
+                'experience_year' => $data['experience_year'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+            ]);
+
+            $qualification = new Qualification([
+                'name' => $data['q_name'],
+                'major' => $data['q_major'],
+                'issue_date' => $data['q_issue_date']]);
+
+            $organization = new Organization([
+                'name' => $data['org_name'],
+                'type' => $data['org_type'],
+                'position' => $data['org_position'],
+                'address' => $data['org_address'],
+                'phone' => $data['org_phone'],
+                'fax' => $data['org_fax']
+            ]);
+
+            $user->qualifications()->save($qualification);
+            $user->organizations()->save($organization);
+
+            return $user;
+        }
+
     }
 
     protected function login(Request $request)
