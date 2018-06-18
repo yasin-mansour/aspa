@@ -16,6 +16,7 @@ import {FormHtmlComponent} from './components/fields/html/html.component';
 import {ErrorMessageComponent} from './components/error-message/error-message.compoent';
 import {MaxValueValidatorDirective} from './validation/max-value/max-value.directive';
 import {MinValueValidatorDirective} from './validation/min-value/min-value.directive';
+import {FormMaskComponent} from './components/fields/mask/mask.component';
 
 export {
   LoginComponent,
@@ -35,5 +36,6 @@ export {
   FormHtmlComponent,
   ErrorMessageComponent,
   MaxValueValidatorDirective,
-  MinValueValidatorDirective
+  MinValueValidatorDirective,
+  FormMaskComponent
 };

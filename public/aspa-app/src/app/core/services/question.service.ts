@@ -6,6 +6,7 @@ import {ButtonQuestion} from '../classes/question-button';
 import {QuestionBase} from '../classes/question-base';
 import {QuestionsQuestion} from '../classes/question-questions';
 import {QuestionsHtml} from '../classes/question-html';
+import {MaskQuestion} from '../classes/question-mask';
 import {Constants} from '../../utils/constants';
 
 
@@ -105,6 +106,38 @@ export class BuildQuestions {
           });
           break;
         }
+        case Constants.DYNAMIC_FORMS_MASK  : {
+        question = new MaskQuestion({
+          value: config.value,
+          key: config.key,
+          label: config.label,
+          required: config.required,
+          order: config.order,
+          controlType: config.controlType || Constants.DYNAMIC_FORMS_TEXTBOX,
+          name: config.name,
+          placeholder: config.placeholder,
+          type: config.type,
+          inputClass: config.inputClass,
+          class: config.class,
+          containerClass: config.containerClass,
+          minLength: config.minLength,
+          maxLength: config.maxLength,
+          minValue: config.minValue,
+          maxValue: config.maxValue,
+          pattern: config.pattern,
+          maxLengthMessage: config.maxLengthMessage,
+          minLengthMessage: config.minLengthMessage,
+          maxValueMessage: config.maxValueMessage,
+          minValueMessage: config.minValueMessage,
+          requiredMessage: config.requiredMessage,
+          patternMessage: config.patternMessage,
+          confirm: config.confirm,
+          change: config.change,
+          mask: config.mask,
+          visible: config.visible,
+        });
+        break;
+      }
         default: {
           question = new TextboxQuestion({
             value: config.value,
@@ -132,6 +165,7 @@ export class BuildQuestions {
             patternMessage: config.patternMessage,
             confirm: config.confirm,
             change: config.change,
+            visible: config.visible,
           });
           break;
         }

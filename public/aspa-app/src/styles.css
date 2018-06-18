@@ -9,7 +9,7 @@ body{
 }
 
 .invalid-field input,.invalid-field select {
-  border-color: #d9534f;
+  border-color: #d9534f !important;
 }
 
 body{

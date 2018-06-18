@@ -24,6 +24,7 @@ export class QuestionBase<T> {
   patternMessage: string;
   confirm: string;
   change: () => void;
+  visible: boolean;
 
   constructor(options: {
                 value?: T,
@@ -51,6 +52,7 @@ export class QuestionBase<T> {
                 patternMessage?: string,
                 confirm?: string,
                 change?: () => void,
+                visible?: boolean,
               } = {}) {
     this.value = options.value;
     this.key = options.key || '';
@@ -66,8 +68,8 @@ export class QuestionBase<T> {
     this.outForm = !!options.outForm;
     this.minLength = options.minLength || null;
     this.maxLength = options.maxLength || null;
-    this.minValue = options.minValue || null;
-    this.maxValue = options.maxValue || null;
+    this.minValue = isNaN(options.minValue) ? null : options.minValue;
+    this.maxValue = isNaN(options.maxValue) ? null : options.maxValue;
     this.pattern = options.pattern || null;
     this.maxLengthMessage = options.maxLengthMessage || null;
     this.minLengthMessage = options.minLengthMessage || null;
@@ -77,6 +79,7 @@ export class QuestionBase<T> {
     this.patternMessage = options.patternMessage || null;
     this.confirm = options.confirm || null;
     this.change = !!options.change ? options.change : null;
+    this.visible = options.visible === false ? false : true;
   }
 }
 

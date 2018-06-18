@@ -8,6 +8,7 @@ import {MenubarModule} from 'primeng/menubar';
 import {TableModule} from 'primeng/table';
 import {TranslateModule} from '@ngx-translate/core';
 import {DropdownModule} from 'primeng/dropdown';
+import {InputMaskModule} from 'primeng/inputmask';
 
 import {
   LoginComponent,
@@ -27,7 +28,8 @@ import {
   FormHtmlComponent,
   ErrorMessageComponent,
   MaxValueValidatorDirective,
-  MinValueValidatorDirective
+  MinValueValidatorDirective,
+  FormMaskComponent
 } from './';
 import {HttpModule} from '@angular/http';
 
@@ -50,7 +52,8 @@ import {HttpModule} from '@angular/http';
     FormHtmlComponent,
     ErrorMessageComponent,
     MaxValueValidatorDirective,
-    MinValueValidatorDirective
+    MinValueValidatorDirective,
+    FormMaskComponent
   ],
   imports: [
     HttpModule,
@@ -63,7 +66,8 @@ import {HttpModule} from '@angular/http';
     MenubarModule,
     TableModule,
     TranslateModule,
-    DropdownModule
+    DropdownModule,
+    InputMaskModule
   ],
   exports: [
     CommonModule,
@@ -87,7 +91,8 @@ import {HttpModule} from '@angular/http';
     FormContainerComponent,
     DropdownModule,
     FormHtmlComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    FormMaskComponent
   ],
   providers: [],
   bootstrap: [],
@@ -99,7 +104,8 @@ import {HttpModule} from '@angular/http';
     FormButtonComponent,
     FormContainerComponent,
     PageComponent,
-    FormHtmlComponent
+    FormHtmlComponent,
+    FormMaskComponent
   ]
 })
 export class SharedModule {

@@ -25,7 +25,7 @@ export class LocalizationService {
         return user.user.language_id === language.id;
       });
 
-      if (language) {
+      if (language && language.length > 0) {
        selectedLanguage = language[0];
       }
     }

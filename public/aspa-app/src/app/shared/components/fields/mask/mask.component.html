@@ -1,13 +1,13 @@
 <div
   [class]="question.class"
   [ngClass]="{'invalid-field': isTouched && !isValid}"
-  [formGroup]="form"
-  *ngIf="question.visible">
+  [formGroup]="form">
   <label *ngIf="question.label">{{ question.label | translate}}{{question.required? '*' : ''}}</label>
-  <input
-    [class]="question.inputClass"
-    [type]="question.type"
-    [attr.placeholder]="question.placeholder | translate"
-    [formControlName]="question.key">
+  <p-inputMask
+    [styleClass]="question.inputClass"
+    [formControlName]="question.key"
+    [mask]="question.mask"
+    [unmask]='true'
+    #inputMask></p-inputMask>
 </div>
 <app-error-message [error]="error" [touched]="isTouched"></app-error-message>

@@ -39,7 +39,7 @@ export function setValidation(question) {
   if (question.maxValue !== null) {
     validation.push(maxValueValidator(question.maxValue, question.maxValueMessage));
   }
-
+console.log(question.key, question.minValue);
   if (question.minValue !== null) {
     validation.push(minValueValidator(question.minValue, question.minValueMessage));
   }

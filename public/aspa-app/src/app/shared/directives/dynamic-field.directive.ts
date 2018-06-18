@@ -16,6 +16,7 @@ import { FormCheckboxComponent } from '../components/fields/checkbox/checkbox.co
 import { FormButtonComponent } from '../components/fields/button/button.component';
 import { FormContainerComponent } from '../components/fields/container/container.component';
 import { FormHtmlComponent } from '../components/fields/html/html.component';
+import { FormMaskComponent } from '../components/fields/mask/mask.component';
 import { Field } from '../interfaces/field.interface';
 import { QuestionBase } from '../../core/classes/question-base';
 
@@ -25,7 +26,8 @@ const components: { [type: string]: Type<any> } = {
   checkbox: FormCheckboxComponent,
   button: FormButtonComponent,
   container: FormContainerComponent,
-  html: FormHtmlComponent
+  html: FormHtmlComponent,
+  mask: FormMaskComponent
 };
 
 @Directive({
