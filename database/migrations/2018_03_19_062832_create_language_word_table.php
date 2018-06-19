@@ -24,10 +24,8 @@ class CreateLanguageWordTable extends Migration
             $table->timestamps();
         });
 
-        $user = User::create(['name'=>'yasin','email'=>'yasin@mansour.com','password'=>'123456']);
+        $role = Role::create(['name'=>'user']);
         $role = Role::create(['name'=>'admin']);
-        $user->role_id = $role->id;
-        $user->save();
         $language1 = Language::create(['name'=>'en', 'direction'=> 1]);
         $language2 = Language::create(['name'=>'ar']);
         $word1 = Word::create(['key'=>'page']);
