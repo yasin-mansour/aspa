@@ -1,0 +1,21 @@
+<div class="flex-column" style="height: 100%">
+  <app-dashboard-header [(menuBar)]="menuBar"></app-dashboard-header>
+  <div class="flex-1" style="height: calc(100% - 224px);">
+    <div class="flex-row" style="height: 100%">
+      <app-dashboard-menu [menuBar]="menuBar"></app-dashboard-menu>
+      <div class="flex-1 empty-page" style="height: 100%">
+        <div class="route-bar">
+          <div class="home-icon">
+            <i class="fa fa-home" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <div class="container-fluid">
+          <router-outlet></router-outlet>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+

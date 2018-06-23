@@ -10,15 +10,16 @@ import {
 } from '@angular/core';
 import {FormGroup} from '@angular/forms';
 
-import { FormDropdownComponent } from '../components/fields/dropdown/dropdown.component';
-import { FormTextBoxComponent } from '../components/fields/textbox/textbox.component';
-import { FormCheckboxComponent } from '../components/fields/checkbox/checkbox.component';
-import { FormButtonComponent } from '../components/fields/button/button.component';
-import { FormContainerComponent } from '../components/fields/container/container.component';
-import { FormHtmlComponent } from '../components/fields/html/html.component';
-import { FormMaskComponent } from '../components/fields/mask/mask.component';
-import { Field } from '../interfaces/field.interface';
-import { QuestionBase } from '../../core/classes/question-base';
+import {FormDropdownComponent} from '../components/fields/dropdown/dropdown.component';
+import {FormTextBoxComponent} from '../components/fields/textbox/textbox.component';
+import {FormCheckboxComponent} from '../components/fields/checkbox/checkbox.component';
+import {FormButtonComponent} from '../components/fields/button/button.component';
+import {FormContainerComponent} from '../components/fields/container/container.component';
+import {FormHtmlComponent} from '../components/fields/html/html.component';
+import {FormMaskComponent} from '../components/fields/mask/mask.component';
+import {FormAutoCompleteComponent} from '../components/fields/auto-complete/auto-complete.component';
+import {Field} from '../interfaces/field.interface';
+import {QuestionBase} from '../../core/classes/question-base';
 
 const components: { [type: string]: Type<any> } = {
   textbox: FormTextBoxComponent,
@@ -27,7 +28,8 @@ const components: { [type: string]: Type<any> } = {
   button: FormButtonComponent,
   container: FormContainerComponent,
   html: FormHtmlComponent,
-  mask: FormMaskComponent
+  mask: FormMaskComponent,
+  auto_complete: FormAutoCompleteComponent,
 };
 
 @Directive({

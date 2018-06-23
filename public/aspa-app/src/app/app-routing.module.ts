@@ -3,7 +3,11 @@ import {RouterModule, Routes} from '@angular/router';
 import {AppComponent} from './app.component';
 import {RouteConstants} from './utils/route-constants';
 import {AppGuard} from './core/guards/app-guard';
+import {AdminGuard} from './core/guards/admin-guard';
+import {ClientGuard} from './core/guards/client-guard';
+import {RegisterGuard} from './core/guards/register-guard';
 import {LoginComponent, AuthComponent, S404Component} from './shared';
+import {RegisterComponent} from './shared/index';
 
 const appRoutes: Routes = [
   {
@@ -17,15 +21,22 @@ const appRoutes: Routes = [
       },
       {
         path: RouteConstants.ADMIN,
-        loadChildren: 'app/admin/admin.module#AdminModule'
+        loadChildren: 'app/admin/admin.module#AdminModule',
+        canActivate: [AdminGuard],
       },
       {
         path: RouteConstants.CLIENT,
-        loadChildren: 'app/client/client.module#ClientModule'
+        loadChildren: 'app/client/client.module#ClientModule',
+        canActivate: [ClientGuard],
       },
       {
         path: RouteConstants.HOME,
         loadChildren: 'app/home/home.module#HomeModule'
+      },
+      {
+        path: RouteConstants.REGISTER,
+        canActivate: [RegisterGuard],
+        component: RegisterComponent,
       }
     ]
   }

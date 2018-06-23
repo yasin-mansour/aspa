@@ -3,7 +3,7 @@
     <split-area *ngIf="splitAreas[LEFT_SPLIT_KEY].visible"
                 [size]="splitAreas[LEFT_SPLIT_KEY].size" [order]="1 * localization.splitOrder">
       <split [gutterSize]="5" direction="vertical">
-        <split-area *ngIf="splitAreas[DASHBOARD_KEY].visible"
+        <split-area *ngIf="splitAreas[DASHBOARD_KEY].visible" style="position: relative;"
                     [size]="splitAreas[DASHBOARD_KEY].size" [order]="1 * localization.splitOrder">
           <app-dashboard></app-dashboard>
         </split-area>
@@ -13,9 +13,9 @@
         </split-area>
       </split>
     </split-area>
-    <split-area *ngIf="splitAreas[TASKS_KEY].visible"
+    <!--<split-area *ngIf="splitAreas[TASKS_KEY].visible"
                 [size]="splitAreas[TASKS_KEY].size" [order]="2 * localization.splitOrder">
       <app-tasks></app-tasks>
-    </split-area>
+    </split-area>-->
   </split>
 </div>`

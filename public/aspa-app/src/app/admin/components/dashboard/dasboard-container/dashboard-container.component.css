@@ -1,0 +1,20 @@
+.empty-page{
+  background: rgb(244,244,244);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.route-bar{
+  background-color: #eaeaea;
+  border-bottom: 1px solid #d0d0d0;
+  display: block;
+}
+
+.home-icon{
+  padding: 14px;
+}
+
+.home-icon i{
+  font-size: 16px;
+  color: #a6a6a6;
+}

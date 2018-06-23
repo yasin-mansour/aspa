@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import {SharedModule} from '../shared/shared.module';
 import {ClientRoutingModule} from './client.routing.module';
-import {DashboardComponent, ClientContainerComponent, RegisterComponent} from './';
+import {DashboardComponent, ClientContainerComponent} from './';
 
 @NgModule({
   declarations: [
     ClientContainerComponent,
-    RegisterComponent,
     DashboardComponent
   ],
   imports: [

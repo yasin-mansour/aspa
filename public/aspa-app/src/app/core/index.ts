@@ -6,6 +6,9 @@ import {AuthService} from './services/auth.service';
 import {AuthInterceptor} from './interceptors/auth.interceptor';
 import {RoutingRegisterService} from './services/routing-register.service';
 import {AppGuard} from './guards/app-guard';
+import {AdminGuard} from './guards/admin-guard';
+import {ClientGuard} from './guards/client-guard';
+import {RegisterGuard} from './guards/register-guard';
 import {AuthGuard} from './guards/auth-guard';
 import {LocalizationService} from './services/localization.service';
 
@@ -19,5 +22,8 @@ export {
   AuthInterceptor,
   RoutingRegisterService,
   AuthGuard,
-  LocalizationService
+  LocalizationService,
+  AdminGuard,
+  ClientGuard,
+  RegisterGuard
 };

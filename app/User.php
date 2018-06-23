@@ -24,6 +24,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $appends = ['role_type'];
+
+
     public function role()
     {
         return $this->belongsTo('App\Role');
@@ -43,4 +46,11 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\organization');
     }
+
+    public function getRoleTypeAttribute()
+    {
+        return $this->role ? $this->role->name : 'user';
+
+    }
+
 }

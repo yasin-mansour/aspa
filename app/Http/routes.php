@@ -13,12 +13,15 @@
 
 use App\Word;
 use App\Language;
+use App\User;
+use Illuminate\Http\Request;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/api/token', function () {
-    return  array('token' => csrf_token(), 'user'=>Auth::user(), 'role'=> 'admin', 'languages'=>Language::all());
+    return array('token' => csrf_token(), 'user' => Auth::user(), 'role' => 'admin', 'languages' => Language::all());
 });
 
 Route::auth();
@@ -45,3 +48,16 @@ Route::post('api/generateJson', 'LanguageController@generateJson');
 
 Route::resource('api/language', 'LanguageController');
 Route::resource('api/word', 'WordController');
+
+Route::post('/api/user/auto_complete', function (Request $request) {
+
+    $freeText = $request->input('free_text');
+
+    $users = App\user::select('id', 'first_name', 'last_name')
+        ->Where('role_id','=',2) // 2 => admin
+        ->where('first_name', 'LIKE', '%' . $freeText . '%')
+        ->orWhere('last_name', 'LIKE', '%' . $freeText . '%')
+        ->get();
+
+    return $users;
+});

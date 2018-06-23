@@ -17,5 +17,8 @@ export class AdminService {
     return this.http.post(ApiConstants.GENERATE_LOCALIZATION, {}, null, false);
   }
 
+  public autoComplete(query) {
+    return this.http.post(ApiConstants.AUTO_COMPLETE, {free_text: query}, null, false);
+  }
 }
 

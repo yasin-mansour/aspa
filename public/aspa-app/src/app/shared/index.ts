@@ -17,6 +17,10 @@ import {ErrorMessageComponent} from './components/error-message/error-message.co
 import {MaxValueValidatorDirective} from './validation/max-value/max-value.directive';
 import {MinValueValidatorDirective} from './validation/min-value/min-value.directive';
 import {FormMaskComponent} from './components/fields/mask/mask.component';
+import {FormAutoCompleteComponent} from './components/fields/auto-complete/auto-complete.component';
+import {RegisterComponent} from './components/register/register.component';
+import {CardV1Component} from './components/card-v1/card-v1.component';
+import {DialogFormComponent} from './components/dialog-form/dialog-form.component';
 
 export {
   LoginComponent,
@@ -37,5 +41,9 @@ export {
   ErrorMessageComponent,
   MaxValueValidatorDirective,
   MinValueValidatorDirective,
-  FormMaskComponent
+  FormMaskComponent,
+  RegisterComponent,
+  CardV1Component,
+  FormAutoCompleteComponent,
+  DialogFormComponent
 };

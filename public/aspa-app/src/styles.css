@@ -12,6 +12,21 @@ body{
   border-color: #d9534f !important;
 }
 
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-1{
+  flex: 1;
+}
+
+
 body{
 
 }

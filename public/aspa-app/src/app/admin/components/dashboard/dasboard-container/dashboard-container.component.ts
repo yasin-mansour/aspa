@@ -2,10 +2,11 @@ import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  templateUrl: './dashboard-container.component.html',
+  styleUrls: ['./dashboard-container.component.css']
 })
 export class DashboardComponent implements OnInit {
+  menuBar = true;
 
   constructor() {
   }

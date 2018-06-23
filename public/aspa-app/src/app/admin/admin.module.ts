@@ -10,7 +10,10 @@ import {
   DashboardComponent,
   LocalizationComponent,
   TasksComponent,
-  AdminService
+  AdminService,
+  DashboardMenuComponent,
+  DashboardHeaderComponent,
+  HomePageComponent
 } from './';
 
 @NgModule({
@@ -18,7 +21,10 @@ import {
     AdminContainerComponent,
     DashboardComponent,
     LocalizationComponent,
-    TasksComponent
+    TasksComponent,
+    DashboardMenuComponent,
+    DashboardHeaderComponent,
+    HomePageComponent
   ],
   imports: [
     SharedModule,

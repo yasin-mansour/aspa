@@ -7,6 +7,6 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    return !route.data.userRole || (this.http.user && route.data.userRole ===  this.http.user.role);
+    return true; // !route.data.userRole || (this.http.clientData && route.data.userRole ===  this.http.clientData.role);
   }
 }

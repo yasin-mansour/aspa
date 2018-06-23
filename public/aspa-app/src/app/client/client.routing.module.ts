@@ -1,16 +1,12 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {ClientContainerComponent, RegisterComponent} from './';
+import {ClientContainerComponent} from './';
 import {RouteConstants} from '../utils/route-constants';
 
 const clientRoutes: Routes = [
   {
     path: '',
     component: ClientContainerComponent
-  },
-  {
-    path: RouteConstants.REGISTER,
-    component: RegisterComponent
   }
 ]
 

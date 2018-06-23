@@ -9,6 +9,10 @@ import {TableModule} from 'primeng/table';
 import {TranslateModule} from '@ngx-translate/core';
 import {DropdownModule} from 'primeng/dropdown';
 import {InputMaskModule} from 'primeng/inputmask';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
+import {AutoCompleteModule} from 'primeng/autocomplete';
+import {DialogModule} from 'primeng/dialog';
+import {ButtonModule} from 'primeng/button';
 
 import {
   LoginComponent,
@@ -29,7 +33,11 @@ import {
   ErrorMessageComponent,
   MaxValueValidatorDirective,
   MinValueValidatorDirective,
-  FormMaskComponent
+  FormMaskComponent,
+  RegisterComponent,
+  CardV1Component,
+  FormAutoCompleteComponent,
+  DialogFormComponent
 } from './';
 import {HttpModule} from '@angular/http';
 
@@ -53,7 +61,11 @@ import {HttpModule} from '@angular/http';
     ErrorMessageComponent,
     MaxValueValidatorDirective,
     MinValueValidatorDirective,
-    FormMaskComponent
+    FormMaskComponent,
+    RegisterComponent,
+    CardV1Component,
+    FormAutoCompleteComponent,
+    DialogFormComponent
   ],
   imports: [
     HttpModule,
@@ -67,7 +79,11 @@ import {HttpModule} from '@angular/http';
     TableModule,
     TranslateModule,
     DropdownModule,
-    InputMaskModule
+    InputMaskModule,
+    ScrollPanelModule,
+    AutoCompleteModule,
+    DialogModule,
+    ButtonModule
   ],
   exports: [
     CommonModule,
@@ -92,7 +108,14 @@ import {HttpModule} from '@angular/http';
     DropdownModule,
     FormHtmlComponent,
     ErrorMessageComponent,
-    FormMaskComponent
+    FormMaskComponent,
+    RegisterComponent,
+    ScrollPanelModule,
+    CardV1Component,
+    DialogModule,
+    FormAutoCompleteComponent,
+    DialogFormComponent,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [],
@@ -105,7 +128,8 @@ import {HttpModule} from '@angular/http';
     FormContainerComponent,
     PageComponent,
     FormHtmlComponent,
-    FormMaskComponent
+    FormMaskComponent,
+    FormAutoCompleteComponent
   ]
 })
 export class SharedModule {

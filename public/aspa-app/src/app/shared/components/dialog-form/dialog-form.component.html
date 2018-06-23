@@ -1,0 +1,8 @@
+<p-dialog header="Godfather I" [(visible)]="display" [modal]="true" [responsive]="true" [width]="700" [minWidth]="200" [minY]="70"
+          [baseZIndex]="10000">
+  <app-dynamic-form submitClass="btn btn-lg btn-success btn-block" [config]="questions"></app-dynamic-form>
+  <p-footer>
+    <button type="button" pButton icon="pi pi-check" (click)="hide()" label="Yes"></button>
+    <button type="button" pButton icon="pi pi-close" (click)="hide()" label="No"></button>
+  </p-footer>
+</p-dialog>

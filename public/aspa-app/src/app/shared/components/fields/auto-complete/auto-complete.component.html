@@ -1,0 +1,15 @@
+<div
+  [class]="question.class"
+  [ngClass]="{'invalid-field': isTouched && !isValid}"
+  [formGroup]="form">
+  <label *ngIf="question.label">{{ question.label | translate}}{{question.required? '*' : ''}}</label>
+  <p-autoComplete [styleClass]="question.inputClass"
+                  [formControlName]="question.key"
+                  [suggestions]="question.filtered"
+                  [styleClass]="question.inputClass"
+                  (completeMethod)="question.filter($event, question)"
+                  [multiple]="question.multiple"
+                  [field]="question.field">
+  </p-autoComplete>
+</div>
+<app-error-message [error]="error" [touched]="isTouched"></app-error-message>

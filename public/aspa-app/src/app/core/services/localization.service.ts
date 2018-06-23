@@ -16,13 +16,13 @@ export class LocalizationService {
 
   public setLocalization() {
     const user = this.http.user;
-    const languages = user.languages.map(language => {
+    const languages = this.http.clientData.languages.map(language => {
       return language.name;
     });
-    let selectedLanguage = user.languages[0];
-    if (user.user) {
-      const language = user.languages.filter((language) => {
-        return user.user.language_id === language.id;
+    let selectedLanguage = this.http.clientData.languages[0];
+    if (user) {
+      const language = this.http.clientData.languages.filter((language) => {
+        return user.language_id === language.id;
       });
 
       if (language && language.length > 0) {

@@ -11,7 +11,10 @@ import {
   AuthInterceptor,
   RoutingRegisterService,
   AuthGuard,
-  LocalizationService
+  LocalizationService,
+  AdminGuard,
+  ClientGuard,
+  RegisterGuard
 } from './';
 
 @NgModule({
@@ -26,6 +29,9 @@ import {
     AuthService,
     AppGuard,
     AuthGuard,
+    AdminGuard,
+    ClientGuard,
+    RegisterGuard,
     ElementMapService,
     {
       provide: HTTP_INTERCEPTORS,
