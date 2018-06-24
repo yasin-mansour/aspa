@@ -8,6 +8,7 @@ import {QuestionsQuestion} from '../classes/question-questions';
 import {QuestionsHtml} from '../classes/question-html';
 import {MaskQuestion} from '../classes/question-mask';
 import {AutoCompleteQuestion} from '../classes/question-auto-complete';
+import {QuestionsRadio} from '../classes/question-radio';
 import {Constants} from '../../utils/constants';
 
 
@@ -169,6 +170,38 @@ export class BuildQuestions {
             filtered: config.filtered,
             field: config.field,
             multiple: config.field,
+          });
+          break;
+        }
+        case Constants.DYNAMIC_FORMS_RADIO: {
+          question = new QuestionsRadio({
+            value: config.value,
+            key: config.key,
+            label: config.label,
+            required: config.required,
+            order: config.order,
+            controlType: config.controlType || Constants.DYNAMIC_FORMS_TEXTBOX,
+            name: config.name,
+            placeholder: config.placeholder,
+            type: config.type,
+            inputClass: config.inputClass,
+            class: config.class,
+            containerClass: config.containerClass,
+            minLength: config.minLength,
+            maxLength: config.maxLength,
+            minValue: config.minValue,
+            maxValue: config.maxValue,
+            pattern: config.pattern,
+            maxLengthMessage: config.maxLengthMessage,
+            minLengthMessage: config.minLengthMessage,
+            maxValueMessage: config.maxValueMessage,
+            minValueMessage: config.minValueMessage,
+            requiredMessage: config.requiredMessage,
+            patternMessage: config.patternMessage,
+            change: config.change,
+            visible: config.visible,
+            options: config.options,
+            groupName: config.groupName,
           });
           break;
         }

@@ -18,6 +18,7 @@ import {FormContainerComponent} from '../components/fields/container/container.c
 import {FormHtmlComponent} from '../components/fields/html/html.component';
 import {FormMaskComponent} from '../components/fields/mask/mask.component';
 import {FormAutoCompleteComponent} from '../components/fields/auto-complete/auto-complete.component';
+import {FormRadioComponent} from '../components/fields/radio/radio.component';
 import {Field} from '../interfaces/field.interface';
 import {QuestionBase} from '../../core/classes/question-base';
 
@@ -30,6 +31,7 @@ const components: { [type: string]: Type<any> } = {
   html: FormHtmlComponent,
   mask: FormMaskComponent,
   auto_complete: FormAutoCompleteComponent,
+  radio: FormRadioComponent
 };
 
 @Directive({

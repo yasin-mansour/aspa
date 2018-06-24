@@ -13,6 +13,7 @@ import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {DialogModule} from 'primeng/dialog';
 import {ButtonModule} from 'primeng/button';
+import {RadioButtonModule} from 'primeng/radiobutton';
 
 import {
   LoginComponent,
@@ -37,7 +38,8 @@ import {
   RegisterComponent,
   CardV1Component,
   FormAutoCompleteComponent,
-  DialogFormComponent
+  DialogFormComponent,
+  FormRadioComponent
 } from './';
 import {HttpModule} from '@angular/http';
 
@@ -65,7 +67,8 @@ import {HttpModule} from '@angular/http';
     RegisterComponent,
     CardV1Component,
     FormAutoCompleteComponent,
-    DialogFormComponent
+    DialogFormComponent,
+    FormRadioComponent
   ],
   imports: [
     HttpModule,
@@ -83,7 +86,8 @@ import {HttpModule} from '@angular/http';
     ScrollPanelModule,
     AutoCompleteModule,
     DialogModule,
-    ButtonModule
+    ButtonModule,
+    RadioButtonModule
   ],
   exports: [
     CommonModule,
@@ -129,7 +133,8 @@ import {HttpModule} from '@angular/http';
     PageComponent,
     FormHtmlComponent,
     FormMaskComponent,
-    FormAutoCompleteComponent
+    FormAutoCompleteComponent,
+    FormRadioComponent
   ]
 })
 export class SharedModule {

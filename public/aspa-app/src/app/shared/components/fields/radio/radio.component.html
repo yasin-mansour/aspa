@@ -1,0 +1,15 @@
+<div
+  [class]="question.class"
+  [ngClass]="{'invalid-field': isTouched && !isValid}"
+  [formGroup]="form">
+  <label *ngIf="question.label">{{ question.label | translate}}{{question.required? '*' : ''}}</label>
+  <p-radioButton *ngFor="let option of question.options"
+                 [styleClass]="question.inputClass"
+                 [formControlName]="question.key"
+                 [name]="question.groupName"
+                 [value]="option.value"
+                 [label]="option.label| translate"
+  ></p-radioButton>
+</div>
+<app-error-message [error]="error" [touched]="isTouched"></app-error-message>
+

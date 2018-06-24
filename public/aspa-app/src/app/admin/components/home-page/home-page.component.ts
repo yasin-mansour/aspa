@@ -64,27 +64,65 @@ export class HomePageComponent implements OnInit {
   getCourseQuestion() {
     return [
       {
-        value: '',
-        key: 'first_name',
-        label: 'reg-first-name',
+        class: 'row',
+        questions: [
+          {
+            value: '',
+            key: 'first_name',
+            label: 'reg-first-name',
+            class: 'form-group',
+            containerClass: ['col-sm-12'],
+            inputClass: 'auto-complete-input',
+            required: true,
+            controlType: 'auto_complete',
+            field: 'name',
+            filter: (query, question) => {
+              this.admin.autoComplete(query.query)
+                .map((data) => {
+                  data.map(user => {
+                    user['name'] = user['first_name'] + ' ' + user['last_name'];
+                  })
+                  return data;
+                })
+                .subscribe(data => {
+                  question.filtered = data;
+                });
+            }
+          }
+        ],
+        controlType: 'container'
+      },
+    {
+        class: 'row',
+        questions: [
+          {
+            value: '',
+            key: 'nationality',
+            label: 'reg-nationality',
+            inputClass: 'form-control',
+            class: 'form-group',
+            containerClass: ['col-sm-4'],
+            /*required: true,*/
+            order: 1,
+            controlType: 'textbox',
+          }
+        ],
+        controlType: 'container'
+      },
+      {
+        value: 0,
+        key: 'type',
+        label: 'course-date-status',
         inputClass: '',
         class: 'form-group',
-        containerClass: ['col-md-12'],
+        containerClass: ['col-sm-12'],
         required: true,
-        controlType: 'auto_complete',
-        field: 'name',
-        filter: (query, question) => {
-          this.admin.autoComplete(query.query)
-            .map((data) => {
-              data.map(user => {
-                user['name'] = user['first_name'] + ' ' + user['last_name'];
-              })
-              return data;
-            })
-            .subscribe(data => {
-              question.filtered = data;
-            });
-        }
+        controlType: 'radio',
+        groupName: 'type',
+        options: [
+          {label: 'date_type_unknown', value: 0},
+          {label: 'date_type_sure', value: 1}
+        ]
       }
     ];
   }

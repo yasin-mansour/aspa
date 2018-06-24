@@ -26,6 +26,9 @@ body{
   flex: 1;
 }
 
+.auto-complete-input{
+  display: block;
+}
 
 body{
 

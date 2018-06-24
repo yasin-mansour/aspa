@@ -21,6 +21,7 @@ import {FormAutoCompleteComponent} from './components/fields/auto-complete/auto-
 import {RegisterComponent} from './components/register/register.component';
 import {CardV1Component} from './components/card-v1/card-v1.component';
 import {DialogFormComponent} from './components/dialog-form/dialog-form.component';
+import {FormRadioComponent} from './components/fields/radio/radio.component';
 
 export {
   LoginComponent,
@@ -45,5 +46,6 @@ export {
   RegisterComponent,
   CardV1Component,
   FormAutoCompleteComponent,
-  DialogFormComponent
+  DialogFormComponent,
+  FormRadioComponent
 };
