@@ -1,35 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
-html{
+html {
   height: 100%;
   overflow: hidden;
 }
 
-body{
+body {
   height: 100%;
 }
 
-.invalid-field input,.invalid-field select {
+.invalid-field input, .invalid-field select {
   border-color: #d9534f !important;
 }
 
-.flex-row{
+.flex-row {
   display: flex;
   flex-direction: row;
 }
 
-.flex-column{
+.flex-column {
   display: flex;
   flex-direction: column;
 }
 
-.flex-1{
+.flex-1 {
   flex: 1;
 }
 
-.auto-complete-input{
+.auto-complete-input {
   display: block;
 }
 
-body{
+.checkbox-container {
+  height: 60px;
+  line-height: 85px;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+body {
 
 }

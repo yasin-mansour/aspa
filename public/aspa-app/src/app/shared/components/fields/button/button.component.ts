@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./button.component.css']
 })
 export class FormButtonComponent {
+  questions: Array<QuestionBase<any>>;
   question: QuestionBase<any>;
   form: FormGroup;
   submitActions = 'submitActions';

@@ -25,6 +25,7 @@ export class QuestionBase<T> {
   confirm: string;
   change: () => void;
   visible: boolean;
+  disabled: boolean;
 
   constructor(options: {
                 value?: T,
@@ -53,6 +54,7 @@ export class QuestionBase<T> {
                 confirm?: string,
                 change?: () => void,
                 visible?: boolean,
+                disabled?: boolean,
               } = {}) {
     this.value = options.value;
     this.key = options.key || '';
@@ -80,6 +82,7 @@ export class QuestionBase<T> {
     this.confirm = options.confirm || null;
     this.change = !!options.change ? options.change : null;
     this.visible = options.visible === false ? false : true;
+    this.disabled = options.disabled  || false;
   }
 }
 

@@ -10,6 +10,7 @@ import {passwordValidator} from '../../../validation/password/password.directive
   styleUrls: ['./auto-complete.component.css']
 })
 export class FormAutoCompleteComponent implements OnInit {
+  questions: Array<QuestionBase<any>>;
   question: QuestionBase<any>;
   form: FormGroup;
 

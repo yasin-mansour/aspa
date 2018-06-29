@@ -13,7 +13,8 @@ import {
   AdminService,
   DashboardMenuComponent,
   DashboardHeaderComponent,
-  HomePageComponent
+  HomePageComponent,
+  CourseService
 } from './';
 
 @NgModule({
@@ -32,7 +33,8 @@ import {
     FormsModule
   ],
   providers: [
-    AdminService
+    AdminService,
+    CourseService
   ],
   bootstrap: [],
   exports: [

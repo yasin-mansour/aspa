@@ -9,6 +9,7 @@ export class DialogFormComponent {
   @Input() questions;
   @Input() display = false;
   @Output() displayChange = new EventEmitter();
+  form;
 
   constructor() {
   }
@@ -16,6 +17,10 @@ export class DialogFormComponent {
   hide() {
     this.display = false;
     this.displayChange.emit(false);
+  }
+
+  onForm(event) {
+    this.form = event;
   }
 
 }

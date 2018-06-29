@@ -9,6 +9,7 @@ import {componentAddClass} from "../../../../utils/utils";
   styleUrls: ['./dropdown.component.css']
 })
 export class FormDropdownComponent implements OnInit {
+  questions: Array<QuestionBase<any>>;
   question: QuestionBase<any>;
   form: FormGroup;
 

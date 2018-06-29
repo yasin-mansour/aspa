@@ -14,6 +14,7 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
 import {DialogModule} from 'primeng/dialog';
 import {ButtonModule} from 'primeng/button';
 import {RadioButtonModule} from 'primeng/radiobutton';
+import {CalendarModule} from 'primeng/calendar';
 
 import {
   LoginComponent,
@@ -39,7 +40,8 @@ import {
   CardV1Component,
   FormAutoCompleteComponent,
   DialogFormComponent,
-  FormRadioComponent
+  FormRadioComponent,
+  FormDatePickerComponent
 } from './';
 import {HttpModule} from '@angular/http';
 
@@ -68,7 +70,8 @@ import {HttpModule} from '@angular/http';
     CardV1Component,
     FormAutoCompleteComponent,
     DialogFormComponent,
-    FormRadioComponent
+    FormRadioComponent,
+    FormDatePickerComponent
   ],
   imports: [
     HttpModule,
@@ -87,7 +90,8 @@ import {HttpModule} from '@angular/http';
     AutoCompleteModule,
     DialogModule,
     ButtonModule,
-    RadioButtonModule
+    RadioButtonModule,
+    CalendarModule
   ],
   exports: [
     CommonModule,
@@ -134,7 +138,8 @@ import {HttpModule} from '@angular/http';
     FormHtmlComponent,
     FormMaskComponent,
     FormAutoCompleteComponent,
-    FormRadioComponent
+    FormRadioComponent,
+    FormDatePickerComponent
   ]
 })
 export class SharedModule {

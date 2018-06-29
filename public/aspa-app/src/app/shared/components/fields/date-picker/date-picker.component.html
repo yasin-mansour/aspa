@@ -1,0 +1,16 @@
+<div
+  [class]="question.class"
+  [ngClass]="{'invalid-field': isTouched && !isValid}"
+  [formGroup]="form"
+  *ngIf="question.visible">
+  <label *ngIf="question.label">{{ question.label | translate}}{{question.required? '*' : ''}}</label>
+  <p-calendar [styleClass]="question.styleClass"
+              [inputStyleClass]="question.inputClass"
+              [attr.placeholder]="question.placeholder | translate"
+              [formControlName]="question.key"
+              [minDate]="question.minDate"
+              [maxDate]="question.maxDate"
+              [readonlyInput]="question.disabled"></p-calendar>
+</div>
+<app-error-message [error]="error" [touched]="isTouched"></app-error-message>
+

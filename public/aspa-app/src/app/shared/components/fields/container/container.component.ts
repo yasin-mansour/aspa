@@ -15,6 +15,7 @@ export class FormContainerComponent implements OnInit {
 
   @Input() submitClass = '';
   @Input() config: Array<any>;
+  questions: Array<QuestionBase<any>>;
   subQuestions: QuestionBase<any>[] = [];
   question: QuestionsQuestion;
   form: FormGroup;

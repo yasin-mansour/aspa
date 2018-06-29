@@ -9,6 +9,7 @@ import {componentAddClass} from "../../../../utils/utils";
   styleUrls: ['./html.component.css']
 })
 export class FormHtmlComponent implements OnInit {
+  questions: Array<QuestionBase<any>>;
   question: QuestionBase<any>;
   form: FormGroup;
 

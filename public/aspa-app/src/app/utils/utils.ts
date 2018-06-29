@@ -2,6 +2,7 @@ import {Validators} from '@angular/forms';
 import {maxValueValidator} from '../shared/validation/max-value/max-value.directive';
 import {minValueValidator} from '../shared/validation/min-value/min-value.directive';
 import {Constants} from './constants';
+import * as _ from 'lodash';
 
 export function componentAddClass(renderer, hostElement, componentClass) {
   if (Array.isArray(componentClass)) {
@@ -25,7 +26,33 @@ export function issueDateList() {
   return options;
 }
 
+export function findQuestion(questions, path) {
+  if (!path || !questions) {
+    return null;
+  }
 
+  const keys = path.split('.');
+  let question = questions;
+  keys.map(key => {
+    question = _.find(question, {key});
+    if (question.questions) {
+      question = question.questions;
+    }
+  });
+
+  return question;
+}
+
+
+export function updateValidation(form, key, questions, path, updateQuestion: (question) => {}) {
+
+  const control = form.controls[key];
+  let question = findQuestion(questions, path);
+  question = updateQuestion(question);
+  const validation = setValidation(question);
+  control.setValidators(validation);
+  control.updateValueAndValidity({emitEvent: false});
+}
 export function setValidation(question) {
   const validation = [];
   if (question.required) {
@@ -39,7 +66,7 @@ export function setValidation(question) {
   if (question.maxValue !== null) {
     validation.push(maxValueValidator(question.maxValue, question.maxValueMessage));
   }
-console.log(question.key, question.minValue);
+  console.log(question.key, question.minValue);
   if (question.minValue !== null) {
     validation.push(minValueValidator(question.minValue, question.minValueMessage));
   }

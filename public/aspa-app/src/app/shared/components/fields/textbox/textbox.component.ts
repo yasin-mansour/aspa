@@ -10,6 +10,7 @@ import {passwordValidator} from '../../../validation/password/password.directive
   styleUrls: ['./textbox.component.css']
 })
 export class FormTextBoxComponent implements OnInit {
+  questions: Array<QuestionBase<any>>;
   question: QuestionBase<any>;
   form: FormGroup;
 

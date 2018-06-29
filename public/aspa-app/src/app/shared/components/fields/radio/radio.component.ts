@@ -9,6 +9,7 @@ import {componentAddClass} from '../../../../utils/utils';
   styleUrls: ['./radio.component.css']
 })
 export class FormRadioComponent implements OnInit{
+  questions: Array<QuestionBase<any>>;
   question: QuestionBase<any>;
   form: FormGroup;
 

@@ -1,7 +1,8 @@
 <div
-  [class]="question.containerClass"
+  [class]="question.class"
   [ngClass]="{'invalid-field': isTouched && !isValid}"
-  [formGroup]="form">
+  [formGroup]="form"
+  *ngIf="question.visible">
   <label>
     <input
       [class]="question.inputClass"

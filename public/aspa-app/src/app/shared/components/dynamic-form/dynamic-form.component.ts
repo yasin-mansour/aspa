@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 
 import {QuestionBase} from '../../../core/classes/question-base';
@@ -13,6 +13,7 @@ export class DynamicFormComponent implements OnInit {
 
   @Input() submitClass = '';
   @Input() config: Array<any>;
+  @Output() onForm = new EventEmitter();
   questions: QuestionBase<any>[] = [];
   form: FormGroup;
   payLoad = '';
@@ -23,6 +24,7 @@ export class DynamicFormComponent implements OnInit {
   ngOnInit() {
     this.questions = this.buildQuestions.build(this.config);
     this.form = this.qcs.toFormGroup(this.questions);
+    this.onForm.emit(this.form);
     console.log(this.questions);
     console.log(this.form);
   }
@@ -34,7 +36,7 @@ export class DynamicFormComponent implements OnInit {
 
 
 /*
-Copyright 2017-2018 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/
+ Copyright 2017-2018 Google Inc. All Rights Reserved.
+ Use of this source code is governed by an MIT-style license that
+ can be found in the LICENSE file at http://angular.io/license
+ */

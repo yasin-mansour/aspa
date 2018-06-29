@@ -1,19 +1,17 @@
-import {Component, ViewChild, ElementRef, Renderer2, OnInit} from '@angular/core';
+import {Component, ViewContainerRef, ElementRef, Renderer2, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {QuestionBase} from '../../../../core/classes/question-base';
 import {componentAddClass, setValidation} from '../../../../utils/utils';
 import {passwordValidator} from '../../../validation/password/password.directive';
 
 @Component({
-  selector: 'app-mask',
-  templateUrl: './mask.component.html',
-  styleUrls: ['./mask.component.css']
+  selector: 'app-date-picker',
+  templateUrl: './date-picker.component.html',
+  styleUrls: ['./date-picker.component.css']
 })
-export class FormMaskComponent implements OnInit {
-  questions: Array<QuestionBase<any>>;
+export class FormDatePickerComponent implements OnInit {
   question: QuestionBase<any>;
   form: FormGroup;
-  @ViewChild('inputMask') inputMask;
 
   constructor(private renderer: Renderer2, private hostElement: ElementRef) {
   }
@@ -41,10 +39,6 @@ export class FormMaskComponent implements OnInit {
   ngOnInit() {
     componentAddClass(this.renderer, this.hostElement, this.question.containerClass);
 
-    if (this.question.confirm) {
-      this.updateValidation();
-    }
-
     const change = this.question.change;
     if (this.control && change) {
       const changeCallBack = change.bind(this);
@@ -52,24 +46,5 @@ export class FormMaskComponent implements OnInit {
         changeCallBack(this.form, this.question);
       });
     }
-
-    this.inputMask.updateModel = this.updateModel.bind(this);
-  }
-
-  updateValidation() {
-    const validation = setValidation(this.question);
-    validation.push(passwordValidator(this.form.controls[this.question.confirm]));
-    this.control.setValidators(validation);
-  }
-
-  updateModel(e) {
-    const updatedValue = this.inputMask.unmask ? this.inputMask.getUnmaskedValue() : e.target.value;
-    console.log(updatedValue);
-    if ((updatedValue !== null || updatedValue !== undefined ) && this.inputMask.isCompleted() ) {
-      this.inputMask.value = updatedValue;
-    } else {
-      this.inputMask.value = null;
-    }
-    this.inputMask.onModelChange(this.inputMask.value);
   }
 }

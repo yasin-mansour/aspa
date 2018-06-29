@@ -4,6 +4,7 @@
     <ng-container
       *ngFor="let question of questions;"
       appDynamicField
+      [questions]="questions"
       [question]="question"
       [form]="form">
     </ng-container>

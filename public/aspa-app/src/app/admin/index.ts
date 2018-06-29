@@ -6,6 +6,7 @@ import {AdminService} from './services/admin.service';
 import {DashboardMenuComponent} from './components/dashboard/menu/dashboard-menu.component';
 import {DashboardHeaderComponent} from './components/dashboard/header/dashboard-header.component';
 import {HomePageComponent} from './components/home-page/home-page.component';
+import {CourseService} from './services/course.service';
 
 export {
   AdminContainerComponent,
@@ -15,5 +16,6 @@ export {
   AdminService,
   DashboardMenuComponent,
   DashboardHeaderComponent,
-  HomePageComponent
+  HomePageComponent,
+  CourseService
 };

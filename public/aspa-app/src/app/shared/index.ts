@@ -22,6 +22,7 @@ import {RegisterComponent} from './components/register/register.component';
 import {CardV1Component} from './components/card-v1/card-v1.component';
 import {DialogFormComponent} from './components/dialog-form/dialog-form.component';
 import {FormRadioComponent} from './components/fields/radio/radio.component';
+import {FormDatePickerComponent} from './components/fields/date-picker/date-picker.component';
 
 export {
   LoginComponent,
@@ -47,5 +48,6 @@ export {
   CardV1Component,
   FormAutoCompleteComponent,
   DialogFormComponent,
-  FormRadioComponent
+  FormRadioComponent,
+  FormDatePickerComponent
 };

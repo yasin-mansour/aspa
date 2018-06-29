@@ -21,6 +21,7 @@ import {FormAutoCompleteComponent} from '../components/fields/auto-complete/auto
 import {FormRadioComponent} from '../components/fields/radio/radio.component';
 import {Field} from '../interfaces/field.interface';
 import {QuestionBase} from '../../core/classes/question-base';
+import {FormDatePickerComponent} from '../components/fields/date-picker/date-picker.component';
 
 const components: { [type: string]: Type<any> } = {
   textbox: FormTextBoxComponent,
@@ -31,13 +32,18 @@ const components: { [type: string]: Type<any> } = {
   html: FormHtmlComponent,
   mask: FormMaskComponent,
   auto_complete: FormAutoCompleteComponent,
-  radio: FormRadioComponent
+  radio: FormRadioComponent,
+  date_picker: FormDatePickerComponent
 };
 
 @Directive({
   selector: '[appDynamicField]'
 })
 export class DynamicFieldDirective implements Field, OnChanges, OnInit {
+
+  @Input()
+  questions: Array<QuestionBase<any>>;
+
   @Input()
   question: QuestionBase<any>;
 
@@ -68,6 +74,7 @@ export class DynamicFieldDirective implements Field, OnChanges, OnInit {
     const component = this.resolver.resolveComponentFactory<Field>(components[this.question.controlType]);
     this.component = this.container.createComponent(component);
     console.log(this.component);
+    this.component.instance.questions = this.questions;
     this.component.instance.question = this.question;
     this.component.instance.form = this.form;
   }
