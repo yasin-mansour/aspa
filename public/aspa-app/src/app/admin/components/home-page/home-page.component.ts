@@ -52,11 +52,11 @@ export class HomePageComponent implements OnInit {
   };
 
   trainerDisplay;
-  trainerQuestions;
+  courseQuestions;
 
   constructor(private admin: AdminService, private courseService: CourseService) {
-    this.trainer.click = this.trainerClick.bind(this);
-    this.trainerQuestions = this.courseService.getCourseQuestion();
+    this.course.click = this.trainerClick.bind(this);
+    this.courseQuestions = this.courseService.getCourseQuestion();
   }
 
   ngOnInit() {
@@ -64,5 +64,9 @@ export class HomePageComponent implements OnInit {
 
   trainerClick() {
     this.trainerDisplay = true;
+  }
+
+  create(data) {
+    this.courseService.createCourse(data).subscribe();
   }
 }

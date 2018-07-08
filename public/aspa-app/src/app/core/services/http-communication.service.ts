@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Headers, Http, RequestOptions, RequestOptionsArgs, Response} from '@angular/http';
+import {HttpClient, HttpHeaders, HttpResponse, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/Rx';
 import {environment} from '../../../environments/environment';
 import 'rxjs/add/operator/map';
@@ -13,32 +13,33 @@ export class HttpCommunicationService {
     return this.clientData.user;
   }
 
-  constructor(public http: Http) {
+  constructor(public http: HttpClient) {
 
   }
 
-  post(url: string, body: any, headers?: Headers, isFormUrl = true) {
+  post(url: string, body: any, headers?: HttpHeaders, isFormUrl = true) {
     body._token = this.clientData.token;
     console.log(body);
     if (!headers) {
-      headers = new Headers();
+      headers = new HttpHeaders();
     }
     this.setHeaders(headers);
 
-    let options: RequestOptions = new RequestOptions({headers: headers, withCredentials: true});
+    const options = {headers: headers}
     body = isFormUrl ? this.objToFormUrlencoded(body) : body;
     return this.http.post(this.buildUrl(url), body, options)
-      .map((data: Response) => this.handleResponse(data))
+      .map((data: HttpResponse<any>) => this.handleResponse(data))
       .catch(this.handleErrors());
   }
 
-  get(url: string) {
-    return this.http.get(this.buildUrl(url))
-      .map(response => response.json())
+  get(url: string, data: any = {}) {
+    const parameter = this.getParameter(data);
+    return this.http.get(this.buildUrl(url), parameter)
+      .map(response => response);
   }
 
   public handleErrors() {
-    return (res: Response) => {
+    return (res: HttpResponse<any>) => {
 
 
       return Observable.throw(res);
@@ -49,12 +50,12 @@ export class HttpCommunicationService {
     return environment.SERVER_NAME + url;
   }
 
-  public setHeaders(objectToSetHeadersTo: Headers) {
+  public setHeaders(objectToSetHeadersTo: HttpHeaders) {
     objectToSetHeadersTo.append('Content-Type', 'application/json');
   }
 
-  public handleResponse(res: Response) {
-    return res.json();
+  public handleResponse(res: HttpResponse<any>) {
+    return res;
   }
 
   public setUser(user) {
@@ -72,6 +73,18 @@ export class HttpCommunicationService {
     });
 
     return urlEncoded.join('&');
+  }
+
+  getParameter(data) {
+    let params = new HttpParams();
+    if (data) {
+      Object.keys(data).map(key => {
+        if (data[key]) {
+          params = params.append(key, data[key]);
+        }
+      });
+    }
+    return {params};
   }
 }
 

@@ -7,6 +7,6 @@ export class AuthInterceptor implements HttpInterceptor {
     const authReq = req.clone({
       headers: req.headers.set('Content-Type', 'application/x-www-form-urlencoded')
     });
-    return next.handle(authReq);
+    return next.handle(req);
   }
 }

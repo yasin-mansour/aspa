@@ -15,6 +15,8 @@ import {DialogModule} from 'primeng/dialog';
 import {ButtonModule} from 'primeng/button';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {CalendarModule} from 'primeng/calendar';
+import {ScheduleModule} from 'primeng/schedule';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
 
 import {
   LoginComponent,
@@ -91,7 +93,9 @@ import {HttpModule} from '@angular/http';
     DialogModule,
     ButtonModule,
     RadioButtonModule,
-    CalendarModule
+    CalendarModule,
+    ScheduleModule,
+    OverlayPanelModule
   ],
   exports: [
     CommonModule,
@@ -123,7 +127,9 @@ import {HttpModule} from '@angular/http';
     DialogModule,
     FormAutoCompleteComponent,
     DialogFormComponent,
-    ButtonModule
+    ButtonModule,
+    ScheduleModule,
+    OverlayPanelModule
   ],
   providers: [],
   bootstrap: [],

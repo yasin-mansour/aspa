@@ -47,6 +47,11 @@ class User extends Authenticatable
         return $this->hasMany('App\organization');
     }
 
+    public function courses()
+    {
+        return $this->belongsToMany('App\course')->withPivot('type');
+    }
+
     public function getRoleTypeAttribute()
     {
         return $this->role ? $this->role->name : 'user';

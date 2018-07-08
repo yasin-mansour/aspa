@@ -14,7 +14,9 @@ import {
   DashboardMenuComponent,
   DashboardHeaderComponent,
   HomePageComponent,
-  CourseService
+  CourseService,
+  CoursesComponent,
+  CourseComponent
 } from './';
 
 @NgModule({
@@ -25,7 +27,9 @@ import {
     TasksComponent,
     DashboardMenuComponent,
     DashboardHeaderComponent,
-    HomePageComponent
+    HomePageComponent,
+    CoursesComponent,
+    CourseComponent
   ],
   imports: [
     SharedModule,

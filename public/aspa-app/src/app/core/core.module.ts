@@ -14,7 +14,8 @@ import {
   LocalizationService,
   AdminGuard,
   ClientGuard,
-  RegisterGuard
+  RegisterGuard,
+  CourseService
 } from './';
 
 @NgModule({
@@ -39,7 +40,8 @@ import {
       multi: true
     },
     RoutingRegisterService,
-    LocalizationService
+    LocalizationService,
+    CourseService
   ],
   bootstrap: []
 })

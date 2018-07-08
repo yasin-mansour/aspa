@@ -21,6 +21,18 @@ export class DynamicFormComponent implements OnInit {
   constructor(private qcs: QuestionControlService, private buildQuestions: BuildQuestions) {
   }
 
+  @Input()
+  set values(val) {
+    if (val && Object.keys(val).length > 0) {
+      this.form.setValue(val);
+    }
+
+  }
+
+  get values() {
+    return this.form.value;
+  }
+
   ngOnInit() {
     this.questions = this.buildQuestions.build(this.config);
     this.form = this.qcs.toFormGroup(this.questions);

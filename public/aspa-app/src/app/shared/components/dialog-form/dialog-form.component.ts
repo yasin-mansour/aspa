@@ -7,20 +7,42 @@ import {CardV1} from '../../interfaces/card-v1.interface';
 })
 export class DialogFormComponent {
   @Input() questions;
-  @Input() display = false;
   @Output() displayChange = new EventEmitter();
+  @Output() onCreate = new EventEmitter();
+  _display = false;
   form;
+  values;
+  defaultValue;
 
   constructor() {
   }
 
+  @Input()
+  set display(val) {
+    this._display = val;
+    if (val && this.form) {
+      this.form.reset(this.defaultValue);
+    }
+  }
+
+  get display() {
+    return this._display;
+  }
+
   hide() {
     this.display = false;
-    this.displayChange.emit(false);
   }
 
   onForm(event) {
     this.form = event;
+    this.defaultValue = this.form.value;
   }
 
+  create() {
+    this.onCreate.emit(this.form.value);
+  }
+
+  updateVisibility() {
+    this.displayChange.emit(false);
+  }
 }

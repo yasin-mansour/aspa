@@ -39,6 +39,12 @@ body {
   width: 100%;
 }
 
+.link, .link:active, .link:hover, .link:focus {
+  text-decoration: none;
+  color: #1dc4ff;
+  cursor: pointer;
+}
+
 body {
 
 }

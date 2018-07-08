@@ -18,7 +18,7 @@ class CreateCoursesTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->boolean('date_exact');
-            $table->integer('cost');
+            $table->integer('price');
             $table->string('unit')->default('USD');
             $table->timestamps();
         });

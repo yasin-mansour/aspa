@@ -3,6 +3,7 @@ import {ApiConstants} from '../../utils/api-constants';
 import {findQuestion, updateValidation} from '../../utils/utils';
 import {HttpCommunicationService} from '../../core';
 import {AdminService} from './admin.service';
+import * as moment from 'moment';
 
 @Injectable()
 export class CourseService {
@@ -17,9 +18,9 @@ export class CourseService {
         class: 'row',
         questions: [
           {
-            value: '',
-            key: 'first_name',
-            label: 'reg-first-name',
+            value: [],
+            key: 'trainers',
+            label: 'reg-trainers',
             class: 'form-group',
             containerClass: ['col-sm-12'],
             inputClass: 'auto-complete-input',
@@ -47,7 +48,7 @@ export class CourseService {
         questions: [
           {
             value: '',
-            key: 'course-name',
+            key: 'name',
             label: 'course-name',
             inputClass: 'form-control',
             class: 'form-group',
@@ -65,7 +66,7 @@ export class CourseService {
         questions: [
           {
             value: '',
-            key: 'start-date',
+            key: 'start_date',
             label: 'start-date',
             class: 'form-group',
             containerClass: ['col-sm-6'],
@@ -76,7 +77,7 @@ export class CourseService {
           },
           {
             value: '',
-            key: 'end-date',
+            key: 'end_date',
             label: 'end-date',
             class: 'form-group',
             containerClass: ['col-sm-6'],
@@ -105,8 +106,8 @@ export class CourseService {
             minValue: 0
           },
           {
-            value: 0,
-            key: 'type',
+            value: false,
+            key: 'date_exact',
             label: 'is-known-date',
             inputClass: '',
             class: 'form-group checkbox-container',
@@ -114,12 +115,12 @@ export class CourseService {
             required: true,
             controlType: 'checkbox',
             change: (data, form, question, questions) => {
-              updateValidation(form, 'start-date', questions, 'dates.start-date', (q) => {
+              updateValidation(form, 'start_date', questions, 'dates.start_date', (q) => {
                 q.required = data;
                 return q;
               });
 
-              updateValidation(form, 'end-date', questions, 'dates.end-date', (q) => {
+              updateValidation(form, 'end_date', questions, 'dates.end_date', (q) => {
                 q.required = data;
                 return q;
               });
@@ -129,6 +130,16 @@ export class CourseService {
         controlType: 'container'
       }
     ];
+  }
+
+  public createCourse(data) {
+    data['start_date'] = moment(data['start_date']).format('YYYY-MM-DD');
+    data['end_date'] = moment(data['end_date']).format('YYYY-MM-DD');
+    return this.http.post(ApiConstants.CREATE_COURSE, data, null, false);
+  }
+
+  public getCourse(id) {
+    return this.http.get(ApiConstants.GET_COURSE + `/${id}`);
   }
 }
 
