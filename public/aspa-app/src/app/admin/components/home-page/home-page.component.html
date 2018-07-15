@@ -1,8 +1,8 @@
 <div class="row" style="padding-top: 15px">
   <app-card-v1 class="col-md-3 col-sm-6" [options]="trainer"></app-card-v1>
-  <app-card-v1 class="col-md-3 col-sm-6" [options]="course"></app-card-v1>
+  <app-card-v1 class="col-md-3 col-sm-6" [options]="classRoom"></app-card-v1>
   <app-card-v1 class="col-md-3 col-sm-6" [options]="student"></app-card-v1>
   <app-card-v1 class="col-md-3 col-sm-6" [options]="material"></app-card-v1>
 </div>
 
-<app-dialog-form [(display)]="trainerDisplay" (onCreate)="create($event)" [questions]="courseQuestions"></app-dialog-form>
+<app-dialog-form [(display)]="trainerDisplay" (onCreate)="create($event)" [questions]="classQuestions"></app-dialog-form>

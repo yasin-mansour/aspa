@@ -6,9 +6,9 @@ import {AdminService} from './services/admin.service';
 import {DashboardMenuComponent} from './components/dashboard/menu/dashboard-menu.component';
 import {DashboardHeaderComponent} from './components/dashboard/header/dashboard-header.component';
 import {HomePageComponent} from './components/home-page/home-page.component';
-import {CourseService} from './services/course.service';
-import {CoursesComponent} from './components/courses/courses.component';
-import {CourseComponent} from './components/course/course.component';
+import {ClassService} from './services/class.service';
+import {ClassesComponent} from './components/classes/classes.component';
+import {ClassComponent} from './components/class/class.component';
 
 export {
   AdminContainerComponent,
@@ -19,7 +19,7 @@ export {
   DashboardMenuComponent,
   DashboardHeaderComponent,
   HomePageComponent,
-  CourseService,
-  CoursesComponent,
-  CourseComponent
+  ClassService,
+  ClassesComponent,
+  ClassComponent
 };

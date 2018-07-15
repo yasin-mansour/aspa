@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {RouteConstants} from '../utils/route-constants';
 import {AdminContainerComponent} from './components/container/container.component';
-import {HomePageComponent, CoursesComponent, CourseComponent} from './index';
+import {HomePageComponent, ClassesComponent, ClassComponent} from './index';
 
 const adminRoutes: Routes = [
   {
@@ -19,12 +19,12 @@ const adminRoutes: Routes = [
         pathMatch: 'full'
       },
       {
-        path: 'courses',
-        component: CoursesComponent
+        path: 'classes',
+        component: ClassesComponent
       },
       {
-        path: 'course/:id',
-        component: CourseComponent
+        path: 'class/:id',
+        component: ClassComponent
       }
     ]
   }

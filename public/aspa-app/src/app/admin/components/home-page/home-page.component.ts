@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CardV1} from '../../../shared/interfaces/card-v1.interface';
 import {AdminService} from '../../services/admin.service';
-import {CourseService} from '../../services/course.service';
+import {ClassService} from '../../services/class.service';
 
 @Component({
   selector: 'app-home-page',
@@ -31,10 +31,10 @@ export class HomePageComponent implements OnInit {
     }
   };
 
-  course: CardV1 = {
-    title: 'title-course',
+  classRoom: CardV1 = {
+    title: 'title-class',
     icon: 'fa-tasks',
-    description: 'add-new-course',
+    description: 'add-new-class',
     buttonIcon: 'fa-plus',
     classes: {'blue': true},
     click: () => {
@@ -52,11 +52,11 @@ export class HomePageComponent implements OnInit {
   };
 
   trainerDisplay;
-  courseQuestions;
+  classQuestions;
 
-  constructor(private admin: AdminService, private courseService: CourseService) {
-    this.course.click = this.trainerClick.bind(this);
-    this.courseQuestions = this.courseService.getCourseQuestion();
+  constructor(private admin: AdminService, private classService: ClassService) {
+    this.classRoom.click = this.trainerClick.bind(this);
+    this.classQuestions = this.classService.getClassQuestion();
   }
 
   ngOnInit() {
@@ -67,6 +67,6 @@ export class HomePageComponent implements OnInit {
   }
 
   create(data) {
-    this.courseService.createCourse(data).subscribe();
+    this.classService.createClass(data).subscribe();
   }
 }

@@ -2,20 +2,20 @@ import {
   Component, Input, OnInit, Output, EventEmitter, ChangeDetectionStrategy,
   ChangeDetectorRef
 } from '@angular/core';
-import {CourseService} from '../../../core/services/courses.service';
+import {ClassService} from '../../../core/services/class.service';
 
 @Component({
-  selector: 'app-courses',
-  templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.css'],
+  selector: 'app-classes',
+  templateUrl: './classes.component.html',
+  styleUrls: ['./classes.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CoursesComponent implements OnInit {
-  courses;
+export class ClassesComponent implements OnInit {
+  classes;
   paginate = {};
   loading = false;
 
-  constructor(private courseService: CourseService, private cdr: ChangeDetectorRef) {
+  constructor(private classService: ClassService, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -24,8 +24,8 @@ export class CoursesComponent implements OnInit {
   getCourses(event: any = {first: 0}) {
     this.loading = true;
     this.cdr.detectChanges();
-    this.courseService.getCourses(++event.first, true, false).subscribe(paginate => {
-      this.courses = paginate['data'];
+    this.classService.getClasses(++event.first, true, false).subscribe(paginate => {
+      this.classes = paginate['data'];
       this.paginate = paginate;
     }, () => {
     }, () => {

@@ -6,13 +6,13 @@ import {AdminService} from './admin.service';
 import * as moment from 'moment';
 
 @Injectable()
-export class CourseService {
+export class ClassService {
 
   constructor(private http: HttpCommunicationService, private admin: AdminService) {
 
   }
 
-  getCourseQuestion() {
+  getClassQuestion() {
     return [
       {
         class: 'row',
@@ -49,7 +49,7 @@ export class CourseService {
           {
             value: '',
             key: 'name',
-            label: 'course-name',
+            label: 'class-name',
             inputClass: 'form-control',
             class: 'form-group',
             containerClass: ['col-sm-12'],
@@ -95,7 +95,7 @@ export class CourseService {
           {
             value: '',
             key: 'price',
-            label: 'course-price',
+            label: 'class-price',
             inputClass: 'form-control',
             class: 'form-group',
             containerClass: ['col-sm-6'],
@@ -132,14 +132,14 @@ export class CourseService {
     ];
   }
 
-  public createCourse(data) {
+  public createClass(data) {
     data['start_date'] = moment(data['start_date']).format('YYYY-MM-DD');
     data['end_date'] = moment(data['end_date']).format('YYYY-MM-DD');
-    return this.http.post(ApiConstants.CREATE_COURSE, data, null, false);
+    return this.http.post(ApiConstants.CREATE_CLASS, data, null, false);
   }
 
-  public getCourse(id) {
-    return this.http.get(ApiConstants.GET_COURSE + `/${id}`);
+  public getClass(id) {
+    return this.http.get(ApiConstants.GET_CLASS + `/${id}`);
   }
 }
 

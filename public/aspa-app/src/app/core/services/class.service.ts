@@ -5,13 +5,13 @@ import {HttpCommunicationService} from '../../core/services/http-communication.s
 import * as moment from 'moment';
 
 @Injectable()
-export class CourseService {
+export class ClassService {
 
   constructor(private http: HttpCommunicationService) {
 
   }
 
-  public getCourses(page = 1, all = false, free_text?) {
+  public getClasses(page = 1, all = false, free_text?) {
     return this.http.get(ApiConstants.GET_COURSES, {page, all, free_text});
   }
 }

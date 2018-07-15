@@ -11,7 +11,7 @@ import {ClientGuard} from './guards/client-guard';
 import {RegisterGuard} from './guards/register-guard';
 import {AuthGuard} from './guards/auth-guard';
 import {LocalizationService} from './services/localization.service';
-import {CourseService} from './services/courses.service';
+import {ClassService} from './services/class.service';
 
 export {
   HttpCommunicationService,
@@ -27,5 +27,5 @@ export {
   AdminGuard,
   ClientGuard,
   RegisterGuard,
-  CourseService
+  ClassService
 };

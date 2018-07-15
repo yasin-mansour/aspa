@@ -1,0 +1,21 @@
+<p-table [value]="classes" [lazy]="true" (onLazyLoad)="getCourses($event)" [paginator]="true" [loading]="loading"
+         [rows]="paginate.per_page" [totalRecords]="paginate.total">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>class-name</th>
+      <th>class-start-date</th>
+      <th>class-end-date</th>
+      <th>class-price</th>
+      <th>class-trainers</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-class>
+    <tr>
+      <td><a class="link" routerLink="../class/{{class.id}}">{{class.name}}</a></td>
+      <td>{{class.start_date}}</td>
+      <td>{{class.end_date}}</td>
+      <td>{{class.price}}</td>
+      <td></td>
+    </tr>
+  </ng-template>
+</p-table>

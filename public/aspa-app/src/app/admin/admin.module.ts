@@ -14,9 +14,9 @@ import {
   DashboardMenuComponent,
   DashboardHeaderComponent,
   HomePageComponent,
-  CourseService,
-  CoursesComponent,
-  CourseComponent
+  ClassService,
+  ClassesComponent,
+  ClassComponent
 } from './';
 
 @NgModule({
@@ -28,8 +28,8 @@ import {
     DashboardMenuComponent,
     DashboardHeaderComponent,
     HomePageComponent,
-    CoursesComponent,
-    CourseComponent
+    ClassesComponent,
+    ClassComponent
   ],
   imports: [
     SharedModule,
@@ -38,7 +38,7 @@ import {
   ],
   providers: [
     AdminService,
-    CourseService
+    ClassService
   ],
   bootstrap: [],
   exports: [

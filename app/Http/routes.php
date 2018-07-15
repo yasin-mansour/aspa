@@ -48,9 +48,9 @@ Route::post('api/generateJson', 'LanguageController@generateJson');
 
 Route::resource('api/language', 'LanguageController');
 Route::resource('api/word', 'WordController');
-Route::post('api/course/create', 'CourseController@store');
-Route::get('api/course', 'CourseController@paginator');
-Route::get('api/course/{id}', 'CourseController@index');
+Route::post('api/class/create', 'ClassRoomController@store');
+Route::get('api/class', 'ClassRoomController@paginator');
+Route::get('api/class/{id}', 'ClassRoomController@index');
 
 Route::post('/api/user/auto_complete', function (Request $request) {
 

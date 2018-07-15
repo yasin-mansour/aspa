@@ -2,34 +2,34 @@ import {
   Component, Input, OnInit, Output, EventEmitter, ChangeDetectionStrategy,
   ChangeDetectorRef, ViewChild
 } from '@angular/core';
-import {CourseService} from '../../services/course.service';
+import {ClassService} from '../../services/class.service';
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
-  selector: 'app-course',
-  templateUrl: './course.component.html',
-  styleUrls: ['./course.component.css'],
+  selector: 'app-class',
+  templateUrl: './class.component.html',
+  styleUrls: ['./class.component.css'],
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CourseComponent implements OnInit {
-  course;
+export class ClassComponent implements OnInit {
+  classRoom;
   @ViewChild('op') op;
 
-  constructor(private courseService: CourseService,
+  constructor(private classService: ClassService,
               private cdr: ChangeDetectorRef,
               private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
       const id = params['id'];
-      this.getCourse(id);
+      this.getClass(id);
     });
   }
 
   ngOnInit() {
   }
 
-  getCourse(id) {
-    this.courseService.getCourse(id).subscribe(course => {
-      this.course = course;
+  getClass(id) {
+    this.classService.getClass(id).subscribe(classRoom => {
+      this.classRoom = classRoom;
     });
   }
 

@@ -15,11 +15,7 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->increments('id')->index()->unsigned();
             $table->string('name');
-            $table->date('start_date');
-            $table->date('end_date');
-            $table->boolean('date_exact');
-            $table->integer('price');
-            $table->string('unit')->default('USD');
+            $table->date('description');
             $table->timestamps();
         });
     }
