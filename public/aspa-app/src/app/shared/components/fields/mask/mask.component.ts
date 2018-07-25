@@ -64,7 +64,6 @@ export class FormMaskComponent implements OnInit {
 
   updateModel(e) {
     const updatedValue = this.inputMask.unmask ? this.inputMask.getUnmaskedValue() : e.target.value;
-    console.log(updatedValue);
     if ((updatedValue !== null || updatedValue !== undefined ) && this.inputMask.isCompleted() ) {
       this.inputMask.value = updatedValue;
     } else {

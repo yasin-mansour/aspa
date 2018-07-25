@@ -1,0 +1,13 @@
+:host /deep/ .ui-table-wrapper {
+  min-height: 200px;
+  background: white;
+  border-style: solid;
+  border-width: 0 1px 0 1px;
+  border-color: #eaeaea;
+}
+
+.home-container{
+  padding: 12px 0 12px 0;
+  background: white;
+  margin-top: 15px;
+}

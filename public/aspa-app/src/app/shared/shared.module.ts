@@ -17,6 +17,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {CalendarModule} from 'primeng/calendar';
 import {ScheduleModule} from 'primeng/schedule';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
+import {FileUploaderModule} from '../file-uploader/file-uploader.module';
 
 import {
   LoginComponent,
@@ -43,7 +44,9 @@ import {
   FormAutoCompleteComponent,
   DialogFormComponent,
   FormRadioComponent,
-  FormDatePickerComponent
+  FormDatePickerComponent,
+  UinqueValidatorDirective,
+  FormFileUploadComponent
 } from './';
 import {HttpModule} from '@angular/http';
 
@@ -73,7 +76,9 @@ import {HttpModule} from '@angular/http';
     FormAutoCompleteComponent,
     DialogFormComponent,
     FormRadioComponent,
-    FormDatePickerComponent
+    FormDatePickerComponent,
+    UinqueValidatorDirective,
+    FormFileUploadComponent
   ],
   imports: [
     HttpModule,
@@ -95,7 +100,8 @@ import {HttpModule} from '@angular/http';
     RadioButtonModule,
     CalendarModule,
     ScheduleModule,
-    OverlayPanelModule
+    OverlayPanelModule,
+    FileUploaderModule
   ],
   exports: [
     CommonModule,
@@ -129,7 +135,8 @@ import {HttpModule} from '@angular/http';
     DialogFormComponent,
     ButtonModule,
     ScheduleModule,
-    OverlayPanelModule
+    OverlayPanelModule,
+    FileUploaderModule
   ],
   providers: [],
   bootstrap: [],
@@ -145,7 +152,8 @@ import {HttpModule} from '@angular/http';
     FormMaskComponent,
     FormAutoCompleteComponent,
     FormRadioComponent,
-    FormDatePickerComponent
+    FormDatePickerComponent,
+    FormFileUploadComponent
   ]
 })
 export class SharedModule {

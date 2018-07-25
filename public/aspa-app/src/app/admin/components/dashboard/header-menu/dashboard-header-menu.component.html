@@ -1,0 +1,10 @@
+<ul class="menu-lest">
+  <li class="menu-item">
+    <a class="menu-anchor" (click)="newCourse.display = true">
+      <i class="fa fa-flag-o menu-icon" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+<app-dialog-form [(display)]="newCourse.display" (onCreate)="createCourse($event)" [questions]="newCourse.question"></app-dialog-form>
+

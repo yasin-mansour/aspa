@@ -10,6 +10,7 @@ import {MaskQuestion} from '../classes/question-mask';
 import {AutoCompleteQuestion} from '../classes/question-auto-complete';
 import {QuestionsRadio} from '../classes/question-radio';
 import {DatePickerQuestion} from '../classes/question-date-picker';
+import {FileQuestion} from '../classes/question-file';
 import {Constants} from '../../utils/constants';
 
 
@@ -43,7 +44,9 @@ export class BuildQuestions {
             placeholder: config.placeholder,
             inputClass: config.inputClass,
             class: config.class,
-            containerClass: config.containerClass
+            containerClass: config.containerClass,
+            change: config.change,
+            disabled: config.disabled,
           });
           break;
         }
@@ -208,39 +211,71 @@ export class BuildQuestions {
           break;
         }
         case Constants.DYNAMIC_FORMS_DATE_PICKER: {
-        question = new DatePickerQuestion({
-          value: config.value,
-          key: config.key,
-          label: config.label,
-          required: config.required,
-          order: config.order,
-          controlType: config.controlType,
-          name: config.name,
-          placeholder: config.placeholder,
-          type: config.type,
-          inputClass: config.inputClass,
-          class: config.class,
-          containerClass: config.containerClass,
-          minLength: config.minLength,
-          maxLength: config.maxLength,
-          minValue: config.minValue,
-          maxValue: config.maxValue,
-          pattern: config.pattern,
-          maxLengthMessage: config.maxLengthMessage,
-          minLengthMessage: config.minLengthMessage,
-          maxValueMessage: config.maxValueMessage,
-          minValueMessage: config.minValueMessage,
-          requiredMessage: config.requiredMessage,
-          patternMessage: config.patternMessage,
-          change: config.change,
-          visible: config.visible,
-          disabled: config.disabled,
-          minDate: config.minDate,
-          maxDate: config.maxDate,
-          styleClass: config.styleClass,
-        });
-        break;
-      }
+          question = new DatePickerQuestion({
+            value: config.value,
+            key: config.key,
+            label: config.label,
+            required: config.required,
+            order: config.order,
+            controlType: config.controlType,
+            name: config.name,
+            placeholder: config.placeholder,
+            type: config.type,
+            inputClass: config.inputClass,
+            class: config.class,
+            containerClass: config.containerClass,
+            minLength: config.minLength,
+            maxLength: config.maxLength,
+            minValue: config.minValue,
+            maxValue: config.maxValue,
+            pattern: config.pattern,
+            maxLengthMessage: config.maxLengthMessage,
+            minLengthMessage: config.minLengthMessage,
+            maxValueMessage: config.maxValueMessage,
+            minValueMessage: config.minValueMessage,
+            requiredMessage: config.requiredMessage,
+            patternMessage: config.patternMessage,
+            change: config.change,
+            visible: config.visible,
+            disabled: config.disabled,
+            minDate: config.minDate,
+            maxDate: config.maxDate,
+            styleClass: config.styleClass,
+          });
+          break;
+        }
+        case Constants.DYNAMIC_FORMS_FILE: {
+          question = new FileQuestion({
+            value: config.value,
+            key: config.key,
+            label: config.label,
+            required: config.required,
+            order: config.order,
+            controlType: config.controlType,
+            name: config.name,
+            inputClass: config.inputClass,
+            class: config.class,
+            containerClass: config.containerClass,
+            minLength: config.minLength,
+            maxLength: config.maxLength,
+            minValue: config.minValue,
+            maxValue: config.maxValue,
+            maxLengthMessage: config.maxLengthMessage,
+            minLengthMessage: config.minLengthMessage,
+            maxValueMessage: config.maxValueMessage,
+            minValueMessage: config.minValueMessage,
+            requiredMessage: config.requiredMessage,
+            patternMessage: config.patternMessage,
+            change: config.change,
+            visible: config.visible,
+            disabled: config.disabled,
+            minDate: config.minDate,
+            maxDate: config.maxDate,
+            styleClass: config.styleClass,
+            options: config.options,
+          });
+          break;
+        }
         default: {
           question = new TextboxQuestion({
             value: config.value,
@@ -269,6 +304,7 @@ export class BuildQuestions {
             confirm: config.confirm,
             change: config.change,
             visible: config.visible,
+            unique: config.unique,
           });
           break;
         }

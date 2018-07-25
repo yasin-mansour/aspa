@@ -7,8 +7,10 @@ import {DashboardMenuComponent} from './components/dashboard/menu/dashboard-menu
 import {DashboardHeaderComponent} from './components/dashboard/header/dashboard-header.component';
 import {HomePageComponent} from './components/home-page/home-page.component';
 import {ClassService} from './services/class.service';
+import {FormStoreService} from './services/form-store.service';
 import {ClassesComponent} from './components/classes/classes.component';
 import {ClassComponent} from './components/class/class.component';
+import {DashboardHeaderMenuComponent} from './components/dashboard/header-menu/dashboard-header-menu.component';
 
 export {
   AdminContainerComponent,
@@ -21,5 +23,7 @@ export {
   HomePageComponent,
   ClassService,
   ClassesComponent,
-  ClassComponent
+  ClassComponent,
+  DashboardHeaderMenuComponent,
+  FormStoreService
 };

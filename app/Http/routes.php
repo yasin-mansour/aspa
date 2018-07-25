@@ -14,6 +14,7 @@
 use App\Word;
 use App\Language;
 use App\User;
+use App\Course;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
@@ -52,6 +53,9 @@ Route::post('api/class/create', 'ClassRoomController@store');
 Route::get('api/class', 'ClassRoomController@paginator');
 Route::get('api/class/{id}', 'ClassRoomController@index');
 
+Route::post('api/course/create', 'CourseController@store');
+Route::get('api/course/{id}', 'CourseController@index');
+
 Route::post('/api/user/auto_complete', function (Request $request) {
 
     $freeText = $request->input('free_text');
@@ -63,4 +67,10 @@ Route::post('/api/user/auto_complete', function (Request $request) {
         ->get();
 
     return $users;
+});
+
+
+Route::get('api/admin/resource', function (Request $request) {
+
+    return array('courses' => Course::with('classrooms')->get());
 });

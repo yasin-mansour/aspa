@@ -4,11 +4,11 @@ import {QuestionBase} from '../../../../core/classes/question-base';
 import {componentAddClass} from "../../../../utils/utils";
 
 @Component({
-  selector: 'app-dropdown',
-  templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.css']
+  selector: 'app-file-upload',
+  templateUrl: './file-upload.component.html',
+  styleUrls: ['./file-upload.component.css']
 })
-export class FormDropdownComponent implements OnInit {
+export class FormFileUploadComponent implements OnInit {
   questions: Array<QuestionBase<any>>;
   question: QuestionBase<any>;
   form: FormGroup;
@@ -17,34 +17,22 @@ export class FormDropdownComponent implements OnInit {
   }
 
   get isValid() {
-    return this.control.valid;
+    return this.form.controls[this.question.key].valid;
   }
 
   get isTouched() {
-    return this.control.touched;
+    return this.form.controls[this.question.key].touched;
   }
 
   get error() {
-    return this.control.errors;
+    return this.form.controls[this.question.key].errors;
   }
 
   get controlValue() {
-    return this.control.value;
-  }
-
-  get control() {
-    return this.form.controls[this.question.key];
+    return this.form.controls[this.question.key].value;
   }
 
   ngOnInit() {
     componentAddClass(this.renderer, this.hostElement, this.question.containerClass);
-
-    const change = this.question.change;
-    if (this.control && change) {
-      const changeCallBack = change.bind(this);
-      this.control.valueChanges.subscribe(data => {
-        changeCallBack(data, this.form, this.question, this.questions);
-      });
-    }
   }
 }

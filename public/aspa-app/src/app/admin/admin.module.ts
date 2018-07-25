@@ -16,7 +16,9 @@ import {
   HomePageComponent,
   ClassService,
   ClassesComponent,
-  ClassComponent
+  ClassComponent,
+  DashboardHeaderMenuComponent,
+  FormStoreService
 } from './';
 
 @NgModule({
@@ -29,7 +31,8 @@ import {
     DashboardHeaderComponent,
     HomePageComponent,
     ClassesComponent,
-    ClassComponent
+    ClassComponent,
+    DashboardHeaderMenuComponent
   ],
   imports: [
     SharedModule,
@@ -38,7 +41,8 @@ import {
   ],
   providers: [
     AdminService,
-    ClassService
+    ClassService,
+    FormStoreService
   ],
   bootstrap: [],
   exports: [

@@ -17,22 +17,34 @@ export class FormRadioComponent implements OnInit{
   }
 
   get isValid() {
-    return this.form.controls[this.question.key].valid;
+    return this.control.valid;
   }
 
   get isTouched() {
-    return this.form.controls[this.question.key].touched;
+    return this.control.touched;
   }
 
   get error() {
-    return this.form.controls[this.question.key].errors;
+    return this.control.errors;
   }
 
   get controlValue() {
-    return this.form.controls[this.question.key].value;
+    return this.control.value;
+  }
+
+  get control() {
+    return this.form.controls[this.question.key];
   }
 
   ngOnInit() {
     componentAddClass(this.renderer, this.hostElement, this.question.containerClass);
+
+    const change = this.question.change;
+    if (this.control && change) {
+      const changeCallBack = change.bind(this);
+      this.control.valueChanges.subscribe(data => {
+        changeCallBack(data, this.form, this.question, this.questions);
+      });
+    }
   }
 }

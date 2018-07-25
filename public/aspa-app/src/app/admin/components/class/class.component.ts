@@ -34,7 +34,6 @@ export class ClassComponent implements OnInit {
   }
 
   openPanel(event) {
-    console.log(event);
     this.op.toggle(event.event)
   }
 }

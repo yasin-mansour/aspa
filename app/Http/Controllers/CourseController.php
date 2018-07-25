@@ -22,23 +22,6 @@ class CourseController extends Controller
 
     }
 
-    public function paginator(Request $request){
-        $freeText = $request->get('free_text');
-        $all = $request->get('all');
-
-        if ($freeText && $all) {
-            $allCourses = Course::where('name', 'LIKE', '%' . $freeText . '%')->paginate(15);
-        } else if ($freeText && !$all) {
-            $allCourses = Course::where('name', 'LIKE', '%' . $freeText . '%')
-                ->whereDate('start_date', '>=', Carbon::today())->paginate(15);
-        } else if (!$all) {
-            $allCourses = Course::whereDate('start_date', '>=', Carbon::today())->paginate(15);
-        } else {
-            $allCourses = Course::paginate(15);
-        }
-
-        return $allCourses;
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -60,17 +43,8 @@ class CourseController extends Controller
         //return $request;
         $course = Course::create([
             'name' => $request['name'],
-            'start_date' => $request['start_date'],
-            'end_date' => $request['end_date'],
-            'date_exact' => $request['data_exact'] || false,
-            'price' => $request['price']
+            'description' => $request['description'],
         ]);
-        $trainers = $request->input('trainers');
-
-        foreach ($trainers as $trainer) {
-            $user = User::find($trainer['id']);
-            $user->courses()->attach($course, ['type' => true]);
-        }
 
         return $course;
     }

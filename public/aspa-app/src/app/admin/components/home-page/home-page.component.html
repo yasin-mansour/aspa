@@ -5,4 +5,29 @@
   <app-card-v1 class="col-md-3 col-sm-6" [options]="material"></app-card-v1>
 </div>
 
-<app-dialog-form [(display)]="trainerDisplay" (onCreate)="create($event)" [questions]="classQuestions"></app-dialog-form>
+<div class="home-container">
+  <div class="row">
+    <div class="col-md-6">
+      <p-table  [value]="admin.courses" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th>course-name</th>
+            <th>class-counter</th>
+            <th>material-counter</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-course>
+          <tr>
+            <td>{{course.name}}</td>
+            <td>{{course.class_counter}}</td>
+            <td>{{course.material_counter}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+
+    </div>
+  </div>
+</div>
+
+<app-dialog-form *ngIf="classQuestions" [(display)]="classDisplay" (onCreate)="create($event)" [questions]="classQuestions"></app-dialog-form>
+<app-dialog-form *ngIf="materialQuestions" [(display)]="materialDisplay" (onCreate)="addFile($event)" [questions]="materialQuestions"></app-dialog-form>

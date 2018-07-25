@@ -26,6 +26,7 @@ export class QuestionBase<T> {
   change: () => void;
   visible: boolean;
   disabled: boolean;
+  unique: () => void;
 
   constructor(options: {
                 value?: T,
@@ -55,6 +56,7 @@ export class QuestionBase<T> {
                 change?: () => void,
                 visible?: boolean,
                 disabled?: boolean,
+                unique?: () => void,
               } = {}) {
     this.value = options.value;
     this.key = options.key || '';
@@ -83,6 +85,7 @@ export class QuestionBase<T> {
     this.change = !!options.change ? options.change : null;
     this.visible = options.visible === false ? false : true;
     this.disabled = options.disabled  || false;
+    this.unique =!!options.unique ? options.unique : null;
   }
 }
 

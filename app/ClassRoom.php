@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ClassRoom extends Model
 {
     protected $fillable = [
-        'name', 'start_date', 'end_date', 'date_exact', 'price', 'unit'
+        'name', 'start_date', 'end_date', 'date_exact', 'price', 'unit', 'course_id'
     ];
 
     protected $appends = ['trainers'];
@@ -15,6 +15,11 @@ class ClassRoom extends Model
     public function users()
     {
         return $this->belongsToMany('App\user')->withPivot('type');
+    }
+
+    public function materials()
+    {
+        return $this->belongsToMany('App\material');
     }
 
     public function course()

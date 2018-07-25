@@ -10,7 +10,7 @@ class course extends Model
         'name', 'description',
     ];
 
-    public function ClassRoom()
+    public function ClassRooms()
     {
         return $this->hasMany('App\ClassRoom');
     }

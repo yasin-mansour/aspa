@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {CardV1} from '../../../shared/interfaces/card-v1.interface';
 import {AdminService} from '../../services/admin.service';
 import {ClassService} from '../../services/class.service';
+import {FormStoreService} from '../../services/form-store.service';
 
 @Component({
   selector: 'app-home-page',
@@ -51,22 +52,37 @@ export class HomePageComponent implements OnInit {
     }
   };
 
-  trainerDisplay;
+  classDisplay;
   classQuestions;
 
-  constructor(private admin: AdminService, private classService: ClassService) {
-    this.classRoom.click = this.trainerClick.bind(this);
-    this.classQuestions = this.classService.getClassQuestion();
+  materialDisplay;
+  materialQuestions;
+
+  constructor(private admin: AdminService,
+              private classService: ClassService,
+              private forms: FormStoreService) {
+    this.classRoom.click = this.classClick.bind(this);
+    this.material.click = this.materialClick.bind(this);
   }
 
   ngOnInit() {
   }
 
-  trainerClick() {
-    this.trainerDisplay = true;
+  classClick() {
+    this.classQuestions = this.classService.getClassQuestion();
+    this.classDisplay = true;
+  }
+
+  materialClick() {
+    this.materialQuestions = this.forms.newMaterial;
+    this.materialDisplay = true;
   }
 
   create(data) {
     this.classService.createClass(data).subscribe();
+  }
+
+  addFile(data) {
+    console.log(data);
   }
 }

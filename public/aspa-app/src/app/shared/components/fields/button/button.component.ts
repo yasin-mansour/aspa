@@ -54,7 +54,6 @@ export class FormButtonComponent {
   }
 
   setElement({elementName}, data) {
-    console.log(elementName);
     console.log(this.elementMapService.getElement(elementName));
   }
 

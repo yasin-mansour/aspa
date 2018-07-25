@@ -25,8 +25,7 @@ export class QuestionControlService {
 
         const validation = setValidation(question);
 
-        let value = isNaN(question.value)? '' : question.value;
-
+        const value = isNaN(question.value) && typeof question.value !== 'string' ? '' : question.value;
 
         group[question.key] = new FormControl({
           value: value,

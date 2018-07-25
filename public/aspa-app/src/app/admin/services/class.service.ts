@@ -48,14 +48,15 @@ export class ClassService {
         questions: [
           {
             value: '',
-            key: 'name',
+            key: 'course_id',
             label: 'class-name',
             inputClass: 'form-control',
             class: 'form-group',
-            containerClass: ['col-sm-12'],
+            containerClass: ['col-sm-6'],
             required: true,
             order: 1,
-            controlType: 'textbox',
+            controlType: 'dropdown',
+            options: this.getCourseOptions(this.admin.courses)
           }
         ],
         controlType: 'container'
@@ -140,6 +141,12 @@ export class ClassService {
 
   public getClass(id) {
     return this.http.get(ApiConstants.GET_CLASS + `/${id}`);
+  }
+
+  public getCourseOptions(courses) {
+    return courses.map(course => {
+      return {label: course.name, value: course.id};
+    })
   }
 }
 

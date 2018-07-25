@@ -1,6 +1,7 @@
 import {Validators} from '@angular/forms';
 import {maxValueValidator} from '../shared/validation/max-value/max-value.directive';
 import {minValueValidator} from '../shared/validation/min-value/min-value.directive';
+import {uinqueValidator} from '../shared/validation/unique/unique.directive';
 import {Constants} from './constants';
 import * as _ from 'lodash';
 
@@ -59,6 +60,9 @@ export function setValidation(question) {
     validation.push(Validators.required);
   }
 
+  if (question.unique) {
+    validation.push(uinqueValidator(question.unique, question.key, ''));
+  }
   if (question.pattern) {
     validation.push(Validators.pattern(question.pattern));
   }
@@ -66,7 +70,7 @@ export function setValidation(question) {
   if (question.maxValue !== null) {
     validation.push(maxValueValidator(question.maxValue, question.maxValueMessage));
   }
-  console.log(question.key, question.minValue);
+
   if (question.minValue !== null) {
     validation.push(minValueValidator(question.minValue, question.minValueMessage));
   }

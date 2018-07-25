@@ -63,7 +63,8 @@ class ClassRoomController extends Controller
             'start_date' => $request['start_date'],
             'end_date' => $request['end_date'],
             'date_exact' => $request['data_exact'] || false,
-            'price' => $request['price']
+            'price' => $request['price'],
+            'course_id' => $request['course_id'],
         ]);
         $trainers = $request->input('trainers');
 

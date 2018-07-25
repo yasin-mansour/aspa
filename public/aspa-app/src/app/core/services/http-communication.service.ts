@@ -19,7 +19,6 @@ export class HttpCommunicationService {
 
   post(url: string, body: any, headers?: HttpHeaders, isFormUrl = true) {
     body._token = this.clientData.token;
-    console.log(body);
     if (!headers) {
       headers = new HttpHeaders();
     }

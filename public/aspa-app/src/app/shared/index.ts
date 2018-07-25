@@ -16,6 +16,7 @@ import {FormHtmlComponent} from './components/fields/html/html.component';
 import {ErrorMessageComponent} from './components/error-message/error-message.compoent';
 import {MaxValueValidatorDirective} from './validation/max-value/max-value.directive';
 import {MinValueValidatorDirective} from './validation/min-value/min-value.directive';
+import {UinqueValidatorDirective} from './validation/unique/unique.directive';
 import {FormMaskComponent} from './components/fields/mask/mask.component';
 import {FormAutoCompleteComponent} from './components/fields/auto-complete/auto-complete.component';
 import {RegisterComponent} from './components/register/register.component';
@@ -23,6 +24,7 @@ import {CardV1Component} from './components/card-v1/card-v1.component';
 import {DialogFormComponent} from './components/dialog-form/dialog-form.component';
 import {FormRadioComponent} from './components/fields/radio/radio.component';
 import {FormDatePickerComponent} from './components/fields/date-picker/date-picker.component';
+import {FormFileUploadComponent} from './components/fields/file-upload/file-upload.component';
 
 export {
   LoginComponent,
@@ -49,5 +51,7 @@ export {
   FormAutoCompleteComponent,
   DialogFormComponent,
   FormRadioComponent,
-  FormDatePickerComponent
+  FormDatePickerComponent,
+  UinqueValidatorDirective,
+  FormFileUploadComponent
 };

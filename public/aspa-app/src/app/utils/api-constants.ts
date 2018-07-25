@@ -11,4 +11,6 @@ export class ApiConstants {
   public static readonly GET_CLASS: string = environment.API_PATH + '/class';
   public static readonly REGISTER_USER: string =  '/register';
   public static readonly LOGOUT_USER: string =  '/logout';
+  public static readonly CREATE_COURSE: string = environment.API_PATH + '/course/create';
+  public static readonly CREATE_RESOURCE: string = environment.API_PATH + '/admin/resource';
 }

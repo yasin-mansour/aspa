@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {AdminService} from '../../../services/admin.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +9,8 @@ import {Component, Input, OnInit} from '@angular/core';
 export class DashboardComponent implements OnInit {
   menuBar = true;
 
-  constructor() {
+  constructor(private admin: AdminService) {
+    this.admin.resource();
   }
 
   ngOnInit() {

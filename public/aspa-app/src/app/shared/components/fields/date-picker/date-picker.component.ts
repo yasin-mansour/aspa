@@ -10,6 +10,7 @@ import {passwordValidator} from '../../../validation/password/password.directive
   styleUrls: ['./date-picker.component.css']
 })
 export class FormDatePickerComponent implements OnInit {
+  questions: Array<QuestionBase<any>>;
   question: QuestionBase<any>;
   form: FormGroup;
 
@@ -43,7 +44,7 @@ export class FormDatePickerComponent implements OnInit {
     if (this.control && change) {
       const changeCallBack = change.bind(this);
       this.control.valueChanges.subscribe(data => {
-        changeCallBack(this.form, this.question);
+        changeCallBack(data, this.form, this.question, this.questions);
       });
     }
   }
