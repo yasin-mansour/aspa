@@ -15,7 +15,10 @@ use App\Word;
 use App\Language;
 use App\User;
 use App\Course;
+use App\Material;
+use App\ClassRoom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 Route::get('/', function () {
     return view('welcome');
@@ -61,12 +64,67 @@ Route::post('/api/user/auto_complete', function (Request $request) {
     $freeText = $request->input('free_text');
 
     $users = App\user::select('id', 'first_name', 'last_name')
-        ->Where('role_id','=',2) // 2 => admin
+        ->Where('role_id', '=', 2)// 2 => admin
         ->where('first_name', 'LIKE', '%' . $freeText . '%')
         ->orWhere('last_name', 'LIKE', '%' . $freeText . '%')
         ->get();
 
     return $users;
+});
+
+
+Route::post('/api/upload', function (Request $request) {
+    //$request->file('file')
+    //$request->request->get()
+
+    $file = $request->file('file');
+    $profile = $request->file('profile');
+
+    $originFileName = $file->getClientOriginalName();
+    $size = $file->getClientSize();
+    $extension = $file->getClientOriginalExtension();
+    $privilege = $request->request->get('privilege');
+
+    $time = time();
+
+    $savFilename = 'material-' . $time . '.' . $extension;
+    $savProfileName = null;
+
+    if ($profile) {
+        $profileExtension = $profile->getClientOriginalExtension();
+        $savProfileName = 'profile-' . $time . '.' . $profileExtension;
+        $profile->move('material', $savProfileName);
+    }
+
+
+    $file->move('material', $savFilename);
+    $material = Material::create([
+        'name' => $originFileName,
+        'size' => $size,
+        'extension' => $extension,
+        'privilege' => $privilege,
+        'path' => $savFilename,
+        'profile' => $savProfileName,
+    ]);
+
+    $courseId = $request->request->get('course');
+    if ($courseId) {
+        $course = Course::find($courseId);
+        $course->materials()->save($material);
+        $course->save();
+    }
+
+    switch ($privilege) {
+        case 'private':
+            $classId = $request->request->get('class');
+            $class = ClassRoom::find($classId);
+            $class->materials()->save($material);
+            $class->save();
+            break;
+    };
+
+    return $material;
+
 });
 
 

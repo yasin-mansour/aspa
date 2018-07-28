@@ -3,6 +3,8 @@ import {CardV1} from '../../../shared/interfaces/card-v1.interface';
 import {AdminService} from '../../services/admin.service';
 import {ClassService} from '../../services/class.service';
 import {FormStoreService} from '../../services/form-store.service';
+import {UploadService} from '../../../core/services/upload.service';
+import {forkJoin} from 'rxjs/observable/forkJoin';
 
 @Component({
   selector: 'app-home-page',
@@ -60,7 +62,8 @@ export class HomePageComponent implements OnInit {
 
   constructor(private admin: AdminService,
               private classService: ClassService,
-              private forms: FormStoreService) {
+              private forms: FormStoreService,
+              private upload: UploadService) {
     this.classRoom.click = this.classClick.bind(this);
     this.material.click = this.materialClick.bind(this);
   }
@@ -83,6 +86,22 @@ export class HomePageComponent implements OnInit {
   }
 
   addFile(data) {
-    console.log(data);
+    const files = data.files;
+
+    files.forEach(file => {
+      file.privilege = data.privilege;
+      file.class = data.class_id;
+      file.course = data.course_id;
+    });
+
+    const progress = this.upload.upload(data.files);
+    const allProgressObservables = [];
+    for (const key in progress) {
+      allProgressObservables.push(progress[key].progress);
+    }
+
+    forkJoin(allProgressObservables).subscribe(end => {
+      console.log(end);
+    });
   }
 }

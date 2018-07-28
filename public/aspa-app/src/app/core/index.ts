@@ -12,6 +12,7 @@ import {RegisterGuard} from './guards/register-guard';
 import {AuthGuard} from './guards/auth-guard';
 import {LocalizationService} from './services/localization.service';
 import {ClassService} from './services/class.service';
+import {UploadService} from './services/upload.service';
 
 export {
   HttpCommunicationService,
@@ -27,5 +28,6 @@ export {
   AdminGuard,
   ClientGuard,
   RegisterGuard,
-  ClassService
+  ClassService,
+  UploadService
 };

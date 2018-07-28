@@ -18,13 +18,13 @@ export class HttpCommunicationService {
   }
 
   post(url: string, body: any, headers?: HttpHeaders, isFormUrl = true) {
-    body._token = this.clientData.token;
+
     if (!headers) {
       headers = new HttpHeaders();
     }
     this.setHeaders(headers);
 
-    const options = {headers: headers}
+    const options = {headers: headers};
     body = isFormUrl ? this.objToFormUrlencoded(body) : body;
     return this.http.post(this.buildUrl(url), body, options)
       .map((data: HttpResponse<any>) => this.handleResponse(data))

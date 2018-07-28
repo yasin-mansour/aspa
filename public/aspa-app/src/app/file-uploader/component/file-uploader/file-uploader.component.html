@@ -1,16 +1,51 @@
 <div class="row">
   <div class="col-md-12">
-    <button (click)="input.click()" [disabled]="disabled">+</button>
-    <input style="display: none" #input (change)="addFiles(input)" type="file">
+    <input style="display: none" #input (change)="addFiles(input)" accept="application/pdf" type="file" multiple/>
+    <input style="display: none" #input_profile (change)="setFileProfile(input_profile)"
+           accept="image/x-png,image/gif,image/jpeg" type="file"/>
   </div>
 </div>
 <div class="row">
   <div class="col-md-12">
-    <ul>
+    <ul class="file-menu-item">
+      <li class="flex-row" style="background: #adaaaa;" class="file-header">
+        <div>
+          <button type="button" (click)="input.click()" class="btn btn-info">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="flex-1 header">
+        </div>
+      </li>
       <ng-container *ngFor="let file of files;let i = index">
         <li *ngIf="!file.deleted">
-          {{file | json}}
-          <button (click)="deleteFile(i)" [disabled]="disabled">*</button>
+          <div class="flex-row">
+            <div class="flex-1 file-name">
+              {{file.name}}
+            </div>
+            <div>
+              <ul class="menu-lest">
+                <li *ngIf="file.profile">
+                  <img style="max-height: 30px" [src]="file.src"/>
+                </li>
+                <li class="menu-item" *ngIf="file.profile">
+                  <a class="menu-anchor" (click)="removeProfile(i)">
+                    <i class="fa fa-eye-slash menu-icon" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="menu-item" *ngIf="!file.profile">
+                  <a class="menu-anchor" (click)="openProfile(i, input_profile)">
+                    <i class="fa fa-picture-o menu-icon" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a class="menu-anchor" (click)="deleteFile(i)">
+                    <i class="fa fa-times menu-icon" aria-hidden="true"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </li>
       </ng-container>
     </ul>

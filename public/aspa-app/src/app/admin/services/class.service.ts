@@ -48,6 +48,17 @@ export class ClassService {
         questions: [
           {
             value: '',
+            key: 'name',
+            label: 'class-name',
+            inputClass: 'form-control',
+            class: 'form-group',
+            containerClass: ['col-sm-6'],
+            required: true,
+            order: 1,
+            controlType: 'textbox',
+          },
+          {
+            value: '',
             key: 'course_id',
             label: 'class-name',
             inputClass: 'form-control',

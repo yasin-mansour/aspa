@@ -1,12 +1,7 @@
 .menu-lest{
-  direction: rtl;
   padding: 0;
   margin: 0;
   height: 100%;
-}
-
-.rtl .menu-lest{
-  direction: ltr;
 }
 
 .menu-lest li{

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpRequest, HttpEventType, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpRequest, HttpEventType, HttpResponse, HttpHeaders} from '@angular/common/http';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
 import {environment} from '../../../environments/environment';
@@ -11,7 +11,7 @@ export class UploadService {
   constructor(private http: HttpClient) {
   }
 
-  public upload(files: Array<any>): { [key: string]: Observable<number> } {
+  public upload(files: Array<any>, ): { [key: string]: {progress: Observable<number>} } {
     // this will be the our resulting map
     const status = {};
 
@@ -19,6 +19,10 @@ export class UploadService {
       // create a new multipart-form for every file
       const formData: FormData = new FormData();
       formData.append('file', file.data, file.name);
+      formData.append('profile', file.profile);
+      formData.append('privilege', file.privilege);
+      formData.append('course', file.course || null);
+      formData.append('class', file.class || null);
 
       // create a http-post request and pass the form
       // tell it to report the upload progress

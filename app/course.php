@@ -14,4 +14,9 @@ class course extends Model
     {
         return $this->hasMany('App\ClassRoom');
     }
+
+    public function materials()
+    {
+        return $this->belongsToMany('App\material');
+    }
 }

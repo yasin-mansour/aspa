@@ -3,4 +3,6 @@ export interface File {
   data: object;
   deleted: boolean;
   path: string;
+  profile: object;
+  src: object;
 }

@@ -15,7 +15,8 @@ import {
   AdminGuard,
   ClientGuard,
   RegisterGuard,
-  ClassService
+  ClassService,
+  UploadService
 } from './';
 
 @NgModule({
@@ -41,7 +42,8 @@ import {
     },
     RoutingRegisterService,
     LocalizationService,
-    ClassService
+    ClassService,
+    UploadService
   ],
   bootstrap: []
 })

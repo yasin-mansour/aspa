@@ -1,4 +1,4 @@
-import {Component, OnInit, forwardRef, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, forwardRef, Input, Output, EventEmitter, ViewChild} from '@angular/core';
 import {FormControl, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS} from '@angular/forms';
 import {File} from '../../interface/file-uploader.interface';
 
@@ -25,6 +25,7 @@ export class FileUploaderComponent implements ControlValueAccessor {
   // Allow the input to be disabled, and when it is make it somewhat transparent.
   @Input() disabled = false;
   @Output() change = new EventEmitter();
+  @ViewChild('input_profile') inputProfile;
   // Placeholders for the callbacks which are later provided
   // by the Control Value Accessor
   private onTouchedCallback: () => void = noop;
@@ -37,8 +38,8 @@ export class FileUploaderComponent implements ControlValueAccessor {
 
   // set accessor including call the onchange callback
   set value(v: Array<File>) {
-      this.files = v;
-      this.change.emit(v);
+    this.files = v;
+    this.change.emit(v);
   }
 
   get opacity() {
@@ -76,9 +77,9 @@ export class FileUploaderComponent implements ControlValueAccessor {
   }
 
   addFiles(input) {
-    const files: Array<File> = [];
+    const files: Array<File> = this.files || [];
     for (const file of input.files) {
-      files.push({name: file.name, data: file, deleted: false, path: ''});
+      files.push({name: file.name, data: file, deleted: false, path: '', profile: null, src: null});
     }
     this.writeValue(files);
   }
@@ -91,5 +92,37 @@ export class FileUploaderComponent implements ControlValueAccessor {
       file.deleted = true;
     }
     this.writeValue(this.files);
+  }
+
+  setFileProfile(input) {
+    if (input.files && input.files.length > 0) {
+      this.selectedFiles.profile = input.files[0];
+      this.setImage(input.files[0], this.selectedFiles);
+    }
+  }
+
+  openProfile(index, input) {
+    this.selectedFiles = this.files[index];
+    input.click();
+  }
+
+  removeProfile(index) {
+    if (this.files[index]) {
+      this.files[index].profile = null;
+      this.files[index].src = null;
+    }
+  }
+
+  setImage(file, object) {
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        object.src = e.target['result'];
+      }
+
+      reader.readAsDataURL(file);
+    }
   }
 }

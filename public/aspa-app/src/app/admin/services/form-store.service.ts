@@ -37,35 +37,6 @@ export class FormStoreService {
         questions: [
           {
             value: '',
-            key: 'name',
-            label: 'class-name',
-            inputClass: 'form-control',
-            class: 'form-group',
-            containerClass: ['col-sm-6'],
-            required: true,
-            order: 1,
-            controlType: 'textbox',
-          },
-          {
-            value: '',
-            key: 'course_id',
-            label: 'class-name',
-            inputClass: 'form-control',
-            class: 'form-group',
-            containerClass: ['col-sm-6'],
-            required: true,
-            order: 1,
-            controlType: 'dropdown',
-            options: this.getCourseOptions(this.admin.courses)
-          }
-        ],
-        controlType: 'container'
-      },
-      {
-        class: 'row',
-        questions: [
-          {
-            value: '',
             key: 'description',
             label: 'class-name',
             inputClass: 'form-control',
@@ -99,16 +70,6 @@ export class FormStoreService {
               {label: 'protected', value: 'protected'},
               {label: 'private', value: 'private'}],
             change: (data, form, question, questions) => {
-              updateValidation(form, 'course_id', questions, 'course_class.course_id', (q) => {
-                q.required = data === 'protected' || data === 'private';
-                if (!q.required) {
-                  form.controls['course_id'].disable();
-                } else {
-                  form.controls['course_id'].enable();
-                }
-
-                return q;
-              });
 
               updateValidation(form, 'class_id', questions, 'course_class.class_id', (q) => {
                 q.required = data === 'private';
@@ -138,7 +99,7 @@ export class FormStoreService {
             containerClass: ['col-sm-6'],
             order: 1,
             controlType: 'dropdown',
-            disabled: true,
+            required: true,
             options: this.getCourseOptions(this.admin.courses),
             change: (data, form, question, questions) => {
               if (data) {
