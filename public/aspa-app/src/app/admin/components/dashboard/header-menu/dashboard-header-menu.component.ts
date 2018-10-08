@@ -10,13 +10,19 @@ import {AdminService} from '../../../services/admin.service';
 export class DashboardHeaderMenuComponent implements OnInit {
 
   newCourse: { question: any, display: boolean };
+  newCategory: { question: any, display: boolean };
 
   constructor(private formStore: FormStoreService,
               private admin: AdminService) {
     this.newCourse = {
       question: formStore.newCourse,
       display: false
-    }
+    };
+
+    this.newCategory = {
+      question: formStore.newCategory,
+      display: false
+    };
   }
 
   ngOnInit() {
@@ -25,6 +31,12 @@ export class DashboardHeaderMenuComponent implements OnInit {
   createCourse(event) {
     this.admin.addCourse(event).subscribe(data => {
      this.admin.course = data;
+    });
+  }
+
+  createCategory(event) {
+    this.admin.addCategory(event).subscribe(data => {
+      this.admin.course = data;
     });
   }
 }

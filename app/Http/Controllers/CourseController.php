@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Course;
+use App\Category;
 use App\User;
 use Carbon\Carbon;
 
@@ -45,6 +46,14 @@ class CourseController extends Controller
             'name' => $request['name'],
             'description' => $request['description'],
         ]);
+
+        $categoryId = $request->request->get('category_id');
+
+        if($categoryId){
+            $category = Category::find($categoryId);
+            $category->courses()->save($course);
+            $category->save();
+        }
 
         return $course;
     }

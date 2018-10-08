@@ -44,7 +44,6 @@ export function findQuestion(questions, path) {
   return question;
 }
 
-
 export function updateValidation(form, key, questions, path, updateQuestion: (question) => {}) {
 
   const control = form.controls[key];
@@ -54,6 +53,7 @@ export function updateValidation(form, key, questions, path, updateQuestion: (qu
   control.setValidators(validation);
   control.updateValueAndValidity({emitEvent: false});
 }
+
 export function setValidation(question) {
   const validation = [];
   if (question.required) {
@@ -87,4 +87,10 @@ export function setValidation(question) {
   }
 
   return validation;
+}
+
+export function updateArray(oldArray, newArray) {
+  oldArray.splice(0, oldArray.length);
+  oldArray.push(...newArray);
+  return oldArray;
 }

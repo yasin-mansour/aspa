@@ -37,6 +37,26 @@ export class FormStoreService {
         questions: [
           {
             value: '',
+            key: 'category_id',
+            label: 'category-name',
+            inputClass: 'form-control',
+            class: 'form-group',
+            containerClass: ['col-sm-12'],
+            required: true,
+            order: 1,
+            controlType: 'dropdown',
+            optionLabel: 'name',
+            optionValue: 'id',
+            options: this.admin.categories
+          }
+        ],
+        controlType: 'container'
+      },
+      {
+        class: 'row',
+        questions: [
+          {
+            value: '',
             key: 'description',
             label: 'class-name',
             inputClass: 'form-control',
@@ -44,6 +64,29 @@ export class FormStoreService {
             containerClass: ['col-sm-12'],
             order: 1,
             controlType: 'textbox'
+          }
+        ],
+        controlType: 'container'
+      }
+    ];
+  }
+
+  get newCategory() {
+    return [
+      {
+        class: 'row',
+        questions: [
+          {
+            value: '',
+            key: 'name',
+            label: 'category-name',
+            inputClass: 'form-control',
+            class: 'form-group',
+            containerClass: ['col-sm-12'],
+            required: true,
+            order: 1,
+            controlType: 'textbox',
+            unique: this.admin.getCategory.bind(this.admin),
           }
         ],
         controlType: 'container'
@@ -82,6 +125,37 @@ export class FormStoreService {
                 return q;
               });
             }
+          }
+        ],
+        controlType: 'container'
+      },
+      {
+        class: 'row',
+        key: 'course_class',
+        questions: [
+          {
+            value: '',
+            key: 'display_name',
+            label: 'material-display-name',
+            inputClass: 'form-control',
+            class: 'form-group',
+            containerClass: ['col-sm-6'],
+            order: 1,
+            controlType: 'text',
+            required: true,
+          },
+          {
+            value: '',
+            key: 'category_id',
+            label: 'category-name',
+            inputClass: 'form-control',
+            class: 'form-group',
+            containerClass: ['col-sm-6'],
+            order: 1,
+            controlType: 'dropdown',
+            optionLabel: 'name',
+            optionValue: 'id',
+            options: this.admin.categories
           }
         ],
         controlType: 'container'

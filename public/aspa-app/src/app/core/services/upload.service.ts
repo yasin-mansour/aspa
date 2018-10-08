@@ -21,6 +21,8 @@ export class UploadService {
       formData.append('file', file.data, file.name);
       formData.append('profile', file.profile);
       formData.append('privilege', file.privilege);
+      formData.append('category_id', file.category_id || null);
+      formData.append('display_name', file.display_name || null);
       formData.append('course', file.course || null);
       formData.append('class', file.class || null);
 

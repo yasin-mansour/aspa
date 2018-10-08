@@ -1,13 +1,18 @@
 import {Injectable} from '@angular/core';
 import {CanActivate, RouterStateSnapshot} from '@angular/router';
 import {AuthService} from '../services/auth.service';
+import {ResourceService} from '../services/resource.service';
 import {Router} from '@angular/router';
 
 @Injectable()
 export class AppGuard implements CanActivate {
-  constructor( private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService,
+              private router: Router,
+              private resource: ResourceService) {
   }
+
   isLoaded = false;
+
   canActivate(_, state: RouterStateSnapshot): Promise<boolean> {
     return new Promise(resolve => {
 
@@ -17,7 +22,10 @@ export class AppGuard implements CanActivate {
         return;
       }
 
-      this.authService.getToken()
+      const resource = this.resource.resource();
+      const token = this.authService.getToken();
+
+      Promise.all([resource, token])
         .then(menuGroups => {
           this.isLoaded = true;
           resolve(false);

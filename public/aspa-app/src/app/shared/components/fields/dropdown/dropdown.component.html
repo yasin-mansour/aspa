@@ -5,8 +5,8 @@
   <label>{{ question.label }}{{question.required? '*' : ''}}</label>
   <select [formControlName]="question.key"
           [class]="question.inputClass">
-    <option *ngFor="let option of question.options" value="{{option.value}}">
-      {{ option.label }}
+    <option *ngFor="let option of question.options" value="{{option[question.optionValue]}}">
+      {{ option[question.optionLabel] }}
     </option>
   </select>
 </div>

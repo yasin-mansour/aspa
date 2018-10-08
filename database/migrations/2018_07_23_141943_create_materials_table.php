@@ -14,6 +14,7 @@ class CreateMaterialsTable extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('display_name');
             $table->string('name');
             $table->decimal('size', 12);
             $table->string('extension');
@@ -21,6 +22,7 @@ class CreateMaterialsTable extends Migration
             $table->string('privilege');
             $table->string('profile');
             $table->string('description');
+            $table->string('category_id');
             $table->timestamps();
         });
     }

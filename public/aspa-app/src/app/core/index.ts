@@ -13,6 +13,7 @@ import {AuthGuard} from './guards/auth-guard';
 import {LocalizationService} from './services/localization.service';
 import {ClassService} from './services/class.service';
 import {UploadService} from './services/upload.service';
+import {ResourceService} from './services/resource.service';
 
 export {
   HttpCommunicationService,
@@ -29,5 +30,6 @@ export {
   ClientGuard,
   RegisterGuard,
   ClassService,
-  UploadService
+  UploadService,
+  ResourceService
 };

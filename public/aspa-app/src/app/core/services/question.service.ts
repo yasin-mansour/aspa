@@ -47,6 +47,8 @@ export class BuildQuestions {
             containerClass: config.containerClass,
             change: config.change,
             disabled: config.disabled,
+            optionLabel: config.optionLabel,
+            optionValue: config.optionValue,
           });
           break;
         }

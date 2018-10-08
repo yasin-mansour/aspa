@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ResourceService} from '../../../core/services/resource.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() {
+  constructor(private resource: ResourceService) {
   }
 
   ngOnInit() {

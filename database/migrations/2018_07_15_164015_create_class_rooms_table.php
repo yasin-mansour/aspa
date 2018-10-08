@@ -15,8 +15,8 @@ class CreateClassRoomsTable extends Migration
         Schema::create('class_rooms', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->boolean('date_exact');
             $table->integer('price');
             $table->integer('course_id');

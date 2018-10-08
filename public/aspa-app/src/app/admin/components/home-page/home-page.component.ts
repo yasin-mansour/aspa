@@ -85,16 +85,17 @@ export class HomePageComponent implements OnInit {
     this.classService.createClass(data).subscribe();
   }
 
-  addFile(data) {
-    const files = data.files;
+  addFile({files, privilege, class_id, course_id, category_id, display_name}) {
 
     files.forEach(file => {
-      file.privilege = data.privilege;
-      file.class = data.class_id;
-      file.course = data.course_id;
+      file.privilege = privilege;
+      file.class = class_id;
+      file.course = course_id;
+      file.category_id = category_id;
+      file.display_name = display_name;
     });
 
-    const progress = this.upload.upload(data.files);
+    const progress = this.upload.upload(files);
     const allProgressObservables = [];
     for (const key in progress) {
       allProgressObservables.push(progress[key].progress);

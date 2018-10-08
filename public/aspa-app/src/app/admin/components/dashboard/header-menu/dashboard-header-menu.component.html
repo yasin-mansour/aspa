@@ -2,6 +2,11 @@
   <li class="flex-1">
   </li>
   <li class="menu-item">
+    <a class="menu-anchor" (click)="newCategory.display = true">
+      <i class="fa fa-cubes menu-icon" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li class="menu-item">
     <a class="menu-anchor" (click)="newCourse.display = true">
       <i class="fa fa-flag-o menu-icon" aria-hidden="true"></i>
     </a>
@@ -9,4 +14,5 @@
 </ul>
 
 <app-dialog-form [(display)]="newCourse.display" (onCreate)="createCourse($event)" [questions]="newCourse.question"></app-dialog-form>
+<app-dialog-form [(display)]="newCategory.display" (onCreate)="createCategory($event)" [questions]="newCategory.question"></app-dialog-form>
 

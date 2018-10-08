@@ -3,10 +3,13 @@ import {QuestionBase} from './question-base';
 export class DropdownQuestion extends QuestionBase<string> {
   controlType = 'dropdown';
   options: { key: string, value: string }[] = [];
-
+  optionLabel;
+  optionValue;
   constructor(options: {} = {}) {
     super(options);
     this.options = options['options'] || [];
+    this.optionLabel = options['optionLabel'] || 'label';
+    this.optionValue = options['optionValue'] || 'value';
   }
 }
 

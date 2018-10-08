@@ -77,7 +77,7 @@ export class ClassService {
         class: 'row',
         questions: [
           {
-            value: '',
+            value: null,
             key: 'start_date',
             label: 'start-date',
             class: 'form-group',
@@ -88,7 +88,7 @@ export class ClassService {
             controlType: 'date_picker',
           },
           {
-            value: '',
+            value: null,
             key: 'end_date',
             label: 'end-date',
             class: 'form-group',
@@ -145,8 +145,14 @@ export class ClassService {
   }
 
   public createClass(data) {
-    data['start_date'] = moment(data['start_date']).format('YYYY-MM-DD');
-    data['end_date'] = moment(data['end_date']).format('YYYY-MM-DD');
+    if (data['start_date'] && data['start_date'] !== '') {
+      data['start_date'] = moment(data['start_date']).format('YYYY-MM-DD');
+    }
+
+
+    if (data['end_date'] && data['end_date'] !== '') {
+      data['end_date'] = moment(data['end_date']).format('YYYY-MM-DD');
+    }
     return this.http.post(ApiConstants.CREATE_CLASS, data, null, false);
   }
 
