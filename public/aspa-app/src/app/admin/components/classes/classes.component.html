@@ -1,5 +1,5 @@
 <p-table [value]="classes" [lazy]="true" (onLazyLoad)="getCourses($event)" [paginator]="true" [loading]="loading"
-         [rows]="paginate.per_page" [totalRecords]="paginate.total">
+         [rows]="paginate['per_page']" [totalRecords]="paginate['total']">
   <ng-template pTemplate="header">
     <tr>
       <th>class-name</th>

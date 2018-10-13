@@ -26,6 +26,8 @@ import {FormRadioComponent} from './components/fields/radio/radio.component';
 import {FormDatePickerComponent} from './components/fields/date-picker/date-picker.component';
 import {FormFileUploadComponent} from './components/fields/file-upload/file-upload.component';
 import {LocalizeInputComponent} from './components/localize-input/localize-input.component';
+import {PasswordValidatorDirective} from './validation/password/password.directive';
+
 
 export {
   LoginComponent,
@@ -55,5 +57,6 @@ export {
   FormDatePickerComponent,
   UinqueValidatorDirective,
   FormFileUploadComponent,
-  LocalizeInputComponent
+  LocalizeInputComponent,
+  PasswordValidatorDirective
 };

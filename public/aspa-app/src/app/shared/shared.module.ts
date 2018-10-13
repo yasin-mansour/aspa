@@ -48,6 +48,7 @@ import {
   UinqueValidatorDirective,
   FormFileUploadComponent,
   LocalizeInputComponent,
+  PasswordValidatorDirective,
 } from './';
 import {HttpModule} from '@angular/http';
 
@@ -80,7 +81,8 @@ import {HttpModule} from '@angular/http';
     FormDatePickerComponent,
     UinqueValidatorDirective,
     FormFileUploadComponent,
-    LocalizeInputComponent
+    LocalizeInputComponent,
+    PasswordValidatorDirective
   ],
   imports: [
     HttpModule,
@@ -141,7 +143,8 @@ import {HttpModule} from '@angular/http';
     ScheduleModule,
     OverlayPanelModule,
     FileUploaderModule,
-    LocalizeInputComponent
+    LocalizeInputComponent,
+    PasswordValidatorDirective
   ],
   providers: [],
   bootstrap: [],

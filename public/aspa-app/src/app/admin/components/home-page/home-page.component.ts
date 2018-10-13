@@ -60,7 +60,7 @@ export class HomePageComponent implements OnInit {
   materialDisplay;
   materialQuestions;
 
-  constructor(private admin: AdminService,
+  constructor(public admin: AdminService,
               private classService: ClassService,
               private forms: FormStoreService,
               private upload: UploadService) {
