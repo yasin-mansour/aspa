@@ -1,0 +1,9 @@
+.home-container {
+  overflow: scroll;
+  height: 100%;
+  position: relative
+}
+
+.home-container .home-section{
+  min-height: 100%;
+}

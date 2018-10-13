@@ -22,7 +22,7 @@ export class AppGuard implements CanActivate {
         return;
       }
 
-      const resource = this.resource.resource();
+      const resource = this.resource.getResource();
       const token = this.authService.getToken();
 
       Promise.all([resource, token])

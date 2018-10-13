@@ -149,9 +149,17 @@ Route::get('api/admin/resource', function (Request $request) {
 
 Route::get('api/resource', function (Request $request) {
 
-    $course = Course::with(array('classrooms' => function($query)
+    return Category::with(['courses', 'materials'])->get();
+
+    /*
+    , 'courses.classrooms'=> function($query)
+    {
+        $query->where('date_exact','=', false)->orWhere('end_date', '>=',Carbon::now())->orWhere('end_date','=',null);
+    }*/
+
+    /*$course = Course::with(array('classrooms' => function($query)
     {
         $query->where('date_exact','=', false)->orWhere('end_date', '>=',Carbon::now())->orWhere('end_date','=',null);
     }))->get();
-    return array('courses' => $course) ;//Course::with('classrooms')->where('date_exact','=', false)->orWhere('end_date', '>=',Carbon::now())->orWhere('end_date','=',null)->get());
+    return array('courses' => $course) ;*///Course::with('classrooms')->where('date_exact','=', false)->orWhere('end_date', '>=',Carbon::now())->orWhere('end_date','=',null)->get());
 });

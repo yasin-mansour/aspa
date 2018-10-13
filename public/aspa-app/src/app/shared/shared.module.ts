@@ -46,7 +46,8 @@ import {
   FormRadioComponent,
   FormDatePickerComponent,
   UinqueValidatorDirective,
-  FormFileUploadComponent
+  FormFileUploadComponent,
+  LocalizeInputComponent,
 } from './';
 import {HttpModule} from '@angular/http';
 
@@ -78,7 +79,8 @@ import {HttpModule} from '@angular/http';
     FormRadioComponent,
     FormDatePickerComponent,
     UinqueValidatorDirective,
-    FormFileUploadComponent
+    FormFileUploadComponent,
+    LocalizeInputComponent
   ],
   imports: [
     HttpModule,
@@ -106,6 +108,8 @@ import {HttpModule} from '@angular/http';
   exports: [
     CommonModule,
     AngularSplitModule,
+    FormsModule,
+    ReactiveFormsModule,
     LoginComponent,
     AuthComponent,
     DynamicFormComponent,
@@ -136,7 +140,8 @@ import {HttpModule} from '@angular/http';
     ButtonModule,
     ScheduleModule,
     OverlayPanelModule,
-    FileUploaderModule
+    FileUploaderModule,
+    LocalizeInputComponent
   ],
   providers: [],
   bootstrap: [],

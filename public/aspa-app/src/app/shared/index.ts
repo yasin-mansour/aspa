@@ -25,6 +25,7 @@ import {DialogFormComponent} from './components/dialog-form/dialog-form.componen
 import {FormRadioComponent} from './components/fields/radio/radio.component';
 import {FormDatePickerComponent} from './components/fields/date-picker/date-picker.component';
 import {FormFileUploadComponent} from './components/fields/file-upload/file-upload.component';
+import {LocalizeInputComponent} from './components/localize-input/localize-input.component';
 
 export {
   LoginComponent,
@@ -53,5 +54,6 @@ export {
   FormRadioComponent,
   FormDatePickerComponent,
   UinqueValidatorDirective,
-  FormFileUploadComponent
+  FormFileUploadComponent,
+  LocalizeInputComponent
 };
