@@ -15,8 +15,8 @@ class CreateQualificationsTable extends Migration
         Schema::create('qualifications', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('major');
-            $table->string('issue_date');
+            $table->string('major')->nullable();
+            $table->string('issue_date')->nullable();
             $table->integer('user_id')->index()->unsigned();
             $table->timestamps();
         });

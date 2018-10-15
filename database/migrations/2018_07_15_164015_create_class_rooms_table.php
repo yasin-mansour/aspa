@@ -18,7 +18,7 @@ class CreateClassRoomsTable extends Migration
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->boolean('date_exact');
-            $table->integer('price');
+            $table->integer('price')->nullable();
             $table->integer('course_id');
             $table->string('unit')->default('USD');
             $table->timestamps();

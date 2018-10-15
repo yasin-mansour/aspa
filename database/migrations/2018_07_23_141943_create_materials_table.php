@@ -20,8 +20,8 @@ class CreateMaterialsTable extends Migration
             $table->string('extension');
             $table->string('path');
             $table->string('privilege');
-            $table->string('profile');
-            $table->string('description');
+            $table->string('profile')->nullable();
+            $table->string('description')->nullable();
             $table->string('category_id');
             $table->timestamps();
         });

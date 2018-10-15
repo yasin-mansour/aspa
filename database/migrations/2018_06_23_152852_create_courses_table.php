@@ -16,7 +16,7 @@ class CreateCoursesTable extends Migration
             $table->increments('id')->index()->unsigned();
             $table->string('name');
             $table->string('path');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->string('category_id');
             $table->timestamps();
         });
