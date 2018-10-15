@@ -27,7 +27,7 @@ class CreateLanguageWordTable extends Migration
         $role = Role::create(['name'=>'user']);
         $role = Role::create(['name'=>'admin']);
         $language1 = Language::create(['name'=>'en', 'direction'=> 1]);
-        $language2 = Language::create(['name'=>'ar']);
+        $language2 = Language::create(['name'=>'ar', 'direction'=> 0]);
         $word1 = Word::create(['key'=>'page']);
         $word2 = Word::create(['key'=>'title']);
         $word1->languages()->attach($language1, ['translation' => 'page']);

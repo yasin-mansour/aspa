@@ -32,7 +32,7 @@ export class AdminContainerComponent implements OnInit {
       },
       [this.LOCALIZATION_KEY]: {
         size: 30,
-        visible: false
+        visible: true
       },
       [this.LEFT_SPLIT_KEY]: {
         size: 80,
