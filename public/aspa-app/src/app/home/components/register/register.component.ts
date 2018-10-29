@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {issueDateList} from "../../../utils/utils";
 import {Constants} from "../../../utils/constants";
+import {HttpCommunicationService, ErrorHandlerService} from '../../../core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +13,9 @@ export class RegisterComponent implements OnInit {
 
   registerConfig = this.getLoginJson();
 
-  constructor() {
+  constructor(private http: HttpCommunicationService,
+              private errorHandler: ErrorHandlerService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -372,13 +376,8 @@ export class RegisterComponent implements OnInit {
             type: 'request',
             requestType: 'post',
             uri: '/register',
-            isAbsoluteUri: false
-          }
-        ],
-        responseActions: [
-          {
-            type: 'redirect',
-            uri: 'admin',
+            isAbsoluteUri: false,
+            defaultResponse: this.handleResponse.bind(this)
           }
         ]
       }
@@ -386,5 +385,18 @@ export class RegisterComponent implements OnInit {
 
     return json;
 
+  }
+
+  handleResponse(subscribe) {
+    subscribe.subscribe(response => {
+      this.http.setUser(response);
+      if (this.http.user && this.http.user.role_type === 'admin') {
+        this.router.navigate(['/admin']);
+      } else {
+        this.router.navigate(['/']);
+      }
+    }, err => {
+        this.errorHandler.handleError(err);
+    });
   }
 }

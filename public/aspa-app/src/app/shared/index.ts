@@ -19,7 +19,6 @@ import {MinValueValidatorDirective} from './validation/min-value/min-value.direc
 import {UinqueValidatorDirective} from './validation/unique/unique.directive';
 import {FormMaskComponent} from './components/fields/mask/mask.component';
 import {FormAutoCompleteComponent} from './components/fields/auto-complete/auto-complete.component';
-import {RegisterComponent} from './components/register/register.component';
 import {CardV1Component} from './components/card-v1/card-v1.component';
 import {DialogFormComponent} from './components/dialog-form/dialog-form.component';
 import {FormRadioComponent} from './components/fields/radio/radio.component';
@@ -27,7 +26,8 @@ import {FormDatePickerComponent} from './components/fields/date-picker/date-pick
 import {FormFileUploadComponent} from './components/fields/file-upload/file-upload.component';
 import {LocalizeInputComponent} from './components/localize-input/localize-input.component';
 import {PasswordValidatorDirective} from './validation/password/password.directive';
-
+import {LoaderComponent} from './components/loader/loader.component';
+import {ErrorHandlerComponent} from './components/error-handler/error-handler.component';
 
 export {
   LoginComponent,
@@ -49,7 +49,6 @@ export {
   MaxValueValidatorDirective,
   MinValueValidatorDirective,
   FormMaskComponent,
-  RegisterComponent,
   CardV1Component,
   FormAutoCompleteComponent,
   DialogFormComponent,
@@ -58,5 +57,7 @@ export {
   UinqueValidatorDirective,
   FormFileUploadComponent,
   LocalizeInputComponent,
-  PasswordValidatorDirective
+  PasswordValidatorDirective,
+  LoaderComponent,
+  ErrorHandlerComponent
 };

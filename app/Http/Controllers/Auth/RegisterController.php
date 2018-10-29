@@ -130,4 +130,9 @@ class RegisterController extends Controller
 
         return $user;
     }
+
+    public function showRegistrationForm()
+    {
+        return array('logged_in' => false);
+    }
 }

@@ -3,13 +3,17 @@ import {SharedModule} from '../shared/shared.module';
 import {HomeRoutingModule} from './home.routing.module';
 import {
   HomeContainerComponent,
-  HomeMenuComponent
+  HomeMenuComponent,
+  RegisterComponent,
+  WelcomePageComponent
 } from './';
 
 @NgModule({
   declarations: [
     HomeContainerComponent,
-    HomeMenuComponent
+    HomeMenuComponent,
+    RegisterComponent,
+    WelcomePageComponent
   ],
   imports: [
     SharedModule,

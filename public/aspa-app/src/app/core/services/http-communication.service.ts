@@ -17,7 +17,10 @@ export class HttpCommunicationService {
 
   }
 
-  post(url: string, body: any, headers?: HttpHeaders, isFormUrl = true) {
+  post(url: string, body: any, headers?: HttpHeaders, isFormUrl = true, showLoader = true) {
+    if (showLoader) {
+      this.showLoader();
+    }
 
     if (!headers) {
       headers = new HttpHeaders();
@@ -27,7 +30,10 @@ export class HttpCommunicationService {
     const options = {headers: headers};
     body = isFormUrl ? this.objToFormUrlencoded(body) : body;
     return this.http.post(this.buildUrl(url), body, options)
-      .map((data: HttpResponse<any>) => this.handleResponse(data))
+      .map((data: HttpResponse<any>) => {
+        this.hideLoader();
+        return this.handleResponse(data);
+      })
       .catch(this.handleErrors());
   }
 
@@ -39,8 +45,7 @@ export class HttpCommunicationService {
 
   public handleErrors() {
     return (res: HttpResponse<any>) => {
-
-
+      this.hideLoader();
       return Observable.throw(res);
     };
   }
@@ -57,8 +62,13 @@ export class HttpCommunicationService {
     return res;
   }
 
+  public setClientData(data) {
+    this.clientData = data;
+  }
+
   public setUser(user) {
-    this.clientData = user;
+    this.clientData = this.clientData || {};
+    this.clientData.user = user;
   }
 
   objToFormUrlencoded(object) {
@@ -84,6 +94,12 @@ export class HttpCommunicationService {
       });
     }
     return {params};
+  }
+
+  showLoader() {
+  }
+
+  hideLoader() {
   }
 }
 

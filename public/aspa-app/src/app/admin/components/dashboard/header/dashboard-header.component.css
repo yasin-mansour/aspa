@@ -2,7 +2,6 @@
   top: 0;
   left: 0;
   z-index: 999;
-  height: 64px;
   width: 100%;
   background-color: #2d3f47;
   background-image: -webkit-gradient(linear, left top, right top, from(#2d3f47), to(#2d3f47));
@@ -12,18 +11,36 @@
   background-image: -o-linear-gradient(to right, #2d3f47, #2d3f47);
   background-image: linear-gradient(to right, #2d3f47, #2d3f47);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2d3f47', endColorstr='#2d3f47', gradientType='1');
+  padding: 0 !important;
 }
 
-.header-icon{
+.header-icon {
   font-size: 24px;
   float: left;
   color: #f4f4f4;
-  height: 64px;
-  width: 64px;
+  height: 40px;
+  width: 40px;
   text-align: center;
-  line-height: 64px;
+  line-height: 40px;
 }
 
-.header-icon:hover{
+.header-icon:hover {
   background-color: #425259;
+}
+
+.menu-image {
+  padding: 0;
+}
+
+.menu-image:after {
+  display: none;
+}
+
+.menu-image > img {
+  max-height: 35px;
+}
+
+.profile-menu .dropdown-menu {
+  left: auto;
+  right: 0;
 }

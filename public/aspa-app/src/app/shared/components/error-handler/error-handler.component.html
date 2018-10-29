@@ -1,0 +1,14 @@
+<p-dialog [header]="error.title || 'Error'" [(visible)]="display" [modal]="true" [responsive]="true" [width]="400"
+          [minWidth]="200" [minY]="70"
+          [baseZIndex]="10000">
+  <h4>{{error.message}}</h4>
+  <div *ngFor="let key of keys">
+    <h5>{{key}}</h5>
+    <ul *ngFor="let err of error.errors[keys]">
+      <li>{{err}}</li>
+    </ul>
+  </div>
+  <p-footer>
+    <button type="button" pButton icon="pi pi-check" (click)="hide()" label="cancel-label"></button>
+  </p-footer>
+</p-dialog>

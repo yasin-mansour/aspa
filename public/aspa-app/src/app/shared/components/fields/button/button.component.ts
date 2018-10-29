@@ -21,7 +21,8 @@ export class FormButtonComponent {
   actionList = {
     request: this.request.bind(this),
     setElement: this.setElement.bind(this),
-    redirect: this.redirect.bind(this)
+    redirect: this.redirect.bind(this),
+    callback: this.callback.bind(this)
   };
 
   requestMethod = {
@@ -44,13 +45,34 @@ export class FormButtonComponent {
     }
   }
 
+  callback(action, data) {
+    const {callback} = action;
+    if (callback) {
+      callback(data);
+    }
+  }
+
   request(action, data) {
     const {requestType} = action;
     if (action['uri']) {
       if (this.requestMethod[requestType]) {
-        this.requestMethod[requestType](action, data);
+        const subscribe = this.requestMethod[requestType](action, data);
+        if (action.defaultResponse) {
+          action.defaultResponse(subscribe, this.form, this.questions);
+        } else {
+          console.log(this.form);
+          this.defaultResponse(subscribe);
+        }
       }
     }
+  }
+
+  defaultResponse(subscribe) {
+    subscribe.subscribe(response => {
+      this.onSubmit(this.checkResponseData(response) ? this.errorActions : this.responseActions, response);
+    }, err => {
+      this.onSubmit(this.errorActions, err);
+    });
   }
 
   setElement({elementName}, data) {
@@ -65,11 +87,7 @@ export class FormButtonComponent {
 
   post(action, data) {
     const uri = this.getUri(action);
-    this.http.post(uri, data, null, false).subscribe(response => {
-      this.onSubmit(this.checkResponseData(response) ? this.errorActions : this.responseActions, response);
-    }, err => {
-      this.onSubmit(this.errorActions, err);
-    });
+    return this.http.post(uri, data, null, false);
   }
 
   get(action) {

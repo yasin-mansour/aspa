@@ -14,6 +14,8 @@ import {LocalizationService} from './services/localization.service';
 import {ClassService} from './services/class.service';
 import {UploadService} from './services/upload.service';
 import {ResourceService} from './services/resource.service';
+import {ErrorHandlerService} from './services/error-handler.service';
+import {LogoutService} from './services/logout.service';
 
 export {
   HttpCommunicationService,
@@ -31,5 +33,7 @@ export {
   RegisterGuard,
   ClassService,
   UploadService,
-  ResourceService
+  ResourceService,
+  ErrorHandlerService,
+  LogoutService
 };

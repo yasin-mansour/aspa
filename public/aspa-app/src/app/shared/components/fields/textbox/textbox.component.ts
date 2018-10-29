@@ -53,6 +53,14 @@ export class FormTextBoxComponent implements OnInit {
     }
   }
 
+  onFocus() {
+    const onFocus = this.question.onFocus;
+    if (onFocus) {
+      const onFocusCallBack = onFocus.bind(this);
+      onFocusCallBack(this.form, this.question);
+    }
+  }
+
   updateValidation() {
     const validation = setValidation(this.question);
     validation.push(passwordValidator(this.form.controls[this.question.confirm]));

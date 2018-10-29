@@ -17,7 +17,9 @@ import {
   RegisterGuard,
   ClassService,
   UploadService,
-  ResourceService
+  ResourceService,
+  ErrorHandlerService,
+  LogoutService
 } from './';
 
 @NgModule({
@@ -45,7 +47,9 @@ import {
     LocalizationService,
     ClassService,
     UploadService,
-    ResourceService
+    ResourceService,
+    ErrorHandlerService,
+    LogoutService
   ],
   bootstrap: []
 })

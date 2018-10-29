@@ -43,9 +43,9 @@ Route::get('api/register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('api/register', 'Auth\RegisterController@register');
 
 // Password Reset Routes...
-Route::get('api/password/reset/{token?}', 'Auth\PasswordController@showResetForm');
+/*Route::get('api/password/reset/{token?}', 'Auth\PasswordController@showResetForm');
 Route::post('api/password/email', 'Auth\PasswordController@sendResetLinkEmail');
-Route::post('api/password/reset', 'Auth\PasswordController@reset');
+Route::post('api/password/reset', 'Auth\PasswordController@reset');*/
 
 Route::get('/home', 'HomeController@index');
 

@@ -7,7 +7,6 @@ import {AdminGuard} from './core/guards/admin-guard';
 import {ClientGuard} from './core/guards/client-guard';
 import {RegisterGuard} from './core/guards/register-guard';
 import {LoginComponent, AuthComponent, S404Component} from './shared';
-import {RegisterComponent} from './shared/index';
 
 const appRoutes: Routes = [
   {
@@ -15,10 +14,6 @@ const appRoutes: Routes = [
     component: AuthComponent,
     canActivate: [AppGuard],
     children: [
-      {
-        path: RouteConstants.LOGIN,
-        component: LoginComponent
-      },
       {
         path: RouteConstants.ADMIN,
         loadChildren: 'app/admin/admin.module#AdminModule',
@@ -32,11 +27,6 @@ const appRoutes: Routes = [
       {
         path: RouteConstants.HOME,
         loadChildren: 'app/home/home.module#HomeModule'
-      },
-      {
-        path: RouteConstants.REGISTER,
-        canActivate: [RegisterGuard],
-        component: RegisterComponent,
       }
     ]
   }

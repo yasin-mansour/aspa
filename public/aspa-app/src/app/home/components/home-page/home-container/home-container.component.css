@@ -1,9 +1,12 @@
 .home-container {
-  overflow: scroll;
+  overflow-y: auto;
   height: 100%;
   position: relative
 }
 
 .home-container .home-section{
   min-height: 100%;
+  height: 100%;
+  padding: 15px;
+  padding-top: 70px;
 }

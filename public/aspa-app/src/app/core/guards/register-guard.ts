@@ -10,7 +10,7 @@ export class RegisterGuard implements CanActivate {
   }
 
   canActivate(_, state: RouterStateSnapshot) {
-
+    console.log(this.http.user);
     if (!this.http.user) {
       return true;
     }

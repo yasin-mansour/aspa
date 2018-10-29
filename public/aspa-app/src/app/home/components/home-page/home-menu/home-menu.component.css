@@ -1,0 +1,16 @@
+.menu-image{
+  padding: 0;
+}
+
+.menu-image:after{
+  display: none;
+}
+
+.menu-image>img{
+  max-height: 40px;
+}
+
+.profile-menu .dropdown-menu{
+  left: auto;
+  right: 0;
+}

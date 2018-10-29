@@ -8,6 +8,7 @@ export class QuestionBase<T> {
   name: string;
   placeholder: string;
   inputClass: string;
+  labelClass: string;
   class: string;
   containerClass: string;
   outForm: boolean;
@@ -24,6 +25,7 @@ export class QuestionBase<T> {
   patternMessage: string;
   confirm: string;
   change: () => void;
+  onFocus: () => void;
   visible: boolean;
   disabled: boolean;
   unique: () => void;
@@ -38,6 +40,7 @@ export class QuestionBase<T> {
                 name?: string,
                 placeholder?: string,
                 inputClass?: string,
+                labelClass?: string,
                 class?: string,
                 containerClass?: string,
                 outForm?: boolean,
@@ -54,6 +57,7 @@ export class QuestionBase<T> {
                 patternMessage?: string,
                 confirm?: string,
                 change?: () => void,
+                onFocus?: () => void,
                 visible?: boolean,
                 disabled?: boolean,
                 unique?: () => void,
@@ -67,6 +71,7 @@ export class QuestionBase<T> {
     this.name = options.name || '';
     this.placeholder = options.placeholder || '';
     this.inputClass = options.inputClass || '';
+    this.labelClass = options.labelClass || '';
     this.class = options.class || '';
     this.containerClass = options.containerClass || '';
     this.outForm = !!options.outForm;
@@ -83,6 +88,7 @@ export class QuestionBase<T> {
     this.patternMessage = options.patternMessage || null;
     this.confirm = options.confirm || null;
     this.change = !!options.change ? options.change : null;
+    this.onFocus = !!options.onFocus ? options.onFocus : null;
     this.visible = options.visible === false ? false : true;
     this.disabled = options.disabled  || false;
     this.unique =!!options.unique ? options.unique : null;

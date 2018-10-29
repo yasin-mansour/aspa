@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ResourceService} from '../../../../core/services/resource.service';
+import {ResourceService, HttpCommunicationService, LogoutService} from '../../../../core';
 
 @Component({
   selector: 'app-home-menu',
@@ -10,9 +10,15 @@ export class HomeMenuComponent implements OnInit {
   activeCourseCategory = 0;
   activeMaterialCategory = 0;
 
-  constructor(public resource: ResourceService) {
+  constructor(public resource: ResourceService,
+              public http: HttpCommunicationService,
+              private logout: LogoutService) {
   }
 
   ngOnInit() {
+  }
+
+  logoutUser() {
+    this.logout.logout();
   }
 }

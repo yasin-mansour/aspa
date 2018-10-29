@@ -16,7 +16,7 @@ export class AuthService {
 
   public getToken() {
     return this.http.get(ApiConstants.TOKEN_PATH).toPromise().then(data => {
-      this.http.setUser(data);
+      this.http.setClientData(data);
       this.localization.setLocalization();
     });
   }

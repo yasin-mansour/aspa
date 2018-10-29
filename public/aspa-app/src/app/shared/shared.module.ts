@@ -18,6 +18,7 @@ import {CalendarModule} from 'primeng/calendar';
 import {ScheduleModule} from 'primeng/schedule';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {FileUploaderModule} from '../file-uploader/file-uploader.module';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 import {
   LoginComponent,
@@ -39,7 +40,6 @@ import {
   MaxValueValidatorDirective,
   MinValueValidatorDirective,
   FormMaskComponent,
-  RegisterComponent,
   CardV1Component,
   FormAutoCompleteComponent,
   DialogFormComponent,
@@ -49,6 +49,8 @@ import {
   FormFileUploadComponent,
   LocalizeInputComponent,
   PasswordValidatorDirective,
+  LoaderComponent,
+  ErrorHandlerComponent,
 } from './';
 import {HttpModule} from '@angular/http';
 
@@ -73,7 +75,6 @@ import {HttpModule} from '@angular/http';
     MaxValueValidatorDirective,
     MinValueValidatorDirective,
     FormMaskComponent,
-    RegisterComponent,
     CardV1Component,
     FormAutoCompleteComponent,
     DialogFormComponent,
@@ -82,7 +83,9 @@ import {HttpModule} from '@angular/http';
     UinqueValidatorDirective,
     FormFileUploadComponent,
     LocalizeInputComponent,
-    PasswordValidatorDirective
+    PasswordValidatorDirective,
+    LoaderComponent,
+    ErrorHandlerComponent
   ],
   imports: [
     HttpModule,
@@ -105,7 +108,8 @@ import {HttpModule} from '@angular/http';
     CalendarModule,
     ScheduleModule,
     OverlayPanelModule,
-    FileUploaderModule
+    FileUploaderModule,
+    ProgressSpinnerModule
   ],
   exports: [
     CommonModule,
@@ -133,7 +137,6 @@ import {HttpModule} from '@angular/http';
     FormHtmlComponent,
     ErrorMessageComponent,
     FormMaskComponent,
-    RegisterComponent,
     ScrollPanelModule,
     CardV1Component,
     DialogModule,
@@ -144,7 +147,9 @@ import {HttpModule} from '@angular/http';
     OverlayPanelModule,
     FileUploaderModule,
     LocalizeInputComponent,
-    PasswordValidatorDirective
+    PasswordValidatorDirective,
+    LoaderComponent,
+    ErrorHandlerComponent
   ],
   providers: [],
   bootstrap: [],

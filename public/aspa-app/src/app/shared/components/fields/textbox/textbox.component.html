@@ -3,10 +3,11 @@
   [ngClass]="{'invalid-field': isTouched && !isValid}"
   [formGroup]="form"
   *ngIf="question.visible">
-  <label *ngIf="question.label">{{ question.label | translate}}{{question.required? '*' : ''}}</label>
+  <label *ngIf="question.label" [class]="question.labelClass">{{ question.label | translate}}{{question.required? '*' : ''}}</label>
   <input
     [class]="question.inputClass"
     [type]="question.type"
+    (focus)="onFocus()"
     [attr.placeholder]="question.placeholder | translate"
     [formControlName]="question.key">
 </div>

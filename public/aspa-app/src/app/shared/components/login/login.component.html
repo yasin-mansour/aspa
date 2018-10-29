@@ -1,17 +1,18 @@
 <div class="container">
-  <div class="row vertical-offset-100">
-    <div class="col-md-4 col-md-offset-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">{{'LOGIN.SIGN_IN_HEADER' | translate}}</h3>
-        </div>
-        <div class="panel-body">
-          <fieldset>
-            <app-dynamic-form submitClass="btn btn-lg btn-success btn-block" [config]="loginConfig"></app-dynamic-form>
-          </fieldset>
+  <div id="login-row" class="row justify-content-center align-items-center">
+    <div id="login-column" class="col-md-6">
+      <div class="box">
+        <div class="shape1"></div>
+        <div class="shape2"></div>
+        <div class="shape3"></div>
+        <div class="shape4"></div>
+        <div class="shape5"></div>
+        <div class="shape6"></div>
+        <div class="shape7"></div>
+        <div class="float">
+          <app-dynamic-form [config]="loginConfig"></app-dynamic-form>
         </div>
       </div>
     </div>
   </div>
 </div>
-
