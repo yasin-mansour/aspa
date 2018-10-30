@@ -1,9 +1,13 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {HomeContainerComponent, RegisterComponent, WelcomePageComponent} from './';
 import {RouteConstants} from '../utils/route-constants';
 import {RegisterGuard} from '../core/guards/register-guard';
 import {LoginComponent} from '../shared';
+import {
+  HomeContainerComponent,
+  RegisterComponent,
+  WelcomePageComponent,
+  CoursesComponent} from './';
 
 const homeRoutes: Routes = [
   {
@@ -19,6 +23,10 @@ const homeRoutes: Routes = [
         path: RouteConstants.LOGIN,
         canActivate: [RegisterGuard],
         component: LoginComponent
+      },
+      {
+        path: RouteConstants.CLASSES,
+        component: CoursesComponent
       },
       {
         path: '',

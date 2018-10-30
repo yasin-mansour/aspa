@@ -27,6 +27,30 @@
   font-size: 7rem;
 }
 
-.welcome-button{
+.welcome-button {
   padding: .5rem 4rem;
+}
+
+.class-button {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 15%;
+  color: #fff;
+  text-align: center;
+  opacity: .5;
+}
+
+.class-button:hover {
+  color: #fff;
+  text-decoration: none;
+  outline: 0;
+  opacity: .9;
 }

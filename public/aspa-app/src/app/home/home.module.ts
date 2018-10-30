@@ -5,7 +5,8 @@ import {
   HomeContainerComponent,
   HomeMenuComponent,
   RegisterComponent,
-  WelcomePageComponent
+  WelcomePageComponent,
+  CoursesComponent
 } from './';
 
 @NgModule({
@@ -13,7 +14,8 @@ import {
     HomeContainerComponent,
     HomeMenuComponent,
     RegisterComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    CoursesComponent
   ],
   imports: [
     SharedModule,

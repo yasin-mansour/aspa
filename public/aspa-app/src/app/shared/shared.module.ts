@@ -19,6 +19,7 @@ import {ScheduleModule} from 'primeng/schedule';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {FileUploaderModule} from '../file-uploader/file-uploader.module';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {CardModule} from 'primeng/card';
 
 import {
   LoginComponent,
@@ -109,7 +110,8 @@ import {HttpModule} from '@angular/http';
     ScheduleModule,
     OverlayPanelModule,
     FileUploaderModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    CardModule
   ],
   exports: [
     CommonModule,
@@ -149,7 +151,8 @@ import {HttpModule} from '@angular/http';
     LocalizeInputComponent,
     PasswordValidatorDirective,
     LoaderComponent,
-    ErrorHandlerComponent
+    ErrorHandlerComponent,
+    CardModule
   ],
   providers: [],
   bootstrap: [],
